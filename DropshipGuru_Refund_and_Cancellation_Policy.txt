@@ -1,0 +1,160 @@
+DropshipGuru — Refund & Cancellation Policy (Draft)
+DropshipGuru
+Refund & Cancellation Policy
+Cancellation, refund eligibility, and related terms
+Page 1
+
+-- 1 of 5 --
+
+DropshipGuru — Refund & Cancellation Policy (Draft)
+REFUND & CANCELLATION POLICY
+This Refund & Cancellation Policy applies to all digital services purchased from DropshipGuru,
+including but not limited to seller account setup (Amazon, Flipkart, Meesho), Shopify/website
+development, product listing, training, webinars, consultations, and our annual seller-support
+packages. This policy is designed to be fair and transparent while reflecting the nature of digital
+services, which generally involve effort and resource commitment from the moment an order is
+confirmed.
+3.1 General Principle
+Because our services involve immediate allocation of staff time, document review, and in many
+cases direct submission of information to third-party platforms, payments are collected in
+advance and, as a general rule, work that has already commenced is non-refundable. Specific
+exceptions and clarifications are set out below.
+3.2 Cancellation Before Work Begins
+If you cancel your order before we have commenced any work on it (i.e., before we have begun
+document verification, account creation, listing, or any other deliverable), you are eligible for a
+full refund of the amount paid, less any payment gateway transaction charges actually incurred
+by us, which may be deducted from the refunded amount.
+“Commencement of work” includes, without limitation: requesting or reviewing your
+KYC/business documents, initiating an account creation request with a marketplace, beginning
+product research or listing, scheduling a consultation call that has taken place, or granting you
+access to training/webinar content.
+3.3 Cancellation After Work Has Begun
+No Refund Once Service Has Started: Once we have commenced work on your order —
+including but not limited to beginning the account creation, listing, or setup process — the
+amount paid is non-refundable under any circumstances. This applies in particular to our annual
+seller-support package (e.g., the 4,000/year account creation, listing, and dispatch-support	₹
+package), where the act of initiating account setup with the marketplace constitutes
+commencement of work for the entire engagement.
+This Applies Regardless of Whether You Continue Your Business: For the avoidance of
+any doubt, once the service has started, the payment made by the Client is final and non-
+refundable irrespective of whether the Client subsequently continues to run, operate, or grow
+their business using the account/service set up by DropshipGuru, or chooses to stop, pause, or
+discontinue their business for any reason whatsoever. Whether or not the Client goes on to
+actually use, operate, or benefit from the service after it has been set up has no bearing on
+refund eligibility — the fee is charged for performing the setup and support work itself, not for
+any particular level of subsequent use by the Client.
+Page 2
+
+-- 2 of 5 --
+
+DropshipGuru — Refund & Cancellation Policy (Draft)
+This approach reflects that our fee compensates for the time, effort, and third-party submissions
+made on your behalf from the point work begins, regardless of the eventual outcome (see
+Section 3.7 on outcomes outside our control) and regardless of the Client's own subsequent
+business decisions.
+3.4 Annual / Package Services
+For annual or multi-month packages that bundle several services together (such as account
+creation, product listing, and ongoing dispatch support over a 12-month period):
+• The package fee is payable in full in advance and is treated as consideration for the
+entire duration and bundle of services, not as a per-month or per-service fee;
+• Once account creation/listing work has commenced, no refund — full or partial — is
+available for the remaining, unused portion of the package term, except where required
+by applicable law or expressly offered as a goodwill gesture under Section 3.9;
+• If a marketplace independently suspends, rejects, or closes the seller account for
+reasons outside our control (such as policy violations by the Client, document
+mismatches, or platform-side enforcement action), this does not entitle the Client to a
+refund, as the service of setting up and supporting the account was duly performed.
+3.5 Missing Documents or Information
+If we are unable to complete or progress your order because you fail to provide required
+documents, approvals, or information within the timeframe communicated to you, the order will
+be treated as on hold at your instance. No refund will be due for the portion of work already
+completed, and if the order remains incomplete for an extended period (e.g., 30 days) due to
+your non-response, we reserve the right to treat the order as closed without further refund
+obligation, after providing prior written notice to you.
+3.6 Digital Downloads, Training, Webinars, and Consultations
+• Digital Downloads: Non-refundable once the download link/file has been delivered or
+accessed, as the product cannot be “returned.”
+• Recorded Training Content: Non-refundable once access/login credentials have been
+issued or the content has been viewed, in whole or in part.
+• Live Webinars: Refundable only if cancellation is requested at least 24 hours before the
+scheduled session; non-refundable thereafter or in case of non-attendance.
+• One-on-One Consultations: Refundable only if cancellation/rescheduling is requested at
+least 24 hours in advance; non-refundable if the session has already taken place or in
+case of a no-show without prior notice.
+• Custom Website/Development Projects: Governed by the milestone-based refund terms
+set out in the specific Service Agreement for that project; in the absence of specific
+terms, amounts attributable to completed milestones are non-refundable.
+Page 3
+
+-- 3 of 5 --
+
+DropshipGuru — Refund & Cancellation Policy (Draft)
+3.7 Outcomes Outside Our Control
+As stated in our Terms & Conditions (Section 1.9), DropshipGuru does not guarantee account
+approval by any marketplace, sales performance, or business outcomes. Accordingly, a refund
+will not be granted solely on the ground that:
+• A marketplace rejected, delayed, or suspended the seller account for reasons
+attributable to the marketplace's own policies or the Client's documents/eligibility;
+• The Client did not achieve a desired level of sales, orders, or profit;
+• A third-party platform changed its policies, fees, or approval criteria after the service was
+delivered.
+3.8 Duplicate Payments, Failed Payments, and Payment Gateway Issues
+• Duplicate Payments: If you accidentally make a duplicate payment for the same order,
+the duplicate amount will be refunded in full within the timeline specified in Section 3.10,
+upon verification.
+• Failed/Pending Payments: If a payment shows as deducted from your account but is not
+reflected as received by us, this is typically a payment gateway or banking processing
+delay. Please share payment proof with us, and we will verify and resolve the matter,
+including initiating a refund if the amount was genuinely debited but not received by us,
+within the gateway's standard reversal timeline.
+• Payment Gateway Errors: We are not responsible for delays or errors caused by the
+payment gateway, bank, or card network, but we will assist you in good faith to resolve
+such issues with the relevant provider.
+3.9 Fraud, Misuse, Abuse, and Chargebacks
+Immediate Cancellation for Abuse: If the Client engages in any form of abuse, including but
+not limited to abusive, threatening, or harassing behaviour towards DropshipGuru's staff or
+representatives, misuse of our services, or any conduct that is fraudulent or unlawful,
+DropshipGuru reserves the right to cancel and terminate the service immediately, with
+immediate effect and without prior notice, and no refund of any amount paid — whether for work
+already performed or for any unused/remaining portion of the service — shall be due to the
+Client in such cases.
+In addition to the above, no refund shall be due, and we reserve the right to terminate the
+engagement immediately, where:
+• The Client has provided false, forged, or fraudulent documents or information;
+• The Client uses our services for an unlawful purpose or to violate a third party's rights;
+• The Client behaves abusively, threatens, harasses, or misuses our services or staff in
+any manner, as determined by DropshipGuru at its sole discretion;
+• The Client initiates a chargeback or payment dispute with their bank/card network
+without first raising the matter with us, in which case we reserve the right to contest the
+chargeback with supporting evidence of service delivery and to recover any associated
+costs.
+Page 4
+
+-- 4 of 5 --
+
+DropshipGuru — Refund & Cancellation Policy (Draft)
+3.10 Refund Timelines and Method
+Where a refund is determined to be due under this policy, we will process it within 7–14
+business days of approval, to the original payment method used, unless otherwise agreed.
+Refund timelines for amounts to reach your account thereafter depend on your bank or payment
+provider and are outside our control.
+3.11 Goodwill Refunds
+Notwithstanding the general policy above, DropshipGuru may, at its sole discretion and on a
+case-by-case basis, choose to offer a full or partial refund as a goodwill gesture in exceptional
+circumstances, even where not strictly required under this policy. The grant of a goodwill refund
+in one instance does not create an obligation or precedent for future cases, and does not
+constitute a waiver of any right under this policy.
+3.12 Consumer Rights
+Nothing in this policy is intended to limit, restrict, or override any non-waivable right or remedy
+available to you as a consumer under the Consumer Protection Act, 2019, the Consumer
+Protection (E-Commerce) Rules, 2020, or any other applicable law. Where a provision of this
+policy is found to conflict with a mandatory statutory right, the statutory right shall prevail to that
+extent.
+3.13 How to Request a Cancellation or Refund
+To request a cancellation or refund, please contact us using the details in Section 20 (Contact
+Information), quoting your order/invoice number and the reason for your request. We aim to
+acknowledge such requests within 48 hours.
+Page 5
+
+-- 5 of 5 --
+

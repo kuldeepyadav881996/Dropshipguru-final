@@ -1,0 +1,100 @@
+[
+  {
+    "rel": "assets/catalogues/Home Decor/01.jpg",
+    "before": 1733379,
+    "after": 98848,
+    "dims": "2480x3509->1131x1600",
+    "fmt": "webp(in-place)"
+  },
+  {
+    "rel": "assets/catalogues/Home Decor/02.jpg",
+    "before": 967598,
+    "after": 27820,
+    "dims": "2480x3509->1131x1600",
+    "fmt": "webp(in-place)"
+  },
+  {
+    "rel": "assets/catalogues/Home Decor/03.jpg",
+    "before": 1130528,
+    "after": 44828,
+    "dims": "2480x3509->1131x1600",
+    "fmt": "webp(in-place)"
+  },
+  {
+    "rel": "assets/catalogues/Home Decor/04.jpg",
+    "before": 1405091,
+    "after": 51662,
+    "dims": "2480x3509->1131x1600",
+    "fmt": "webp(in-place)"
+  },
+  {
+    "rel": "assets/catalogues/Home Decor/05.jpg",
+    "before": 1003880,
+    "after": 37590,
+    "dims": "2480x3509->1131x1600",
+    "fmt": "webp(in-place)"
+  },
+  {
+    "rel": "assets/catalogues/Home Decor/06.jpg",
+    "before": 1683291,
+    "after": 76174,
+    "dims": "2480x3509->1131x1600",
+    "fmt": "webp(in-place)"
+  },
+  {
+    "rel": "assets/catalogues/Hnad Bag/01.jpg",
+    "before": 247753,
+    "after": 59778,
+    "dims": "1066x1600->1066x1600",
+    "fmt": "webp(in-place)"
+  },
+  {
+    "rel": "assets/catalogues/Hnad Bag/02.jpg",
+    "before": 196825,
+    "after": 59450,
+    "dims": "1600x1199->1600x1199",
+    "fmt": "webp(in-place)"
+  },
+  {
+    "rel": "assets/catalogues/Hnad Bag/03.jpg",
+    "before": 393700,
+    "after": 173008,
+    "dims": "1600x1066->1600x1066",
+    "fmt": "webp(in-place)"
+  },
+  {
+    "rel": "assets/catalogues/Hnad Bag/04.jpg",
+    "before": 234567,
+    "after": 82286,
+    "dims": "1600x1066->1600x1066",
+    "fmt": "webp(in-place)"
+  },
+  {
+    "rel": "assets/catalogues/Hnad Bag/05.jpg",
+    "before": 156354,
+    "after": 32120,
+    "dims": "1153x1600->1153x1600",
+    "fmt": "webp(in-place)"
+  },
+  {
+    "rel": "assets/catalogues/Hnad Bag/06.jpg",
+    "before": 430408,
+    "after": 24826,
+    "dims": "840x900->840x900",
+    "fmt": "webp(in-place)"
+  },
+  {
+    "rel": "logo.png",
+    "before": 1020129,
+    "after": 61945,
+    "dims": "1254x1254->512x512",
+    "fmt": "png(kept: favicon/og)"
+  },
+  {
+    "rel": "hero-character.webp (new desktop src)",
+    "before": 680316,
+    "after": 45686,
+    "dims": "595x1009",
+    "fmt": "webp(new)"
+  }
+]

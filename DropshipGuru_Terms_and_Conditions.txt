@@ -1,0 +1,329 @@
+DropshipGuru — Terms & Conditions (Draft)
+DropshipGuru
+Terms & Conditions
+Governing the use of DropshipGuru's services
+Page 1
+
+-- 1 of 9 --
+
+DropshipGuru — Terms & Conditions (Draft)
+TERMS & CONDITIONS
+These Terms & Conditions (“Terms”) constitute a legally binding agreement between
+DropshipGuru (“the Company,” “we,” “us,” or “our”) and any individual or entity (“Client,” “User,”
+or “you”) who accesses our website, purchases a service, or otherwise engages with
+DropshipGuru in connection with any of our digital business services.
+1.1 Company Information
+DropshipGuru is a service provider engaged in offering digital e-commerce and business-
+support services to clients in India and internationally, including but not limited to seller account
+setup on platforms such as Amazon.in, Amazon.com, Flipkart, and Meesho; Shopify store
+setup; e-commerce website development; product listing and research; store management;
+digital marketing consultation; WhatsApp Business setup; social media services; webinars and
+training; business consultation; account management; branding services; digital downloads; AI-
+assisted services; and CRM/automation services.
+1.2 Eligibility
+By using our services, you represent and warrant that:
+• You are at least 18 years of age, or are availing the services through a parent or legal
+guardian who agrees to be bound by these Terms;
+• You have the legal capacity and authority to enter into a binding contract;
+• You possess valid identification, business registration documents (where applicable),
+and any licenses required to operate an e-commerce business under Indian law;
+• All information you provide to us is accurate, current, and complete.
+We reserve the right to refuse service to any person or entity that does not meet these eligibility
+criteria, or where we reasonably suspect the information provided is false or misleading.
+1.3 Acceptance of Terms
+By making a payment, signing a service agreement, communicating an order via WhatsApp,
+email, or any other channel, or otherwise instructing us to begin work, you confirm that you have
+read, understood, and agreed to be bound by these Terms, our Privacy Policy, Refund &
+Cancellation Policy, and any service-specific agreement applicable to your order. If you do not
+agree with any part of these Terms, you must not avail of our services.
+Page 2
+
+-- 2 of 9 --
+
+DropshipGuru — Terms & Conditions (Draft)
+1.4 Services Offered
+DropshipGuru offers digital services that may include, without limitation:
+• Amazon.in and Amazon.com Seller Account Setup
+• Flipkart Seller Account Setup
+• Meesho Seller Account Setup
+• Shopify Store Setup and E-commerce Website Development
+• Product Listing and Product Research
+• Store Management and Account Management
+• Digital Marketing Consultation and Social Media Services
+• WhatsApp Business Setup
+• Webinar Registration, Online Training, and Recorded Content
+• Business Consultation and Branding Services
+• Digital Downloads
+• AI-assisted services, where applicable
+• CRM and Automation Services
+• Any other digital business service we may introduce from time to time
+The specific scope, deliverables, timeline, and fee for any engagement will be communicated at
+the time of order confirmation (“Order Confirmation”), whether through an invoice, WhatsApp
+message, email, written quotation, or service agreement. In case of any conflict between these
+Terms and an Order Confirmation, the specific terms of the Order Confirmation shall prevail only
+to the extent of that specific engagement.
+Example – Annual Seller Support Package: Where a Client purchases an annual package (for
+instance, the 4,000/year package covering account creation, product listing, and dispatch-	₹
+related support), the specific inclusions, exclusions, and duration of that package will be set out
+in the Order Confirmation. Such a package is a service-support arrangement and does not
+guarantee account approval, sales volume, or business outcomes (see Section 1.9 – No
+Guaranteed Results).
+1.5 User Responsibilities
+As a condition of receiving our services, you agree to:
+• Provide accurate, complete, and timely information, documents, and access credentials
+reasonably required for us to perform the service (including but not limited to PAN, GST
+certificate, bank details, identity proof, business address proof, and product information);
+• Cooperate in good faith and respond to our communications within a reasonable time, as
+delays on your part may delay deliverables;
+• Use the services only for lawful purposes and in compliance with the terms of service of
+any third-party platform involved (Amazon, Flipkart, Meesho, Shopify, Meta, Google,
+payment gateways, etc.);
+Page 3
+
+-- 3 of 9 --
+
+DropshipGuru — Terms & Conditions (Draft)
+• Not request or instruct us to engage in any activity that violates Indian law or the policies
+of a third-party platform, including but not limited to listing prohibited or counterfeit
+products, providing false KYC information, or manipulating reviews/ratings;
+• Maintain the confidentiality of any login credentials, OTPs, or account access shared
+with us during the course of service delivery;
+• Make payments in accordance with the agreed Payment Terms (Section 1.6).
+Consequences of Non-Cooperation: If you fail to provide necessary documents, information,
+or approvals within the timeframe communicated to you, we reserve the right to pause, delay, or
+treat the engagement as abandoned, without this being treated as a failure of service on our
+part, and without entitlement to a refund for work already performed (see Refund & Cancellation
+Policy).
+1.6 Account Creation (Client Accounts with DropshipGuru)
+Where our services require you to create an account with us (for tracking orders, accessing
+training content, or communicating with our team), you are responsible for maintaining the
+confidentiality of your login credentials and for all activities that occur under your account. You
+must notify us immediately of any unauthorized use of your account.
+1.7 Account Suspension and Right to Reject Service
+We reserve the right, at our sole discretion, to suspend, restrict, or terminate access to our
+services, or to decline an engagement altogether, in circumstances including but not limited to:
+• Provision of false, misleading, or incomplete information or documents;
+• Suspected fraud, misuse, or abuse of our services;
+• Non-payment, late payment, or a reversed/disputed payment (chargeback);
+• Use of our services for any unlawful purpose or in a manner that violates third-party
+platform policies;
+• Abusive, threatening, or harassing conduct towards our staff;
+• Any conduct that we reasonably believe exposes the Company to legal, financial, or
+reputational risk.
+Where we decline or terminate an engagement under this clause, the Refund & Cancellation
+Policy shall determine whether any refund is due, and in cases involving fraud or misuse by the
+Client, no refund shall be due.
+1.8 Payment Terms, Pricing Changes, and Taxes
+1.8.1 Payment Structure
+Our services are generally offered on an advance-payment basis, meaning the applicable fee is
+payable in full before we commence work, unless otherwise agreed in writing for a specific
+engagement (for example, milestone-based payment for larger custom website projects). For
+package-based services such as our annual seller-support package, the full package fee is
+payable in advance for the entire duration of the package.
+Page 4
+
+-- 4 of 9 --
+
+DropshipGuru — Terms & Conditions (Draft)
+1.8.2 Pricing Changes
+Prices for our services may change from time to time without prior notice, and such changes will
+not affect an engagement for which payment has already been received and an Order
+Confirmation issued. Renewal of an annual or recurring package at the end of its term will be
+subject to the pricing applicable at the time of renewal.
+1.8.3 Taxes and GST
+All fees quoted are exclusive of applicable taxes unless expressly stated otherwise. Goods and
+Services Tax (GST) and any other statutory levy applicable under Indian law will be charged
+additionally at the prevailing rate and reflected in the invoice. DropshipGuru is a GST-registered
+entity and will issue GST-compliant invoices for services rendered.
+1.8.4 Chargebacks, Non-Payment, and Late Payment
+Initiating a chargeback or payment dispute without first raising the issue with us directly is
+treated as a material breach of these Terms and may result in immediate suspension of
+services, in addition to any other remedy available to us under law, including recovery of the
+disputed amount and associated costs. Late or non-payment of any installment (where
+applicable) may result in suspension of work until payment is regularized.
+1.9 No Guaranteed Results
+Important: DropshipGuru provides professional setup, listing, consultation, and support
+services. We do not guarantee, and no representation by any employee, agent, or
+representative of DropshipGuru should be construed as guaranteeing:
+• Any specific level of income, profit, revenue, or sales;
+• Approval of a seller account by Amazon, Flipkart, Meesho, or any other third-party
+platform;
+• Continued, uninterrupted access to any third-party platform once an account is created;
+• The success or growth of your business;
+• Any specific outcome from digital marketing, social media, or branding services;
+• The performance of any third-party algorithm, advertising system, or marketplace
+ranking mechanism.
+Outcomes in e-commerce and digital business depend on numerous factors outside our control,
+including platform policies, market competition, product quality, pricing, consumer demand, and
+macroeconomic conditions. You acknowledge that engaging our services is undertaken with an
+understanding of these inherent business risks.
+1.10 Project Timelines and Communication Policy
+Estimated timelines communicated to you for any deliverable are good-faith estimates and not
+guaranteed delivery dates, as they depend on factors including your timely provision of
+information/documents and the responsiveness of third-party platforms (e.g., the time Amazon
+or Flipkart takes to approve a seller account, which is entirely outside our control). We will
+communicate with you primarily through the channel(s) agreed at onboarding (WhatsApp, email,
+or phone) and aim to respond to queries within a reasonable business timeframe.
+Page 5
+
+-- 5 of 9 --
+
+DropshipGuru — Terms & Conditions (Draft)
+1.11 Third-Party Platforms
+Many of our services involve creating or managing accounts on third-party platforms, including
+Amazon, Flipkart, Meesho, Shopify, Meta (Facebook/Instagram), Google, and various payment
+gateways. You acknowledge and agree that:
+• These platforms are independent entities not owned, controlled, or affiliated with
+DropshipGuru;
+• Each platform has its own terms of service, eligibility criteria, fees, and approval
+processes that are subject to change at any time without notice to us;
+• We have no control over, and bear no responsibility for, a platform's decision to approve,
+reject, suspend, restrict, or terminate any account, listing, or seller profile;
+• Any fees charged directly by these third-party platforms (referral fees, subscription fees,
+advertising spend, payment gateway charges, etc.) are separate from and in addition to
+our service fees, and are your sole responsibility;
+• Changes to a third-party platform's policies, algorithms, or terms of service after our
+service has been delivered do not constitute a deficiency in our service and do not entitle
+you to a refund.
+1.12 Document Verification, KYC, and False Information
+Several of our services (particularly seller account setup) require submission of identity and
+business documents to third-party platforms as part of statutory Know Your Customer (KYC)
+and onboarding requirements. You represent that all documents and information provided to us
+for this purpose are genuine, current, and lawfully obtained. Submission of forged, fraudulent, or
+materially false documents:
+• Is solely your responsibility and liability;
+• May result in immediate termination of our engagement without refund;
+• May expose you to independent legal consequences under Indian law, for which
+DropshipGuru shall bear no liability whatsoever.
+1.13 Intellectual Property
+1.13.1 Our Intellectual Property
+All content created by DropshipGuru in the course of providing services — including but not
+limited to training materials, webinar recordings, templates, branding frameworks, proprietary
+processes, website text, graphics, and software tools — remains the intellectual property of
+DropshipGuru unless explicitly transferred to the Client in writing as part of a custom deliverable
+(for example, a website or logo developed specifically for the Client under a paid custom
+project).
+1.13.2 Client Intellectual Property
+Any logos, trademarks, product images, content, or brand assets you provide to us remain your
+property. You grant DropshipGuru a limited, non-exclusive license to use such materials solely
+for the purpose of delivering the agreed service (e.g., uploading product images to a
+marketplace listing).
+Page 6
+
+-- 6 of 9 --
+
+DropshipGuru — Terms & Conditions (Draft)
+1.13.3 Copyright and Trademark Compliance
+You warrant that any content, product, brand name, or image you instruct us to upload or use
+does not infringe any third party's copyright, trademark, or other intellectual property rights. You
+agree to indemnify DropshipGuru against any claim arising from such infringement (see
+Indemnification, Section 1.22).
+1.13.4 AI-Generated Content
+Where any service involves AI-assisted content generation (such as AI-written product
+descriptions, marketing copy, or design suggestions), such content is provided as a starting
+point or productivity aid. You are responsible for reviewing AI-generated content for accuracy,
+originality, and compliance with platform policies and applicable law before publishing it.
+DropshipGuru does not warrant that AI-generated content is free of errors or is fit for a specific
+regulatory or platform requirement.
+1.14 Confidential Information
+Each party agrees to keep confidential any non-public business, financial, or technical
+information disclosed by the other party in connection with the services, and to use such
+information solely for the purpose of the engagement. This obligation survives termination of the
+engagement. Further detail is set out in the Confidentiality Clause (Section 19).
+1.15 Data Usage, Privacy, and Cookies
+Our collection and use of your personal data, and our use of cookies on our website, are
+governed by our Privacy Policy and Cookie Policy, which form part of these Terms by reference.
+1.16 Website Downtime, Maintenance, and Technical Issues
+We strive to keep our website and related digital tools available at all times but do not guarantee
+uninterrupted, error-free, or secure access. We are not liable for any loss arising from website
+downtime, scheduled maintenance, software bugs, or technical issues beyond our reasonable
+control, including issues originating from third-party hosting providers, payment gateways, or
+internet service providers.
+1.17 Limitation of Liability and Warranty Disclaimer
+To the maximum extent permitted under applicable Indian law:
+• Our services are provided on an “as is” and “as available” basis, without warranties of
+any kind, whether express or implied, including but not limited to warranties of
+merchantability, fitness for a particular purpose, or non-infringement;
+• DropshipGuru's total aggregate liability arising out of or relating to any engagement shall
+not exceed the total fees actually paid by the Client for that specific service in the
+preceding three (3) months;
+• DropshipGuru shall not be liable for any indirect, incidental, consequential, special, or
+punitive damages, including loss of profit, loss of business opportunity, or loss of data,
+even if advised of the possibility of such damages;
+Page 7
+
+-- 7 of 9 --
+
+DropshipGuru — Terms & Conditions (Draft)
+• Nothing in these Terms is intended to exclude or limit liability that cannot lawfully be
+excluded or limited under the Consumer Protection Act, 2019, or any other mandatory
+provision of Indian law.
+1.18 Indemnification
+You agree to indemnify, defend, and hold harmless DropshipGuru, its directors, employees, and
+agents from and against any claims, liabilities, damages, losses, and expenses (including
+reasonable legal fees) arising out of or in any way connected with: (a) your breach of these
+Terms; (b) your violation of any law or third-party rights (including intellectual property rights); (c)
+false, misleading, or fraudulent information or documents provided by you; or (d) your use or
+misuse of any third-party platform account set up or managed on your behalf.
+1.19 Force Majeure
+DropshipGuru shall not be held liable for any delay or failure in performance resulting from
+causes beyond our reasonable control, including but not limited to acts of God, natural
+disasters, pandemics, government action or regulation, internet or telecommunications failure,
+third-party platform outages or policy changes, strikes, or civil unrest. Performance obligations
+shall be suspended for the duration of such event, and timelines shall be extended accordingly.
+1.20 Termination and Account Closure
+Either party may terminate an ongoing engagement in accordance with the terms
+communicated at the time of Order Confirmation, or where no specific termination terms were
+agreed, upon written notice. DropshipGuru reserves the right to terminate immediately, without
+notice, in the circumstances described in Section 1.7 (Account Suspension and Right to Reject
+Service). Termination of an engagement does not affect any fees already earned for work
+performed up to the point of termination, and refund eligibility (if any) for the unused portion of a
+package shall be determined under our Refund & Cancellation Policy.
+1.21 Digital Services, Custom Services, Training, and Webinars
+Digital products, recorded training content, and digital downloads are deemed delivered upon
+being made accessible to you (e.g., via download link, login access, or email delivery), and are
+generally non-refundable once accessed, consistent with our Refund & Cancellation Policy. Live
+webinars and consultations are time-bound services; non-attendance at a scheduled session
+without prior notice does not entitle you to a free rescheduling or refund except as set out in that
+policy. Custom services (such as bespoke website development) follow the scope, milestones,
+and payment schedule set out in the applicable Service Agreement or Order Confirmation.
+1.22 Severability
+If any provision of these Terms is held to be invalid, illegal, or unenforceable by a court or
+authority of competent jurisdiction, that provision shall be severed, and the remaining provisions
+shall continue in full force and effect.
+Page 8
+
+-- 8 of 9 --
+
+DropshipGuru — Terms & Conditions (Draft)
+1.23 Entire Agreement
+These Terms, together with the Privacy Policy, Refund & Cancellation Policy, and any
+applicable Order Confirmation or Service Agreement, constitute the entire agreement between
+you and DropshipGuru with respect to the subject matter herein, and supersede all prior
+understandings, whether written or oral.
+1.24 Electronic Consent and Modification of Terms
+You consent to enter into agreements and receive notices electronically, including via email,
+WhatsApp, and website notifications, and agree that such electronic communications satisfy any
+legal requirement that such communication be in writing. We may revise these Terms from time
+to time; the updated version will be posted on our website with a revised “Last Updated” date,
+and continued use of our services after such update constitutes acceptance of the revised
+Terms. Material changes affecting an ongoing engagement will, where reasonably practicable,
+also be communicated directly to active clients.
+1.25 Governing Law, Jurisdiction, Dispute Resolution, and Arbitration
+These Terms are governed by and construed in accordance with the laws of India. Subject to
+the arbitration clause below, the courts at [Insert City, e.g., your city of business registration]
+shall have exclusive jurisdiction over any dispute arising out of or in connection with these
+Terms.
+Before initiating any formal proceeding, the parties agree to first attempt to resolve any dispute
+amicably through good-faith negotiation for a period of thirty (30) days from the date one party
+notifies the other in writing of the dispute.
+If the dispute is not resolved through negotiation, it shall be referred to and finally resolved by
+arbitration in accordance with the Arbitration and Conciliation Act, 1996 (as amended). The
+arbitration shall be conducted by a sole arbitrator appointed mutually by the parties, seated at
+[Insert City], conducted in the English language, and the arbitral award shall be final and binding
+on both parties, subject to the limited grounds of challenge available under the Arbitration and
+Conciliation Act, 1996.
+Page 9
+
+-- 9 of 9 --
+

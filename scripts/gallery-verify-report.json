@@ -1,0 +1,90 @@
+{
+  "tested": 12,
+  "passed": 12,
+  "results": [
+    {
+      "category": "Beauty & Care",
+      "folder": "Beauty & Care",
+      "ok": true,
+      "images": 5,
+      "loaded": 5
+    },
+    {
+      "category": "Eco-Friendly Products",
+      "folder": "Eco Friendly Product",
+      "ok": true,
+      "images": 6,
+      "loaded": 6
+    },
+    {
+      "category": "Gardening",
+      "folder": "Gardning",
+      "ok": true,
+      "images": 5,
+      "loaded": 5
+    },
+    {
+      "category": "Gift Items",
+      "folder": "Gift Items",
+      "ok": true,
+      "images": 5,
+      "loaded": 5
+    },
+    {
+      "category": "Hand Bags",
+      "folder": "Hnad Bag",
+      "ok": true,
+      "images": 6,
+      "loaded": 6
+    },
+    {
+      "category": "Home & Kitchen",
+      "folder": "Home & Kitchen",
+      "ok": true,
+      "images": 6,
+      "loaded": 6
+    },
+    {
+      "category": "Home Decor",
+      "folder": "Home Decor",
+      "ok": true,
+      "images": 6,
+      "loaded": 6
+    },
+    {
+      "category": "Ladies Wear",
+      "folder": "Ladies Wear",
+      "ok": true,
+      "images": 6,
+      "loaded": 6
+    },
+    {
+      "category": "Ladies Footwear",
+      "folder": "Ldies Foot wear",
+      "ok": true,
+      "images": 6,
+      "loaded": 6
+    },
+    {
+      "category": "Spiritual Products",
+      "folder": "Spiritual Product",
+      "ok": true,
+      "images": 6,
+      "loaded": 6
+    },
+    {
+      "category": "Toys & Baby",
+      "folder": "Toys & Baby",
+      "ok": true,
+      "images": 5,
+      "loaded": 5
+    },
+    {
+      "category": "Travel Backpack",
+      "folder": "Travel Bagpack",
+      "ok": true,
+      "images": 6,
+      "loaded": 6
+    }
+  ]
+}

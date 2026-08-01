@@ -1,0 +1,74 @@
+[
+  {
+    "rel": "brand-icons.js",
+    "before": 28914,
+    "after": 22847,
+    "kind": "js"
+  },
+  {
+    "rel": "product-gallery.js",
+    "before": 19134,
+    "after": 10407,
+    "kind": "js"
+  },
+  {
+    "rel": "jewellery-catalogue.js",
+    "before": 10772,
+    "after": 6085,
+    "kind": "js"
+  },
+  {
+    "rel": "catalogues-data.js",
+    "before": 2293,
+    "after": 1403,
+    "kind": "js"
+  },
+  {
+    "rel": "google-sheet-submit.js",
+    "before": 6479,
+    "after": 3291,
+    "kind": "js"
+  },
+  {
+    "rel": "legal-page.js",
+    "before": 3299,
+    "after": 1858,
+    "kind": "js"
+  },
+  {
+    "rel": "brand-icons.css",
+    "before": 16429,
+    "after": 12878,
+    "kind": "css"
+  },
+  {
+    "rel": "product-gallery.css",
+    "before": 15866,
+    "after": 12286,
+    "kind": "css"
+  },
+  {
+    "rel": "jewellery-catalogue.css",
+    "before": 11680,
+    "after": 9123,
+    "kind": "css"
+  },
+  {
+    "rel": "legal-page.css",
+    "before": 8238,
+    "after": 6370,
+    "kind": "css"
+  },
+  {
+    "rel": "index.html (inline <style>)",
+    "before": 394698,
+    "after": 339912,
+    "kind": "html-css"
+  },
+  {
+    "rel": "consultation.html (inline <style>)",
+    "before": 217617,
+    "after": 192814,
+    "kind": "html-css"
+  }
+]

@@ -7,7 +7,7 @@
 
   var DEFAULT_API_BASE =
     (global.DROPSHIPGURU_API_BASE && String(global.DROPSHIPGURU_API_BASE).replace(/\/$/, '')) ||
-    ' https://dropshipgurufi-api.onrender.com';
+    'https://dropshipgurufi-api.onrender.com';
 
   function loadRazorpayCheckout() {
     if (global.Razorpay) return Promise.resolve();

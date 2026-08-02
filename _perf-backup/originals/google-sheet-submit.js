@@ -2,7 +2,7 @@
   "use strict";
 
   var GOOGLE_SCRIPT_URL =
-    "https://script.google.com/a/macros/dropshipguru.info/s/AKfycbzpPiH8gpzHvk9-AEHEKDq5WT7XnEsfJVIIz-ki3-BCprd4xLGaNQ2FJFHoyfy-qtlafQ/exec";
+    "https://script.google.com/macros/s/AKfycbzpPiH8gpzHvk9-AEHEKDq5WT7XnEsfJVIIz-ki3-BCprd4xLGaNQ2FJFHoyfy-qtlafQ/exec";
 
   var PAYLOAD_KEYS = [
     "fullName",

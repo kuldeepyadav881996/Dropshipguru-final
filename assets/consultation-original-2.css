@@ -1,0 +1,274 @@
+
+
+/* ═══════════════════════════════════════════════════════════
+   PREMIUM MOTION — animations & micro-interactions only
+   No color, typography, or layout changes
+═══════════════════════════════════════════════════════════ */
+
+/* ── Hero entrance ── */
+.pm-hero-pending > * {
+  opacity: 0;
+  transform: translateY(28px);
+}
+.pm-hero-pending > *.pm-in {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.hero-visual.pm-hero-pending {
+  opacity: 0;
+  transform: translateY(32px) scale(0.98);
+}
+.hero-visual.pm-hero-pending.pm-in {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.35s, transform 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.35s;
+}
+
+/* ── CTA pop ── */
+@keyframes pm-cta-pop {
+  0% { transform: scale(0.92); opacity: 0; }
+  70% { transform: scale(1.04); }
+  100% { transform: scale(1); opacity: 1; }
+}
+.hero-actions .btn.pm-in {
+  animation: pm-cta-pop 0.65s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+/* ── Button shine + lift ── */
+.btn.primary,
+.nav-cta,
+.submit-btn,
+.cta-btn,
+.category-card a,
+.plan-cta {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease !important;
+}
+.btn.primary::before,
+.nav-cta::before,
+.submit-btn::before,
+.cta-btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg, transparent 38%, rgba(255, 255, 255, 0.28) 50%, transparent 62%);
+  transform: translateX(-130%);
+  animation: pm-shine-sweep 5s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+.btn.primary:hover,
+.nav-cta:hover,
+.submit-btn:hover,
+.cta-btn:hover {
+  transform: translateY(-4px) !important;
+}
+@keyframes pm-shine-sweep {
+  0%, 72% { transform: translateX(-130%); }
+  100% { transform: translateX(130%); }
+}
+.pm-ripple {
+  position: absolute;
+  border-radius: 50%;
+  transform: scale(0);
+  background: rgba(255, 255, 255, 0.35);
+  animation: pm-ripple-out 0.65s ease-out forwards;
+  pointer-events: none;
+  z-index: 2;
+}
+@keyframes pm-ripple-out {
+  to { transform: scale(4); opacity: 0; }
+}
+
+/* ── Navbar scroll ── */
+.site-header {
+  transition: background 0.45s ease, backdrop-filter 0.45s ease, box-shadow 0.45s ease, border-color 0.45s ease !important;
+}
+.site-header.pm-scrolled {
+  background: rgba(6, 7, 9, 0.92) !important;
+  backdrop-filter: blur(36px) saturate(190%) !important;
+  -webkit-backdrop-filter: blur(36px) saturate(190%) !important;
+  box-shadow: 0 4px 28px rgba(0, 0, 0, 0.45) !important;
+}
+
+/* ── Trust badges ── */
+.hero-trust-item {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+.hero-trust-item:hover {
+  transform: translateY(-4px);
+}
+.hero-trust-item svg {
+  animation: pm-trust-icon 3s ease-in-out infinite;
+}
+.hero-trust-item:nth-child(2) svg { animation-delay: 0.4s; }
+.hero-trust-item:nth-child(3) svg { animation-delay: 0.8s; }
+.hero-trust-item:nth-child(4) svg { animation-delay: 1.2s; }
+@keyframes pm-trust-icon {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.12); }
+}
+
+/* ── Stats fade-in ── */
+.stat.pm-stagger {
+  opacity: 0;
+  transform: translateY(20px);
+}
+.stat.pm-stagger.pm-in {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ── Scroll reveal stagger ── */
+.pm-card-stagger {
+  opacity: 0;
+  transform: translateY(24px);
+}
+.pm-card-stagger.pm-in {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ── Dashboard chart line ── */
+.hero-dash-chart {
+  position: relative;
+}
+.pm-chart-line {
+  position: absolute;
+  inset: 12px 14px 0;
+  width: calc(100% - 28px);
+  height: calc(100% - 12px);
+  pointer-events: none;
+  overflow: visible;
+}
+.pm-chart-line path {
+  fill: none;
+  stroke: rgba(139, 116, 255, 0.85);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 200;
+  stroke-dashoffset: 200;
+}
+.pm-chart-line.pm-play path {
+  animation: pm-line-draw 1.8s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards;
+}
+@keyframes pm-line-draw {
+  to { stroke-dashoffset: 0; }
+}
+.hero-dash-bar.pm-replay {
+  animation: none !important;
+}
+.hero-dash-bar.pm-replay.pm-play {
+  animation: heroBarGrow 1.2s cubic-bezier(0.16, 1, 0.3, 1) both !important;
+}
+
+/* ── Toast slide out ── */
+.activity-toast.pm-exit {
+  transform: translateX(-110%) !important;
+  opacity: 0 !important;
+}
+
+/* ── Chat widget ── */
+.float-wa {
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.35s ease !important;
+}
+.float-wa:hover {
+  animation: pm-chat-bounce 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+}
+@keyframes pm-chat-bounce {
+  0% { transform: translateY(0) scale(1); }
+  35% { transform: translateY(-6px) scale(1.06); }
+  65% { transform: translateY(2px) scale(0.98); }
+  100% { transform: translateY(0) scale(1); }
+}
+
+/* ── Parallax layers ── */
+.ambient-scene {
+  transition: transform 0.18s ease-out;
+}
+.ambient-blob,
+.hero-glow-blob {
+  will-change: transform;
+}
+
+/* ── KPI count highlight ── */
+.hero-dash-kpi b.pm-counting {
+  display: inline-block;
+  transition: transform 0.2s ease;
+}
+.hero-dash-kpi b.pm-count-done {
+  animation: pm-kpi-pop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+@keyframes pm-kpi-pop {
+  0% { transform: scale(0.85); }
+  60% { transform: scale(1.08); }
+  100% { transform: scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pm-hero-pending > *,
+  .hero-visual.pm-hero-pending,
+  .pm-card-stagger,
+  .stat.pm-stagger,
+  .hero-trust-item svg,
+  .btn.primary::before,
+  .nav-cta::before,
+  .float-wa:hover {
+    animation: none !important;
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════
+   MOBILE PERFORMANCE PASS — applies ONLY at ≤767.98px.
+   Desktop (≥768px) rendering is completely unaffected.
+   ══════════════════════════════════════════════════════════ */
+@media (max-width: 767.98px){
+  /* (1)(2)(3) Disable decorative floating / background-glow / particle animations */
+  #constellation-bg{ display:none !important; }
+  .ambient-scene, .ambient-scene *,
+  .spotlight, .orb, .noise-layer,
+  .float-wa, .hf-card, .hero-glow-blob,
+  [class*="ambient-"], [class*="hero-glow"], [class*="hero-bg-"]{
+    animation: none !important;
+  }
+  .ambient-particles, .ambient-particles > i{ display:none !important; }
+
+  /* (4) Remove GPU-heavy backdrop-filter; tame decorative blur */
+  *{ backdrop-filter:none !important; -webkit-backdrop-filter:none !important; }
+  .orb, .spotlight, .ambient-blob, .hero-glow-blob, [class*="hero-glow"]{ filter:none !important; }
+
+  /* (5) Drop the most expensive decorative shadows (paint cost) */
+  .orb, .spotlight, .ambient-blob, .hero-glow-blob{ box-shadow:none !important; }
+
+  /* (1)(3)(9) Neutralise EVERY remaining CSS animation on mobile.
+     Pattern: jump each animation to its end-state instantly (fill-mode:both,
+     1 iteration, ~0ms) so content stays fully visible but nothing loops/repaints.
+     Reveal-on-scroll uses CSS transitions (not @keyframes), so it is unaffected. */
+  *, *::before, *::after{
+    animation-duration:0.001ms !important;
+    animation-delay:0ms !important;
+    animation-iteration-count:1 !important;
+    animation-fill-mode:both !important;
+  }
+  /* Continuous marquee (income row): stop AND reset to natural start position */
+  .income-track, [class*="income-scroll"]{ animation:none !important; transform:none !important; }
+  /* Class/ID-level !important shorthands outrank the universal reset above,
+     so kill those specific looping shines with matching specificity (appended later). */
+  .btn.primary, .nav-cta, .submit-btn, .cta-btn, .hero .btn.primary,
+  #plans.plans-section::before{ animation:none !important; }
+
+  /* (13) Avoid needless layer promotion → lower GPU memory */
+  *{ will-change:auto !important; }
+
+  /* (12)(13)(15) No horizontal overflow; every element fits the viewport */
+  html, body{ overflow-x:hidden !important; max-width:100% !important; }
+  img, svg, video, canvas, iframe{ max-width:100% !important; }
+}

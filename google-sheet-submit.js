@@ -1,1 +1,190 @@
-!function(e){"use strict";var t="https://script.google.com/a/macros/dropshipguru.info/s/AKfycbzpPiH8gpzHvk9-AEHEKDq5WT7XnEsfJVIIz-ki3-BCprd4xLGaNQ2FJFHoyfy-qtlafQ/exec",r=["fullName","mobile","email","state","profession","selectedType","selectedPlan","selectedCourse","selectedService","selectedPlatform","price","budget","message","source"];function s(){return{fullName:"",mobile:"",email:"",state:"",profession:"",selectedType:"",selectedPlan:"",selectedCourse:"",selectedService:"",selectedPlatform:"",price:"",budget:"",message:"",source:"Website"}}function l(e){var t={fullName:"",mobile:"",email:"",state:"",profession:"",selectedType:"",selectedPlan:"",selectedCourse:"",selectedService:"",selectedPlatform:"",price:"",budget:"",message:"",source:"Website"},s=e||{};return r.forEach(function(e){Object.prototype.hasOwnProperty.call(s,e)&&null!=s[e]&&(t[e]=String(s[e]))}),t.source||(t.source="Website"),t}function c(e){if(null==e||""===e)return"";var t=String(e).trim();if(!t)return"";if(-1!==t.indexOf("₹"))return t;var r=t.replace(/[^\d.]/g,"");return r?"₹"+Number(r).toLocaleString("en-IN"):t}function o(t){if(t.selectedType)return String(t.selectedType).toUpperCase();var r=new URLSearchParams(e.location&&e.location.search?e.location.search:""),s=r.get("course"),l=r.get("plan"),c=r.get("service");return s||t.selectedItem&&"course"===t.selectedItem.kind?"COURSE":l||t.selectedItem&&"plan"===t.selectedItem.kind?"PLAN":c||t.selectedItem&&"service"===t.selectedItem.kind?"SERVICE":t.selectedPlatformName?"PLATFORM":"CONSULTATION"}function n(e){var t={fullName:"",mobile:"",email:"",state:"",profession:"",selectedType:"",selectedPlan:"",selectedCourse:"",selectedService:"",selectedPlatform:"",price:"",budget:"",message:"",source:"Website"},r=e.profession||"",s=e.businessExperience||"",n=e.budget||"",i=e.message||"",a=[];s&&a.push("Business Experience: "+s),a.length&&(i=(a.join(" | ")+(i?"\n"+i:"")).trim());var u=o(e),d=e.selectedItem||null,m=d&&d.name?d.name:"",f=d&&(d.displayAmount||d.price)||"";return t.fullName=e.fullName||"",t.mobile=e.mobile||"",t.email=e.email||"",t.state=e.state||"",t.profession=r,t.selectedType=u,t.budget=n,t.message=i,t.source="Website","PLAN"===u?(t.selectedPlan=m,t.price=c(f)):"COURSE"===u?(t.selectedCourse=m,t.price=c(f)):"SERVICE"===u?(t.selectedService=m,t.price=c(f)):"PLATFORM"===u&&(t.selectedPlatform=e.selectedPlatformName||"",t.price=e.selectedPlatformPrice?c(e.selectedPlatformPrice):c(e.displayedPrice||"")),l(t)}e.GOOGLE_SCRIPT_URL=t,e.GoogleSheetSubmit={URL:t,PAYLOAD_KEYS:r,emptyPayload:s,normalizePayload:l,buildFormPayload:n,buildConsultationPayload:function(e){return n(e)},submitToGoogleSheet:function(e){var r=l(e),s=new URLSearchParams;return Object.keys(r).forEach(function(e){s.append(e,r[e])}),fetch(t,{method:"POST",body:s}).then(function(e){return e.text().then(function(t){var s=function(e){if(!e)return null;try{return JSON.parse(e)}catch(e){return null}}(t);if(!function(e,t){return!(!e||!e.ok||t&&(!1===t.success||"error"===t.status||(!0===t.success||t.result,0)))}(e,s)){var l=new Error(s&&(s.message||s.error)||"Submission failed");throw l.response=e,l.body=s,l}return{ok:!0,status:e.status,body:s,text:t,payload:r}})})},formatPrice:c,resolveSelectedType:o}}("undefined"!=typeof window?window:globalThis);
+/**
+ * DropshipGuru — Google Sheets lead submit (free / unpaid path)
+ * Public Apps Script deployment only (never workspace-scoped macro URLs).
+ */
+(function (global) {
+  'use strict';
+
+  var GOOGLE_SCRIPT_URL =
+    'https://script.google.com/macros/s/AKfycbzpPiH8gpzHvk9-AEHEKDq5WT7XnEsfJVIIz-ki3-BCprd4xLGaNQ2FJFHoyfy-qtlafQ/exec';
+
+  var PAYLOAD_KEYS = [
+    'fullName',
+    'mobile',
+    'email',
+    'state',
+    'profession',
+    'selectedType',
+    'selectedPlan',
+    'selectedCourse',
+    'selectedService',
+    'selectedPlatform',
+    'price',
+    'budget',
+    'message',
+    'source',
+  ];
+
+  function emptyPayload() {
+    return {
+      fullName: '',
+      mobile: '',
+      email: '',
+      state: '',
+      profession: '',
+      selectedType: '',
+      selectedPlan: '',
+      selectedCourse: '',
+      selectedService: '',
+      selectedPlatform: '',
+      price: '',
+      budget: '',
+      message: '',
+      source: 'Website',
+    };
+  }
+
+  function normalizePayload(data) {
+    var base = emptyPayload();
+    var input = data || {};
+    PAYLOAD_KEYS.forEach(function (key) {
+      if (Object.prototype.hasOwnProperty.call(input, key) && input[key] != null) {
+        base[key] = String(input[key]);
+      }
+    });
+    if (!base.source) base.source = 'Website';
+    return base;
+  }
+
+  function formatPrice(amount) {
+    if (amount == null || amount === '') return '';
+    var text = String(amount).trim();
+    if (!text) return '';
+    if (text.indexOf('₹') !== -1) return text;
+    var raw = text.replace(/[^\d.]/g, '');
+    if (!raw) return text;
+    return '₹' + Number(raw).toLocaleString('en-IN');
+  }
+
+  function resolveSelectedType(ctx) {
+    if (ctx.selectedType) return String(ctx.selectedType).toUpperCase();
+
+    var params = new URLSearchParams(
+      global.location && global.location.search ? global.location.search : ''
+    );
+    var courseParam = params.get('course');
+    var planParam = params.get('plan');
+    var serviceParam = params.get('service');
+
+    if (courseParam || (ctx.selectedItem && ctx.selectedItem.kind === 'course')) {
+      return 'COURSE';
+    }
+    if (planParam || (ctx.selectedItem && ctx.selectedItem.kind === 'plan')) {
+      return 'PLAN';
+    }
+    if (serviceParam || (ctx.selectedItem && ctx.selectedItem.kind === 'service')) {
+      return 'SERVICE';
+    }
+    if (ctx.selectedPlatformName) {
+      return 'PLATFORM';
+    }
+    return 'CONSULTATION';
+  }
+
+  function buildFormPayload(ctx) {
+    var payload = emptyPayload();
+    var profession = ctx.profession || '';
+    var bizExp = ctx.businessExperience || '';
+    var budget = ctx.budget || '';
+    var msg = ctx.message || '';
+    var parts = [];
+
+    if (bizExp) parts.push('Business Experience: ' + bizExp);
+    if (parts.length) {
+      msg = (parts.join(' | ') + (msg ? '\n' + msg : '')).trim();
+    }
+
+    var selectedType = resolveSelectedType(ctx);
+    var selectedItem = ctx.selectedItem || null;
+    var itemName = selectedItem && selectedItem.name ? selectedItem.name : '';
+    var itemPrice =
+      (selectedItem && (selectedItem.displayAmount || selectedItem.price)) || '';
+
+    payload.fullName = ctx.fullName || '';
+    payload.mobile = ctx.mobile || '';
+    payload.email = ctx.email || '';
+    payload.state = ctx.state || '';
+    payload.profession = profession;
+    payload.selectedType = selectedType;
+    payload.budget = budget;
+    payload.message = msg;
+    payload.source = 'Website';
+
+    if (selectedType === 'PLAN') {
+      payload.selectedPlan = itemName;
+      payload.price = formatPrice(itemPrice);
+    } else if (selectedType === 'COURSE') {
+      payload.selectedCourse = itemName;
+      payload.price = formatPrice(itemPrice);
+    } else if (selectedType === 'SERVICE') {
+      payload.selectedService = itemName;
+      payload.price = formatPrice(itemPrice);
+    } else if (selectedType === 'PLATFORM') {
+      payload.selectedPlatform = ctx.selectedPlatformName || '';
+      payload.price = ctx.selectedPlatformPrice
+        ? formatPrice(ctx.selectedPlatformPrice)
+        : formatPrice(ctx.displayedPrice || '');
+    }
+
+    return normalizePayload(payload);
+  }
+
+  function submitToGoogleSheet(data) {
+    var payload = normalizePayload(data);
+    var params = new URLSearchParams();
+    Object.keys(payload).forEach(function (key) {
+      params.append(key, payload[key]);
+    });
+
+    return fetch(GOOGLE_SCRIPT_URL, {
+      method: 'POST',
+      body: params,
+    }).then(function (res) {
+      return res.text().then(function (text) {
+        var json = null;
+        if (text) {
+          try {
+            json = JSON.parse(text);
+          } catch (_e) {
+            json = null;
+          }
+        }
+        var ok =
+          res.ok &&
+          !(json && (json.success === false || json.status === 'error'));
+        if (!ok) {
+          var err = new Error(
+            (json && (json.message || json.error)) || 'Submission failed'
+          );
+          err.response = res;
+          err.body = json;
+          throw err;
+        }
+        return { ok: true, status: res.status, body: json, text: text, payload: payload };
+      });
+    });
+  }
+
+  global.GOOGLE_SCRIPT_URL = GOOGLE_SCRIPT_URL;
+  global.GoogleSheetSubmit = {
+    URL: GOOGLE_SCRIPT_URL,
+    PAYLOAD_KEYS: PAYLOAD_KEYS,
+    emptyPayload: emptyPayload,
+    normalizePayload: normalizePayload,
+    buildFormPayload: buildFormPayload,
+    buildConsultationPayload: buildFormPayload,
+    submitToGoogleSheet: submitToGoogleSheet,
+    formatPrice: formatPrice,
+    resolveSelectedType: resolveSelectedType,
+  };
+})(typeof window !== 'undefined' ? window : globalThis);

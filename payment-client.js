@@ -4,11 +4,14 @@
  *
  * Production API is always Render (no localhost in shipped frontend).
  * Flow: create-order → Checkout → verify (full customer payload) → Google Sheet (server-side)
+ *
+ * Perf: preload checkout.js + warm API on idle; run script load and create-order in parallel on click.
  */
 (function (global) {
   'use strict';
 
   var API_BASE = 'https://dropshipgurufi-api.onrender.com';
+  var CHECKOUT_SRC = 'https://checkout.razorpay.com/v1/checkout.js';
 
   var CUSTOMER_FIELDS = [
     'fullName',
@@ -27,6 +30,17 @@
     'source',
   ];
 
+  var checkoutLoadPromise = null;
+  var apiWarmPromise = null;
+
+  function logTiming(label, startedAt) {
+    var ms = Math.round((global.performance ? performance.now() : Date.now()) - startedAt);
+    try {
+      console.log('[DG Pay]', label, ms + 'ms');
+    } catch (_e) {}
+    return ms;
+  }
+
   function pickCustomerFields(src) {
     var out = {};
     var data = src || {};
@@ -39,17 +53,66 @@
 
   function loadRazorpayCheckout() {
     if (global.Razorpay) return Promise.resolve();
-    return new Promise(function (resolve, reject) {
+    if (checkoutLoadPromise) return checkoutLoadPromise;
+
+    checkoutLoadPromise = new Promise(function (resolve, reject) {
+      var existing = document.querySelector('script[data-dg-razorpay-checkout]');
+      if (existing) {
+        if (global.Razorpay) {
+          resolve();
+          return;
+        }
+        existing.addEventListener('load', function () {
+          resolve();
+        });
+        existing.addEventListener('error', function () {
+          checkoutLoadPromise = null;
+          reject(new Error('Failed to load Razorpay Checkout'));
+        });
+        return;
+      }
+
       var s = document.createElement('script');
-      s.src = 'https://checkout.razorpay.com/v1/checkout.js';
+      s.src = CHECKOUT_SRC;
       s.async = true;
+      s.dataset.dgRazorpayCheckout = '1';
       s.onload = function () {
         resolve();
       };
       s.onerror = function () {
+        checkoutLoadPromise = null;
         reject(new Error('Failed to load Razorpay Checkout'));
       };
       document.head.appendChild(s);
+    });
+
+    return checkoutLoadPromise;
+  }
+
+  function warmApi() {
+    if (apiWarmPromise) return apiWarmPromise;
+    apiWarmPromise = fetch(API_BASE + '/health', {
+      method: 'GET',
+      mode: 'cors',
+      cache: 'no-store',
+      credentials: 'omit',
+    })
+      .then(function () {
+        return true;
+      })
+      .catch(function () {
+        // Ignore warm failures; create-order will surface real errors.
+        apiWarmPromise = null;
+        return false;
+      });
+    return apiWarmPromise;
+  }
+
+  /** Preload checkout.js + wake Render so the first click is fast. */
+  function warmup() {
+    warmApi();
+    return loadRazorpayCheckout().catch(function () {
+      return null;
     });
   }
 
@@ -94,25 +157,47 @@
       return Promise.reject(new Error('Invalid payment amount'));
     }
 
+    var t0 = global.performance ? performance.now() : Date.now();
+    try {
+      console.log('[DG Pay] button click');
+    } catch (_e) {}
+
     var customerFields = pickCustomerFields(opts.formData || opts);
     if (!customerFields.price && amount) {
       customerFields.price = '₹' + Number(amount).toLocaleString('en-IN');
     }
 
-    return loadRazorpayCheckout()
-      .then(function () {
-        return apiPost('/api/payment/create-order', {
-          amount: amount,
-          currency: 'INR',
-          notes: opts.notes || {},
-          customer: opts.customer || {
-            name: customerFields.fullName,
-            email: customerFields.email,
-            contact: customerFields.mobile,
-          },
-        });
-      })
-      .then(function (order) {
+    // Keep Render awake while we prepare checkout (non-blocking for order create).
+    warmApi();
+
+    var orderBody = {
+      amount: amount,
+      currency: 'INR',
+      notes: opts.notes || {},
+      customer: opts.customer || {
+        name: customerFields.fullName,
+        email: customerFields.email,
+        contact: customerFields.mobile,
+      },
+    };
+
+    // Parallelize: checkout.js load + create-order (was sequential before).
+    var scriptReady = loadRazorpayCheckout().then(function () {
+      logTiming('checkout.js ready', t0);
+    });
+
+    try {
+      console.log('[DG Pay] API request /api/payment/create-order');
+    } catch (_e2) {}
+
+    var orderReady = apiPost('/api/payment/create-order', orderBody).then(function (order) {
+      logTiming('API response create-order', t0);
+      return order;
+    });
+
+    return Promise.all([scriptReady, orderReady])
+      .then(function (results) {
+        var order = results[1];
         return new Promise(function (resolve, reject) {
           var rzp = new global.Razorpay({
             key: order.keyId,
@@ -179,6 +264,7 @@
           });
 
           rzp.open();
+          logTiming('Razorpay popup opened', t0);
         });
       });
   }
@@ -191,10 +277,34 @@
     return Number.isFinite(n) ? n : 0;
   }
 
+  function scheduleWarmup() {
+    var run = function () {
+      warmup();
+    };
+    if (typeof global.requestIdleCallback === 'function') {
+      global.requestIdleCallback(run, { timeout: 2500 });
+    } else {
+      global.setTimeout(run, 1200);
+    }
+  }
+
+  // Start warming as soon as this script evaluates (defer-safe).
+  scheduleWarmup();
+
+  // Re-warm when user returns to the tab (covers Render idle spin-down).
+  if (global.document && global.document.addEventListener) {
+    document.addEventListener('visibilitychange', function () {
+      if (document.visibilityState === 'visible') {
+        warmApi();
+      }
+    });
+  }
+
   global.DropshipGuruPayments = {
     apiBase: API_BASE,
     startCheckout: startCheckout,
     resolvePayableAmount: resolvePayableAmount,
+    warmup: warmup,
     CUSTOMER_FIELDS: CUSTOMER_FIELDS,
   };
 })(typeof window !== 'undefined' ? window : globalThis);

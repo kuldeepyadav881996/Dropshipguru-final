@@ -51,6 +51,11 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://checkout.razorpay.com" crossorigin>
+<link rel="dns-prefetch" href="https://checkout.razorpay.com">
+<link rel="preconnect" href="https://dropshipgurufi-api.onrender.com" crossorigin>
+<link rel="dns-prefetch" href="https://dropshipgurufi-api.onrender.com">
+<link rel="preload" href="https://checkout.razorpay.com/v1/checkout.js" as="script">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/consultation-original.css">
 <link rel="stylesheet" href="assets/consultation-original-1.css">
@@ -879,7 +884,7 @@
 })();
 </script>
 <script src="google-sheet-submit.js" defer></script>
-<script src="payment-client.js" defer></script>
+<script src="payment-client.js?v=2" defer></script>
 <script>
 /* ═══ 1. CONSTELLATION ═══ */
 (function(){
@@ -1000,9 +1005,13 @@ function getCurrentPayableAmount(){
 function updateSubmitButtonLabel(){
   const label=document.getElementById('btn-label');
   if(!label) return;
-  label.textContent=getCurrentPayableAmount()>0
+  const payable=getCurrentPayableAmount()>0;
+  label.textContent=payable
     ?'Proceed to Secure Payment'
     :'Book Free Consultation';
+  if(payable&&window.DropshipGuruPayments&&typeof DropshipGuruPayments.warmup==='function'){
+    DropshipGuruPayments.warmup();
+  }
 }
 
 function selectProgram(type){
@@ -1173,6 +1182,10 @@ function updateConsultStepUI(){
   if(s1)s1.classList.toggle('active',consultStep===1);
   if(s2)s2.classList.toggle('active',consultStep===2);
   if(planMode)planMode.classList.toggle('step-2',consultStep===2);
+  // Prefetch Razorpay + wake Render before the user hits pay (no UI change).
+  if(consultStep===2&&window.DropshipGuruPayments&&typeof DropshipGuruPayments.warmup==='function'){
+    DropshipGuruPayments.warmup();
+  }
 }
 
 function validateStep1(){

@@ -515,7 +515,13 @@
   #siteFooter .dg-trust-item {
     flex: 1 1 calc(50% - 8px);
     min-width: calc(50% - 8px);
+    max-width: calc(50% - 8px);
     padding: 8px 10px;
+  }
+
+  #siteFooter .footer-trust-label,
+  #siteFooter .dg-trust-label {
+    white-space: normal;
   }
 
   #siteFooter .footer-disclaimer {
@@ -537,8 +543,15 @@
 @media (max-width: 480px) {
   #siteFooter .footer-trust-card,
   #siteFooter .dg-trust-item {
-    flex: 1 1 100%;
-    min-width: 100%;
+    flex: 1 1 calc(50% - 8px);
+    min-width: calc(50% - 8px);
+    max-width: calc(50% - 8px);
+  }
+
+  #siteFooter .footer-trust-label,
+  #siteFooter .dg-trust-label {
+    white-space: normal;
+    font-size: 11px;
   }
 
   #siteFooter .footer-pill {
@@ -549,7 +562,7 @@
 
   #siteFooter .footer-inner,
   #siteFooter .footer-meta {
-    width: min(100%, calc(100% - 24px));
+    width: min(100%, calc(100% - 24px)) !important;
   }
 }
 

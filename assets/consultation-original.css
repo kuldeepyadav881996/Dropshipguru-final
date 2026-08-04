@@ -2130,6 +2130,10 @@ footer { background: #0E1013 !important; border-top: none !important; }
 #consultPlanMode .consult-form-trust{display:none}
 #consultPlanMode.step-2 .submit-btn{display:flex!important}
 #consultPlanMode.step-2 .consult-form-trust{display:block}
+#consultPlanMode.plan-express #formStepProgress,
+#consultPlanMode.plan-express #stepNextBtn,
+#consultPlanMode.plan-express #formStep2{display:none!important}
+#consultPlanMode.plan-express #budgetField{display:none!important}
 #consultPlanMode .consult-form-trust{display:none}
 
 /* No plan state */

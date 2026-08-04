@@ -397,7 +397,7 @@
           </div>
           <div class="field field-float field-icon field-select">
             <span class="field-ico brand-icon-wrap" data-icon="professional" aria-hidden="true"></span>
-            <select id="profession" name="profession" required>
+            <select id="profession" name="profession">
               <option value="">Select profession</option>
               <option value="Student">Student</option>
               <option value="Working Professional">Working Professional</option>
@@ -409,7 +409,7 @@
               <option value="Trader">Trader</option>
               <option value="Other">Other</option>
             </select>
-            <label for="profession">Profession *</label>
+            <label for="profession" id="professionLabel">Profession</label>
           </div>
           <button type="button" class="step-next-btn" id="stepNextBtn">Continue →</button>
         </div>
@@ -426,7 +426,7 @@
             </select>
             <label for="businessExperience">Business Experience</label>
           </div>
-          <div class="field field-float field-icon field-select">
+          <div class="field field-float field-icon field-select" id="budgetField">
             <span class="field-ico brand-icon-wrap" data-icon="chart" aria-hidden="true"></span>
             <select id="budget" name="budget">
               <option value="">Select budget</option>
@@ -1096,6 +1096,32 @@ const INDIAN_STATES=[
 ];
 let selectedPlanFromUrl=null,consultFormMode='CONSULTATION',consultStep=1;
 
+function applyPlanExpressForm(){
+  const planMode=document.getElementById('consultPlanMode');
+  const budgetField=document.getElementById('budgetField');
+  const budget=document.getElementById('budget');
+  const profession=document.getElementById('profession');
+  const professionLabel=document.getElementById('professionLabel');
+  const isPlanSelected=!!selectedPlanFromUrl;
+
+  if(planMode)planMode.classList.toggle('plan-express',isPlanSelected);
+  if(budgetField)budgetField.hidden=isPlanSelected;
+  if(budget){
+    budget.disabled=isPlanSelected;
+    if(isPlanSelected)budget.value='';
+  }
+  if(profession){
+    // Plan already chosen — profession is optional to reduce friction.
+    if(isPlanSelected){
+      profession.removeAttribute('required');
+      if(professionLabel)professionLabel.textContent='Profession (optional)';
+    }else{
+      profession.setAttribute('required','required');
+      if(professionLabel)professionLabel.textContent='Profession *';
+    }
+  }
+}
+
 function initConsultationPlan(){
   consultStep=1;
   const params=new URLSearchParams(window.location.search);
@@ -1118,6 +1144,7 @@ function initConsultationPlan(){
     if(serviceLabel)serviceLabel.textContent='Free Consultation';
     if(trustBar)trustBar.classList.add('show');
     document.title='Get Started — Dropship Guru | Free Consultation';
+    applyPlanExpressForm();
     updateSubmitButtonLabel();
     updateConsultStepUI();
     return;
@@ -1154,6 +1181,7 @@ function initConsultationPlan(){
   if(setupLabel)setupLabel.textContent=selectedPlanFromUrl.setupLabel||(selectedPlanFromUrl.kind==='course'?'Access':'Setup Time');
   if(supportLabel)supportLabel.textContent=selectedPlanFromUrl.kind==='course'?'Format':'Support';
   document.title='Book '+selectedPlanFromUrl.name+' Consultation | Dropship Guru';
+  applyPlanExpressForm();
   updateSubmitButtonLabel();
   updateConsultStepUI();
 }
@@ -1167,6 +1195,23 @@ function updateConsultStepUI(){
   const s1=document.getElementById('formStep1');
   const s2=document.getElementById('formStep2');
   const planMode=document.getElementById('consultPlanMode');
+  const express=!!selectedPlanFromUrl;
+  if(express){
+    // Plan already selected — skip Business Profile step (no budget ask).
+    consultStep=1;
+    if(fill)fill.style.width='100%';
+    if(label)label.textContent='Checkout';
+    if(sub)sub.textContent='Your details';
+    if(dots)dots.classList.remove('step-2');
+    if(dot2)dot2.classList.add('inactive');
+    if(s1)s1.classList.add('active');
+    if(s2)s2.classList.remove('active');
+    if(planMode)planMode.classList.add('step-2'); // show pay CTA + trust
+    if(window.DropshipGuruPayments&&typeof DropshipGuruPayments.warmup==='function'){
+      DropshipGuruPayments.warmup();
+    }
+    return;
+  }
   if(fill)fill.style.width=(consultStep===1?'50%':'100%');
   if(label)label.textContent='Step '+consultStep;
   if(sub)sub.textContent=consultStep===1?'Personal Details':'Business Profile';
@@ -1191,7 +1236,8 @@ function validateStep1(){
   if(!phone.value.trim()||!phone.checkValidity()){phone.focus();return false}
   if(!email.value.trim()||!email.checkValidity()){email.focus();return false}
   if(!state?.value){document.getElementById('stateSearch')?.focus();return false}
-  if(!profession?.value){profession.focus();return false}
+  // Profession required only when no plan is pre-selected.
+  if(!selectedPlanFromUrl&&!profession?.value){profession.focus();return false}
   return true;
 }
 
@@ -1324,12 +1370,15 @@ function resetConsultationFormFields(){
 
 form.addEventListener('submit',function(e){
   e.preventDefault();
-  if(consultStep!==2){
+  // Free consultation (no plan): keep 2-step flow.
+  // Selected plan/course/service: pay after personal details (no budget step).
+  if(!selectedPlanFromUrl&&consultStep!==2){
     if(!validateStep1())return;
     consultStep=2;
     updateConsultStepUI();
     return;
   }
+  if(!validateStep1())return;
   const btn=document.getElementById('submitBtn'),label=document.getElementById('btn-label'),orig=label.textContent;
   label.textContent='Submitting…';btn.disabled=true;btn.classList.add('is-loading');
   const selectedType=selectedPlatformName&&!selectedPlanFromUrl?'PLATFORM':consultFormMode;
@@ -1339,9 +1388,9 @@ form.addEventListener('submit',function(e){
     email:document.getElementById('email').value.trim(),
     state:document.getElementById('state')?.value||'',
     profession:document.getElementById('profession')?.value||'',
-    businessExperience:document.getElementById('businessExperience')?.value||'',
-    budget:document.getElementById('budget')?.value||'',
-    message:document.getElementById('message').value,
+    businessExperience:selectedPlanFromUrl?'':(document.getElementById('businessExperience')?.value||''),
+    budget:selectedPlanFromUrl?'':(document.getElementById('budget')?.value||''),
+    message:selectedPlanFromUrl?'':(document.getElementById('message')?.value||''),
     selectedType:selectedType,
     selectedItem:selectedPlanFromUrl,
     selectedPlatformName:selectedPlatformName&&!selectedPlanFromUrl?selectedPlatformName:'',

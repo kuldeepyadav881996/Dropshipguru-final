@@ -2610,7 +2610,7 @@ body {
 </header>
 
 <a href="https://wa.me/917428329102" class="float-wa" target="_blank">
-  <span class="brand-icon-wrap" data-icon="whatsapp" aria-hidden="true"></span> <small>Chat with us</small>
+  <span class="brand-icon-wrap" data-icon="whatsapp" aria-hidden="true"></span> <small>Talk to Expert</small>
 </a>
 
 <main id="planDetailsApp"></main>
@@ -2700,7 +2700,7 @@ body {
         </li>
         <li class="footer-contact-item">
           <span class="footer-contact-label">💬 WhatsApp</span>
-          <a href="https://wa.me/917428329102" target="_blank" rel="noopener">Chat With Us</a>
+          <a href="https://wa.me/917428329102" target="_blank" rel="noopener">Talk to Expert</a>
         </li>
       </ul>
     </div>
@@ -2843,20 +2843,10 @@ document.querySelectorAll('.reveal').forEach(el => io.observe(el));
     });
   }
 
-  var WHY_DG = [
-    { iconId: 'target', title: 'Expert Team', desc: 'Specialists who set up and scale Indian ecommerce businesses every day.' },
-    { iconId: 'handshake', title: 'Dedicated Manager', desc: 'One point of contact from onboarding through launch.' },
-    { iconId: 'whatsapp', title: 'Premium Support', desc: 'Fast WhatsApp support when you need clear next steps.' },
-    { iconId: 'money', title: 'Secure Payments', desc: 'Razorpay checkout with GST-compliant invoicing.' },
-    { iconId: 'rocket', title: 'Fast Setup', desc: 'Onboarding starts immediately after payment confirmation.' },
-    { iconId: 'book', title: 'Business Guidance', desc: 'Practical training so you can run and grow the business yourself.' }
-  ];
-
   var REVIEWS = [
     { name: 'Rahul Sharma', place: 'Delhi', text: 'Clear process, quick onboarding, and real support until I understood every step.' },
     { name: 'Priya Mehta', place: 'Mumbai', text: 'No fluff. I knew exactly what was included and what documents I needed.' },
-    { name: 'Arjun Kumar', place: 'Bangalore', text: 'Professional setup and guidance. The plan page made the decision easy.' },
-    { name: 'Sneha Rao', place: 'Pune', text: 'Transparent pricing and dedicated help. Felt like a premium service from day one.' }
+    { name: 'Arjun Kumar', place: 'Bangalore', text: 'Professional setup and guidance. The plan page made the decision easy.' }
   ];
 
   var PLANS = {
@@ -3619,17 +3609,6 @@ document.querySelectorAll('.reveal').forEach(el => io.observe(el));
       + '</section>';
   }
 
-  function renderWhyDg() {
-    var cards = WHY_DG.map(function(b) {
-      return '<div class="pd-benefit-card"><span class="pd-ben-icon brand-icon-wrap" data-icon="' + (b.iconId || 'check') + '" aria-hidden="true"></span><h3>' + esc(b.title) + '</h3><p>' + esc(b.desc) + '</p></div>';
-    }).join('');
-    return ''
-      + '<section class="section reveal">'
-      + '<div class="section-head"><span class="pill">Why DropshipGuru</span><h2>Why Choose DropshipGuru</h2></div>'
-      + '<div class="pd-benefits-grid">' + cards + '</div>'
-      + '</section>';
-  }
-
   function renderFaqs(plan) {
     var faqs = (plan.faqs || []).slice(0, 6).map(function(f) {
       return '<div class="faq-item"><button type="button">' + esc(f.q) + ' <span>+</span></button><p>' + esc(f.a) + '</p></div>';
@@ -3679,7 +3658,6 @@ document.querySelectorAll('.reveal').forEach(el => io.observe(el));
       + renderTimeline(plan)
       + renderDocuments(plan)
       + renderWhoFor(plan)
-      + renderWhyDg()
       + renderFaqs(plan)
       + renderReviews()
       + '</div>'

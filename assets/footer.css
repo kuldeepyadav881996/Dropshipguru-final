@@ -35,10 +35,10 @@
   width: min(1200px, calc(100% - 48px));
   max-width: 100%;
   margin: 0 auto;
-  padding: 36px 0 16px !important;
+  padding: 28px 0 12px !important;
   display: grid;
   grid-template-columns: minmax(0, 1.35fr) repeat(4, minmax(0, 1fr));
-  gap: 24px 22px;
+  gap: 20px 18px;
   align-items: start;
   position: relative;
   z-index: 1;
@@ -130,10 +130,10 @@
 
 /* Column headings — identical top rhythm */
 #siteFooter .footer-col h4 {
-  margin: 0 0 12px !important;
-  padding: 0 0 8px !important;
-  min-height: 36px;
-  height: 36px;
+  margin: 0 0 10px !important;
+  padding: 0 0 6px !important;
+  min-height: 0;
+  height: auto;
   display: flex;
   align-items: flex-end;
   font-size: 11px;
@@ -251,29 +251,10 @@
   padding: 0 0 12px !important;
 }
 
-/*
- * Trust badges INSIDE footer — centered premium pills.
- * Also restyles legacy .dg-trust-strip / .dg-trust-item if still present.
- */
+/* Legacy strip removed from markup — keep hidden if residual HTML appears */
 #siteFooter .footer-trust-strip,
 #siteFooter .dg-trust-strip {
-  display: flex !important;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: stretch;
-  gap: 10px 12px;
-  width: 100%;
-  max-width: 100%;
-  margin: 0 auto 10px !important;
-  padding: 10px 12px;
-  border-radius: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(0, 0, 0, 0.12)),
-    rgba(26, 30, 36, 0.55);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  overflow: hidden;
+  display: none !important;
 }
 
 #siteFooter .footer-trust-card,

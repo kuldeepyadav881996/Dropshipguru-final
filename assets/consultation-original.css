@@ -1742,8 +1742,8 @@ footer { background: #0E1013 !important; border-top: none !important; }
 
 /* Urgency strip — horizontal alert */
 .consult-urgency-strip{
-  display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:clamp(12px,2vw,20px);align-items:center;
-  padding:clamp(14px,2vw,18px) clamp(16px,2.5vw,24px);margin-bottom:clamp(16px,2vw,24px);
+  display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:clamp(10px,1.6vw,16px);align-items:center;
+  padding:clamp(10px,1.6vw,14px) clamp(14px,2vw,20px);margin-bottom:clamp(12px,1.6vw,18px);
   border-radius:16px;
   border:1px solid rgba(247,184,36,0.32);
   background:linear-gradient(135deg,rgba(15,17,22,0.95),rgba(20,22,28,0.9));
@@ -1871,8 +1871,47 @@ footer { background: #0E1013 !important; border-top: none !important; }
   0%,100%{transform:scale(1);box-shadow:0 0 12px rgba(247,184,36,0.45)}
   50%{transform:scale(1.12);box-shadow:0 0 18px rgba(247,184,36,0.65)}
 }
-.form-step-progress-track,.form-step-progress-fill{display:none!important}
+.form-step-progress-track{
+  display:block!important;
+  height:4px;
+  margin-top:12px;
+  border-radius:999px;
+  background:rgba(255,255,255,0.08);
+  overflow:hidden;
+}
+.form-step-progress-fill{
+  display:block!important;
+  height:100%;
+  width:50%;
+  border-radius:999px;
+  background:linear-gradient(90deg,var(--gold-dk),var(--gold));
+  transition:width 0.45s cubic-bezier(0.4,0,0.2,1);
+}
 .form-step-progress-label{display:none!important}
+.dg-pay-trust{
+  display:none!important;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:8px;
+  margin:4px 0 12px;
+}
+#consultPlanMode.step-2 .dg-pay-trust{display:grid!important}
+.dg-pay-trust span{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:36px;
+  padding:6px 10px;
+  border-radius:999px;
+  border:1px solid rgba(212,175,55,0.18);
+  background:rgba(14,16,19,0.55);
+  font-size:11.5px;
+  font-weight:700;
+  color:#b7bdc8;
+  text-align:center;
+}
+@media (max-width:480px){
+  .dg-pay-trust{grid-template-columns:1fr}
+}
 
 /* Form steps */
 #consultPlanMode .slabel{display:none}
@@ -2087,6 +2126,8 @@ footer { background: #0E1013 !important; border-top: none !important; }
   margin-top:8px;border-radius:16px!important;font-size:16px!important;font-weight:800!important;
   animation:consultBtnGlow 3s ease-in-out infinite;
 }
+#consultPlanMode .submit-btn{display:none!important}
+#consultPlanMode .consult-form-trust{display:none}
 #consultPlanMode.step-2 .submit-btn{display:flex!important}
 #consultPlanMode.step-2 .consult-form-trust{display:block}
 #consultPlanMode .consult-form-trust{display:none}

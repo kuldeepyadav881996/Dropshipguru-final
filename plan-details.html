@@ -1575,6 +1575,82 @@ footer {
   .pd-timeline-num { width: 40px; height: 40px; font-size: 15px; }
 }
 
+/* CRO plan-details additions */
+.pd-hero-desc { max-width: 640px; margin: 10px auto 8px; }
+.pd-hero-trust {
+  display: flex; justify-content: center; flex-wrap: wrap; gap: 10px;
+  margin-top: 22px;
+}
+.pd-hero-trust span {
+  display: inline-flex; align-items: center; min-height: 34px;
+  padding: 6px 12px; border-radius: 999px; font-size: 12px; font-weight: 700;
+  color: #D4AF37; border: 1px solid rgba(212,175,55,0.22);
+  background: rgba(212,175,55,0.06);
+}
+.pd-price-custom { font-size: clamp(28px, 4vw, 40px); font-weight: 700; color: #D4AF37; }
+.pd-sticky-note, .pd-final-price-note {
+  margin: 0 0 12px; text-align: center; color: #7D8795; font-size: 13px; font-weight: 600;
+}
+.pd-overview-list {
+  list-style: none; margin: 0; padding: 0; display: grid; gap: 12px;
+  max-width: 760px;
+}
+.pd-overview-list li {
+  position: relative; padding: 14px 16px 14px 40px;
+  border-radius: 14px; border: 1px solid rgba(255,255,255,0.06);
+  background: #1A1E24; color: #B7BDC8; font-size: 15px; line-height: 1.55;
+}
+.pd-overview-list li::before {
+  content: "✔"; position: absolute; left: 14px; top: 14px; color: #D4AF37; font-weight: 800;
+}
+.pd-include-grid {
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px;
+}
+.pd-include-card {
+  display: flex; align-items: center; gap: 12px; min-height: 64px;
+  padding: 14px 16px; border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.06); background: #1A1E24;
+  transition: transform 0.3s var(--ease-premium), border-color 0.3s ease;
+}
+.pd-include-card:hover { transform: translateY(-3px); border-color: rgba(212,175,55,0.28); }
+.pd-include-check {
+  flex: 0 0 36px; width: 36px; height: 36px; display: grid; place-items: center;
+  border-radius: 10px; border: 1px solid rgba(212,175,55,0.25); color: #D4AF37;
+  background: rgba(212,175,55,0.08);
+}
+.pd-include-card h3 { margin: 0; color: #fff; font-size: 14px; font-weight: 700; line-height: 1.35; }
+.pd-docs-grid-compact { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.pd-who-grid { display: flex; flex-wrap: wrap; gap: 10px; }
+.pd-who-chip {
+  display: inline-flex; align-items: center; min-height: 40px;
+  padding: 8px 14px; border-radius: 999px; font-size: 13px; font-weight: 700;
+  color: #f0efe8; border: 1px solid rgba(255,255,255,0.08); background: #1A1E24;
+}
+.pd-reviews-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.pd-review-card {
+  padding: 20px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.06);
+  background: #1A1E24;
+}
+.pd-review-stars { color: #D4AF37; letter-spacing: 2px; margin-bottom: 10px; font-size: 14px; }
+.pd-review-card p { margin: 0 0 14px; color: #B7BDC8; font-size: 14px; line-height: 1.65; }
+.pd-review-person { display: flex; flex-direction: column; gap: 2px; }
+.pd-review-person strong { color: #fff; font-size: 14px; }
+.pd-review-person span { color: #7D8795; font-size: 12px; }
+.pd-final-cta .plan-price, .pd-final-cta .pd-price-custom { margin: 8px 0 4px; }
+.pd-final-actions {
+  display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; margin-top: 18px;
+}
+.pd-sticky-inner .btn.ghost { margin-top: 8px; }
+@media (max-width: 1024px) {
+  .pd-docs-grid-compact { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 680px) {
+  .pd-include-grid, .pd-reviews-grid, .pd-docs-grid-compact { grid-template-columns: 1fr; }
+  .pd-final-actions { flex-direction: column; align-items: stretch; }
+  .pd-final-actions .btn { width: 100%; }
+  .pd-hero-trust { gap: 8px; }
+}
+
 
 /* ═══════════════════════════════════════════════════════════
    LUXURY BRAND SYSTEM — Dropship Guru
@@ -2758,9 +2834,32 @@ document.querySelectorAll('.reveal').forEach(el => io.observe(el));
   addEventListener('resize', resize); init(); draw();
 })();
 
-// Plan details page
+// Plan details page — CRO conversion layout (UI/content only)
 (function(){
-  const PLANS = {
+  function timeline(details) {
+    var stages = ['Consultation', 'Documentation', 'Account Setup', 'Listing', 'Launch', 'Support'];
+    return stages.map(function(title, i) {
+      return { title: title, detail: details[i] || '' };
+    });
+  }
+
+  var WHY_DG = [
+    { iconId: 'target', title: 'Expert Team', desc: 'Specialists who set up and scale Indian ecommerce businesses every day.' },
+    { iconId: 'handshake', title: 'Dedicated Manager', desc: 'One point of contact from onboarding through launch.' },
+    { iconId: 'whatsapp', title: 'Premium Support', desc: 'Fast WhatsApp support when you need clear next steps.' },
+    { iconId: 'money', title: 'Secure Payments', desc: 'Razorpay checkout with GST-compliant invoicing.' },
+    { iconId: 'rocket', title: 'Fast Setup', desc: 'Onboarding starts immediately after payment confirmation.' },
+    { iconId: 'book', title: 'Business Guidance', desc: 'Practical training so you can run and grow the business yourself.' }
+  ];
+
+  var REVIEWS = [
+    { name: 'Rahul Sharma', place: 'Delhi', text: 'Clear process, quick onboarding, and real support until I understood every step.' },
+    { name: 'Priya Mehta', place: 'Mumbai', text: 'No fluff. I knew exactly what was included and what documents I needed.' },
+    { name: 'Arjun Kumar', place: 'Bangalore', text: 'Professional setup and guidance. The plan page made the decision easy.' },
+    { name: 'Sneha Rao', place: 'Pune', text: 'Transparent pricing and dedicated help. Felt like a premium service from day one.' }
+  ];
+
+  var PLANS = {
     whatsapp: {
       name: 'WhatsApp Business',
       iconId: 'whatsapp',
@@ -2768,60 +2867,46 @@ document.querySelectorAll('.reveal').forEach(el => io.observe(el));
       currency: '₹',
       priceNote: 'One-Time Payment',
       badge: 'Beginner Friendly',
-      description: 'Turn WhatsApp into your personal sales machine — sell products daily without inventory, warehouse or technical skills.',
+      description: 'Turn WhatsApp into a simple sales channel — no inventory, warehouse, or technical skills required.',
+      overview: [
+        'Complete WhatsApp Business setup with a professional profile and catalog.',
+        'Winning products and supplier contacts ready for your niche.',
+        'Payment and order handling process explained step by step.',
+        'Live support until you complete your first sale confidently.'
+      ],
       included: [
-        { title: 'WhatsApp Business App Setup', desc: 'Full configuration of WhatsApp Business with professional settings and business tools enabled.' },
-        { title: 'Professional Business Profile', desc: 'Branded profile photo, business name, description, address and contact details optimized for trust.' },
-        { title: 'Product Catalog Creation', desc: 'Complete product catalog built inside WhatsApp with images, prices and descriptions ready to share.' },
-        { title: 'Winning Product Research', desc: 'Hand-picked trending products researched for your niche with proven demand in the Indian market.' },
-        { title: 'Verified Supplier Contacts', desc: 'Reliable supplier list shared so you never worry about stock, packing or delivery yourself.' },
-        { title: 'Auto-Reply & Quick Responses', desc: 'Pre-written auto-replies and quick response templates for faster customer communication.' },
-        { title: 'Broadcast Marketing Guide', desc: 'Step-by-step broadcast strategy to reach customers without spamming or getting blocked.' },
-        { title: 'Payment Link & Order Setup', desc: 'UPI and payment link sharing process configured so you can collect money easily.' },
-        { title: 'Order Handling SOP', desc: 'Simple standard operating procedure for taking, confirming and forwarding orders to suppliers.' },
-        { title: 'Live Support Until First Sale', desc: 'Direct WhatsApp support from our team until you complete your first successful order.' }
+        'WhatsApp Business Setup',
+        'Professional Business Profile',
+        'Product Catalog Creation',
+        'Product Research',
+        'Verified Supplier Contacts',
+        'Auto-Reply Templates',
+        'Payment & Order SOP',
+        'WhatsApp Support',
+        'Training',
+        'Business Guidance'
       ],
-      benefits: [
-        { iconId: 'time', title: 'Save Time', desc: 'Skip months of trial and error — get a proven WhatsApp selling system from day one.' },
-        { iconId: 'target', title: 'Expert Guidance', desc: 'Our team walks you through every step in simple Hindi/English — no technical jargon.' },
-        { iconId: 'rocket', title: 'Fast Setup', desc: 'WhatsApp business setup typically begins within 24–48 hours after payment.' },
-        { iconId: 'growth', title: 'Higher Success Rate', desc: 'Join thousands of Indian sellers already earning through our WhatsApp system.' },
-        { iconId: 'money', title: 'Lowest Entry Cost', desc: 'Start at just ₹599 — the most affordable way to begin your online business.' },
-        { iconId: 'book', title: 'Lifetime Validity', desc: 'One-time payment with no monthly fees. Every sale profit stays with you.' }
-      ],
-      process: [
-        { tag: 'Step 1', title: 'Free Consultation', range: 'Day 1', items: ['1-on-1 call to understand your goals and budget', 'Niche selection based on your interests', 'Personal business action plan created'] },
-        { tag: 'Step 2', title: 'WhatsApp Business Setup', range: 'Day 2 – Day 3', items: ['WhatsApp Business app installed and configured', 'Professional profile and branding applied', 'Auto-reply and greeting messages set up'] },
-        { tag: 'Step 3', title: 'Products & Catalog', range: 'Day 4 – Day 6', items: ['Winning products researched for your niche', 'Supplier contacts and pricing finalized', 'Full product catalog created with images'] },
-        { tag: 'Step 4', title: 'Marketing & Outreach', range: 'Day 7 – Day 10', items: ['Broadcast list strategy planned', 'Payment collection process configured', 'First outreach messages drafted and sent'] },
-        { tag: 'Step 5', title: 'First Order Support', range: 'Day 11 – Day 14', items: ['Live support during your first customer conversations', 'Order forwarding to supplier guided step by step', 'Celebration of your first sale — you are now a seller!'] }
-      ],
+      timeline: timeline([
+        'Goals, niche, and action plan confirmed.',
+        'Basic identity and payment details collected.',
+        'WhatsApp Business profile configured.',
+        'Catalog and products loaded.',
+        'Broadcast and payment flow activated.',
+        'Guidance until your first successful order.'
+      ]),
       documents: [
-        { name: 'Smartphone with WhatsApp', required: true, note: 'Any Android or iPhone with an active WhatsApp number.' },
-        { name: 'Aadhaar Card', required: true, note: 'For identity verification during payment gateway setup if needed.' },
-        { name: 'Bank Account / UPI ID', required: true, note: 'To receive customer payments directly into your account.' },
-        { name: 'Business Logo or Photo', required: false, note: 'Optional but recommended for a professional business profile look.' },
-        { name: 'Product Photos', required: false, note: 'We provide product images — your own photos are optional.' }
+        { name: 'Mobile Number', required: true },
+        { name: 'Bank Account / UPI', required: true },
+        { name: 'PAN Card', required: false },
+        { name: 'Business Logo', required: false }
       ],
-            setupLabel: 'Setup Time',
-delivery: {
-        total: '24-48 Hours',
-        phases: [
-          { tag: 'Day 1', title: 'Consultation & Planning', detail: 'Free call, niche finalised, action plan delivered.' },
-          { tag: 'Day 2–3', title: 'Account Setup', detail: 'WhatsApp Business profile fully configured and branded.' },
-          { tag: 'Day 4–6', title: 'Catalog & Products', detail: 'Winning products loaded, suppliers connected, catalog live.' },
-          { tag: 'Day 7–10', title: 'Marketing Launch', detail: 'Broadcast strategy executed, payment links active.' },
-          { tag: 'Day 11–14', title: 'First Sale', detail: 'Live support until your first order is successfully completed.' }
-        ],
-        outcome: 'Your WhatsApp business onboarding starts <b>immediately after payment</b>, with setup typically in <b>24–48 hours</b>.'
-      },
+      whoFor: ['Beginners', 'Students', 'Housewives', 'Side-Hustlers', 'First-time Sellers'],
       faqs: [
-        { q: 'Do I need a laptop for this plan?', a: 'No. The entire WhatsApp business runs from your smartphone — no computer needed.' },
-        { q: 'Is this a one-time payment?', a: 'Yes. Pay ₹599 once and get lifetime access with no monthly or hidden fees.' },
-        { q: 'Will you help me find products?', a: 'Yes. Product research and verified supplier contacts are fully included.' },
-        { q: 'How soon can I start selling?', a: 'Most students launch their catalog within 3–5 days and get first inquiries within 7–14 days.' },
-        { q: 'Do I need to buy stock or inventory?', a: 'No. Suppliers ship directly to your customers — you never touch the product.' },
-        { q: 'What if I get stuck after setup?', a: 'Our team provides live WhatsApp support until you complete your first sale confidently.' }
+        { q: 'Do I need a laptop?', a: 'No. Everything runs from your smartphone.' },
+        { q: 'Is this a one-time payment?', a: 'Yes. ₹599 once — no monthly fees.' },
+        { q: 'Do I need inventory?', a: 'No. Suppliers ship directly to customers.' },
+        { q: 'Will you help with products?', a: 'Yes. Product research and supplier contacts are included.' },
+        { q: 'When does setup start?', a: 'Immediately after payment confirmation.' }
       ]
     },
     instagram: {
@@ -2831,61 +2916,47 @@ delivery: {
       currency: '₹',
       priceNote: 'One-Time Payment',
       badge: 'Most Popular',
-      description: 'Build a professional social media store on Instagram and Facebook — attract customers organically and start selling without paid ads.',
+      description: 'Launch a professional Instagram and Facebook store built for organic sales and DMs.',
+      overview: [
+        'Business pages set up and branded for trust and conversions.',
+        'Product-ready content system with captions and posting direction.',
+        'DM inquiry and order workflow so you can sell without confusion.',
+        'Guidance to attract buyers without relying on ads from day one.'
+      ],
       included: [
-        { title: 'Instagram Business Page Setup', desc: 'Professional Instagram business account created, verified and optimised for sales.' },
-        { title: 'Facebook Business Page Setup', desc: 'Linked Facebook page created to double your reach and enable cross-platform selling.' },
-        { title: 'Brand Identity & Bio Optimisation', desc: 'Compelling bio, profile highlights, theme colours and visual identity applied.' },
-        { title: 'Winning Product Research', desc: 'Trending products hand-picked for social media selling with high engagement potential.' },
-        { title: 'Product Images & Descriptions', desc: 'Ready-to-post product photos and sales copy prepared for your pages.' },
-        { title: 'Content Calendar & Reel Ideas', desc: '30-day content plan with viral reel hooks, captions and posting schedule.' },
-        { title: 'Hashtag & Organic Growth Strategy', desc: 'Targeted hashtag sets and outreach tactics to attract buyers without paid ads.' },
-        { title: 'DM Sales & Inquiry Workflow', desc: 'Step-by-step process for handling customer DMs, quotes and order confirmations.' },
-        { title: 'Story & Post Templates', desc: 'Ready-made story and post templates you can use immediately to look professional.' },
-        { title: 'Ads Basics Training', desc: 'Optional Meta ads introduction so you can scale when you are ready to invest.' }
+        'Instagram Business Setup',
+        'Facebook Page Setup',
+        'Bio & Branding Optimization',
+        'Product Research',
+        'Product Images & Captions',
+        'Content Direction',
+        'DM Sales Workflow',
+        'Hashtag Strategy',
+        'WhatsApp Support',
+        'Business Guidance'
       ],
-      benefits: [
-        { icon: '🔥', title: 'Most Popular Plan', desc: 'Our #1 best-selling plan — trusted by thousands of social media sellers.' },
-        { iconId: 'time', title: 'Save Time', desc: 'Skip the content struggle — get a complete brand and sales system ready to go.' },
-        { iconId: 'target', title: 'Expert Guidance', desc: 'Social media specialists build your pages to look professional and convert visitors.' },
-        { iconId: 'rocket', title: 'Fast Setup', desc: 'Instagram and Facebook setup typically begins within 24–48 hours after payment.' },
-        { iconId: 'growth', title: 'Organic Growth', desc: 'Learn to attract real buyers without spending on ads from day one.' },
-        { iconId: 'money', title: '100% Profit Yours', desc: 'One-time ₹1,299 payment — no monthly platform fees eating your margins.' }
-      ],
-      process: [
-        { tag: 'Step 1', title: 'Strategy & Niche Call', range: 'Day 1 – Day 2', items: ['Free consultation to define your brand and niche', 'Competitor analysis and audience research', 'Content and sales strategy document created'] },
-        { tag: 'Step 2', title: 'Pages & Branding', range: 'Day 3 – Day 6', items: ['Instagram and Facebook business pages created', 'Bio, highlights, cover and theme designed', 'Brand visuals and logo guidance provided'] },
-        { tag: 'Step 3', title: 'Products & Content', range: 'Day 7 – Day 10', items: ['Winning products researched and listed on pages', '30-day content calendar with reel scripts delivered', 'Hashtag strategy and first posts scheduled'] },
-        { tag: 'Step 4', title: 'Go Live', range: 'Day 11 – Day 14', items: ['Pages published with full product catalog', 'DM inquiry and order workflow configured', 'First outreach and engagement campaign launched'] },
-        { tag: 'Step 5', title: 'Growth & First Inquiries', range: 'Day 15 – Day 21', items: ['Daily engagement tactics applied with your guidance', 'Performance review and content optimisation', 'Support until first customer inquiries arrive'] }
-      ],
+      timeline: timeline([
+        'Niche, brand tone, and audience confirmed.',
+        'Login access and brand assets collected.',
+        'Instagram and Facebook pages configured.',
+        'Products and first posts prepared.',
+        'Pages go live with sales workflow ready.',
+        'Support for early inquiries and growth.'
+      ]),
       documents: [
-        { name: 'Smartphone or Laptop', required: true, note: 'To manage Instagram and Facebook pages and post content.' },
-        { name: 'Email Address', required: true, note: 'Required to create and verify business accounts on Meta platforms.' },
-        { name: 'Aadhaar / ID Proof', required: true, note: 'For account verification if Meta requests identity confirmation.' },
-        { name: 'Bank Account / UPI', required: true, note: 'To collect payments from customers who order via DM.' },
-        { name: 'Brand Logo or Photo', required: false, note: 'We help create a simple brand identity if you do not have one.' },
-        { name: 'Product Photos', required: false, note: 'Provided by us as part of product research — optional to add your own.' }
+        { name: 'Email', required: true },
+        { name: 'Mobile Number', required: true },
+        { name: 'Bank Account / UPI', required: true },
+        { name: 'Business Logo', required: false },
+        { name: 'PAN Card', required: false }
       ],
-            setupLabel: 'Setup Time',
-delivery: {
-        total: '24-48 Hours',
-        phases: [
-          { tag: 'Day 1–2', title: 'Strategy Session', detail: 'Niche, brand positioning and content plan finalised.' },
-          { tag: 'Day 3–6', title: 'Pages Created', detail: 'Instagram & Facebook pages live with professional branding.' },
-          { tag: 'Day 7–10', title: 'Products & Content', detail: 'Product listings, content calendar and reel scripts delivered.' },
-          { tag: 'Day 11–14', title: 'Go Live', detail: 'Pages published, DM workflow active, first posts go out.' },
-          { tag: 'Day 15–21', title: 'First Inquiries', detail: 'Growth support until you receive your first customer messages.' }
-        ],
-        outcome: 'Your social media store onboarding starts <b>immediately after payment</b>, with setup typically in <b>24–48 hours</b>.'
-      },
+      whoFor: ['Beginners', 'Students', 'Creators', 'Business Owners', 'Existing Sellers'],
       faqs: [
-        { q: 'Do I need existing followers to start?', a: 'No. We teach organic growth strategies to attract your first customers from scratch.' },
-        { q: 'Are Instagram and Facebook both included?', a: 'Yes. Both platforms are fully set up and linked for maximum reach.' },
-        { q: 'Will you provide product images and captions?', a: 'Yes. Product research includes ready-to-post images and sales descriptions.' },
-        { q: 'Is ad spend included in the price?', a: 'The plan covers organic setup. Paid ads are optional and budget is separate.' },
-        { q: 'Can I manage this alongside a full-time job?', a: 'Yes. Most students spend 1–2 hours per day managing their social store.' },
-        { q: 'What if I have never made a reel before?', a: 'We provide reel scripts, hooks and templates — no filming experience needed.' }
+        { q: 'Do I need followers to start?', a: 'No. We help you attract your first buyers from scratch.' },
+        { q: 'Are both platforms included?', a: 'Yes. Instagram and Facebook setup are included.' },
+        { q: 'Is ad spend included?', a: 'No. Organic setup is included; ads are optional.' },
+        { q: 'Can I run this part-time?', a: 'Yes. Most sellers manage it in 1–2 hours a day.' },
+        { q: 'When does setup start?', a: 'Immediately after payment confirmation.' }
       ]
     },
     meesho: {
@@ -2894,62 +2965,50 @@ delivery: {
       price: '3,999',
       currency: '₹',
       priceNote: 'One-Time Payment',
-      badge: 'Marketplace Pro',
-      description: 'Launch your Meesho seller store with winning products, optimized listings and full order management support.',
+      badge: 'Marketplace Starter',
+      description: 'Get your Meesho seller account set up with listings, suppliers, and guided support.',
+      overview: [
+        'Seller account setup with compliance guidance.',
+        'Winning products researched and listed for your niche.',
+        'Order, return, and supplier process explained clearly.',
+        'Dedicated support to help you operate with confidence.'
+      ],
       included: [
-        { title: 'Meesho Seller Account Setup', desc: 'Complete seller registration, verification and account activation on Meesho.' },
-        { title: 'GST & Document Guidance', desc: 'Step-by-step help with GST registration and all compliance documents required.' },
-        { title: 'Winning Product Research', desc: 'High-demand products identified specifically for Meesho buyers and trends.' },
-        { title: '10+ Optimized Product Listings', desc: 'SEO-friendly titles, professional images and compelling descriptions for each product.' },
-        { title: 'Supplier Sourcing & Coordination', desc: 'Reliable suppliers identified, contacted and pricing negotiated on your behalf.' },
-        { title: 'Pricing & Margin Strategy', desc: 'Profit margin calculation done so every sale earns you meaningful income.' },
-        { title: 'Order Processing Training', desc: 'Complete walkthrough of Meesho order acceptance, packing and dispatch process.' },
-        { title: 'Return & Refund Management', desc: 'Standard operating procedure for handling returns without losing money or ratings.' },
-        { title: 'Promotion & Ads Guidance', desc: 'Meesho promotion tools and ad basics explained to boost your visibility.' },
-        { title: 'Dedicated Account Support', desc: 'Personal support manager available throughout setup, launch and first sales.' }
+        'Seller Account Setup',
+        'GST & Document Guidance',
+        'Product Research',
+        'Product Listing',
+        'SEO Optimization',
+        'Supplier Coordination',
+        'Order Handling Training',
+        'Dedicated Account Manager',
+        'WhatsApp Support',
+        'Business Guidance'
       ],
-      benefits: [
-        { iconId: 'meesho', title: 'Built-In Buyer Traffic', desc: 'Sell to millions of Meesho users without building your own audience.' },
-        { iconId: 'time', title: 'Save Time', desc: 'We handle complex account setup and listings — you focus on growing sales.' },
-        { iconId: 'target', title: 'Meesho Specialists', desc: 'Team experienced in Meesho policies, listing rules and seller success tactics.' },
-        { iconId: 'rocket', title: 'Fast Account Activation', desc: 'Professional Meesho onboarding starts immediately after payment with guided activation.' },
-        { iconId: 'growth', title: 'Proven Products', desc: 'Winning products with verified demand — not random untested items.' },
-        { iconId: 'handshake', title: 'Hand-Holding Support', desc: 'Dedicated manager guides you from registration to your first Meesho order.' }
-      ],
-      process: [
-        { tag: 'Step 1', title: 'Consultation & Registration', range: 'Week 1', items: ['Free consultation and Meesho account strategy', 'Seller account registration initiated', 'GST and document collection guided'] },
-        { tag: 'Step 2', title: 'Product Research', range: 'Week 1', items: ['Niche and winning product research completed', 'Supplier sourcing and price negotiation', 'Margin and pricing strategy finalised'] },
-        { tag: 'Step 3', title: 'Listings Go Live', range: 'Week 2', items: ['10+ product listings created and SEO-optimized', 'Images, titles and descriptions approved by Meesho', 'Store catalog published and visible to buyers'] },
-        { tag: 'Step 4', title: 'Order Operations', range: 'Week 3', items: ['Order acceptance and dispatch training completed', 'Return and refund SOP established', 'Account health and rating protection explained'] },
-        { tag: 'Step 5', title: 'Scale & Grow', range: 'Week 4', items: ['Promotion and visibility boost strategies applied', 'Performance review and listing optimisation', 'Month 2 growth roadmap delivered to you'] }
-      ],
+      timeline: timeline([
+        'Goals and category strategy confirmed.',
+        'PAN, GST, bank, and KYC documents collected.',
+        'Meesho seller account created and verified.',
+        'Products listed and optimized.',
+        'Store ready for live selling.',
+        'Ongoing support for orders and growth.'
+      ]),
       documents: [
-        { name: 'PAN Card', required: true, note: 'Mandatory for Meesho seller account registration and tax compliance.' },
-        { name: 'Aadhaar Card', required: true, note: 'Identity verification required by Meesho during KYC process.' },
-        { name: 'GST Certificate', required: true, note: 'GST registration required for selling on Meesho — we guide you through this.' },
-        { name: 'Bank Account Details', required: true, note: 'Cancelled cheque or bank statement for payment settlements from Meesho.' },
-        { name: 'Business Address Proof', required: true, note: 'Utility bill or rent agreement for registered business address.' },
-        { name: 'Product Images', required: false, note: 'We provide professional product images as part of listing creation.' }
+        { name: 'PAN Card', required: true },
+        { name: 'GST Certificate', required: true },
+        { name: 'Bank Account', required: true },
+        { name: 'Cancelled Cheque', required: true },
+        { name: 'Aadhaar / Address Proof', required: true },
+        { name: 'Email', required: true },
+        { name: 'Mobile Number', required: true }
       ],
-            setupLabel: 'Account Activation',
-delivery: {
-        total: '1-2 Business Days',
-        phases: [
-          { tag: 'Week 1', title: 'Account & Documents', detail: 'Meesho account registered, GST and KYC completed.' },
-          { tag: 'Week 2', title: 'Listings Live', detail: '10+ optimized product listings approved and published.' },
-          { tag: 'Week 3', title: 'Operations Training', detail: 'Order, shipping and return management fully trained.' },
-          { tag: 'Week 4', title: 'First Orders', detail: 'Promotion launched, support until first Meesho orders arrive.' },
-          { tag: 'Month 2', title: 'Growth Plan', detail: 'Scaling roadmap and ongoing optimisation strategy delivered.' }
-        ],
-        outcome: 'Your Meesho account activation begins <b>immediately after payment</b>, usually within <b>1–2 business days</b>.'
-      },
+      whoFor: ['Beginners', 'Students', 'Business Owners', 'Existing Sellers', 'Retailers'],
       faqs: [
-        { q: 'Do I need GST to sell on Meesho?', a: 'Yes, GST is typically required. We guide you through the entire registration process.' },
-        { q: 'Who handles product delivery to customers?', a: 'Meesho logistics handles delivery. We train you on order processing and supplier coordination.' },
-        { q: 'How many products will be listed?', a: 'We create 10+ fully optimized listings with winning products as part of this plan.' },
-        { q: 'Can a complete beginner use this plan?', a: 'Absolutely. No prior ecommerce experience is needed — we guide every step.' },
-        { q: 'What if my listing gets rejected?', a: 'Our team fixes and resubmits listings until they are approved by Meesho.' },
-        { q: 'When will I receive my first order?', a: 'Most sellers start receiving orders within 2–3 weeks of listings going live.' }
+        { q: 'Is GST required?', a: 'Usually yes. We guide you through the process if needed.' },
+        { q: 'Do I need inventory?', a: 'No. Suppliers fulfill customer orders.' },
+        { q: 'Who handles shipping?', a: 'Meesho logistics handles delivery to customers.' },
+        { q: 'Is support included?', a: 'Yes. You get a dedicated account manager.' },
+        { q: 'When does onboarding start?', a: 'Immediately after payment confirmation.' }
       ]
     },
     flipkart: {
@@ -2958,62 +3017,50 @@ delivery: {
       price: '3,999',
       currency: '₹',
       priceNote: 'One-Time Payment',
-      badge: 'Professional',
-      description: 'Open your Flipkart seller account with optimized listings, supplier support and a clear path to your first marketplace orders.',
+      badge: 'Marketplace Growth',
+      description: 'Launch on Flipkart with guided seller setup, optimized listings, and mentor support.',
+      overview: [
+        'Seller Hub registration and compliance handled with guidance.',
+        'Listings created for search visibility and conversions.',
+        'Fulfillment and returns process trained clearly.',
+        'Mentor support from setup through early sales.'
+      ],
       included: [
-        { title: 'Flipkart Seller Hub Setup', desc: 'Complete seller account creation, verification and activation on Flipkart Seller Hub.' },
-        { title: 'Brand & Category Approval', desc: 'Guidance through Flipkart brand registry and category approval process.' },
-        { title: 'Winning Product Research', desc: 'High-search-volume products identified with healthy margins on Flipkart.' },
-        { title: 'SEO-Optimized Listings', desc: 'Keyword-rich titles, bullet points and descriptions that rank on Flipkart search.' },
-        { title: 'Professional Product Images', desc: 'Flipkart-compliant product images created meeting all marketplace guidelines.' },
-        { title: 'Supplier Sourcing Support', desc: 'Reliable suppliers identified and connected with negotiated pricing.' },
-        { title: 'Flipkart Fulfillment Guidance', desc: 'Training on Flipkart logistics, Smart Fulfillment and self-ship options.' },
-        { title: 'Order & Return Management', desc: 'Complete SOP for order processing, returns and maintaining account health.' },
-        { title: 'Account Health Monitoring', desc: 'Guidance on Flipkart performance metrics, ratings and policy compliance.' },
-        { title: 'Dedicated Seller Support', desc: 'Personal mentor available from account setup through your first Flipkart orders.' }
+        'Seller Account Setup',
+        'GST & KYC Guidance',
+        'Product Research',
+        'Product Listing',
+        'SEO Optimization',
+        'Supplier Coordination',
+        'Order & Returns Training',
+        'Dedicated Seller Mentor',
+        'WhatsApp Support',
+        'Business Guidance'
       ],
-      benefits: [
-        { iconId: 'flipkart', title: 'Crores of Buyers', desc: 'Reach Flipkart\'s massive customer base actively searching to buy every day.' },
-        { iconId: 'time', title: 'Save Months of Learning', desc: 'Skip costly listing rejections and policy mistakes with expert-led setup.' },
-        { iconId: 'target', title: 'Flipkart Experts', desc: 'Team that knows Flipkart Seller Hub inside out — policies, SEO and fulfillment.' },
-        { iconId: 'rocket', title: 'Fast Account Activation', desc: 'Flipkart seller onboarding starts immediately after payment with guided activation.' },
-        { iconId: 'growth', title: 'Ranking Listings', desc: 'SEO-optimized listings designed to appear in Flipkart search results.' },
-        { iconId: 'handshake', title: 'Personal Mentor', desc: 'Dedicated support from registration through your first successful Flipkart sale.' }
-      ],
-      process: [
-        { tag: 'Step 1', title: 'Seller Registration', range: 'Week 1', items: ['Flipkart Seller Hub account created', 'PAN, GST and bank documents submitted', 'Brand and category approval initiated'] },
-        { tag: 'Step 2', title: 'Product & Supplier', range: 'Week 1', items: ['Winning product research and shortlist delivered', 'Suppliers sourced and pricing finalised', 'Fulfillment method chosen (Smart/self-ship)'] },
-        { tag: 'Step 3', title: 'Catalog Live', range: 'Week 2', items: ['SEO-optimized listings created and submitted', 'Images and descriptions approved by Flipkart', 'Catalog published and visible to buyers'] },
-        { tag: 'Step 4', title: 'Operations Setup', range: 'Week 3', items: ['Order management and dispatch training', 'Return and refund handling SOP created', 'Account health and rating protection explained'] },
-        { tag: 'Step 5', title: 'Launch & Scale', range: 'Week 4', items: ['Visibility and promotion strategies applied', 'Performance review and listing optimisation', 'Month 2 scaling roadmap delivered'] }
-      ],
+      timeline: timeline([
+        'Category and seller strategy confirmed.',
+        'PAN, GST, bank, and address docs collected.',
+        'Flipkart Seller Hub account activated.',
+        'Listings created and optimized.',
+        'Account ready for live orders.',
+        'Mentor support for early growth.'
+      ]),
       documents: [
-        { name: 'PAN Card', required: true, note: 'Mandatory for Flipkart seller registration and tax compliance.' },
-        { name: 'GST Certificate', required: true, note: 'GST registration required — we guide you through the full process.' },
-        { name: 'Aadhaar Card', required: true, note: 'Identity verification for Flipkart KYC and seller authentication.' },
-        { name: 'Bank Account & Cancelled Cheque', required: true, note: 'For Flipkart payment settlements directly to your bank account.' },
-        { name: 'Brand Authorization Letter', required: false, note: 'Required only if selling branded products — we help you obtain this.' },
-        { name: 'Business Address Proof', required: true, note: 'Registered address proof for Flipkart seller verification.' }
+        { name: 'PAN Card', required: true },
+        { name: 'GST Certificate', required: true },
+        { name: 'Bank Account', required: true },
+        { name: 'Cancelled Cheque', required: true },
+        { name: 'Aadhaar / Address Proof', required: true },
+        { name: 'Email', required: true },
+        { name: 'Mobile Number', required: true }
       ],
-            setupLabel: 'Account Activation',
-delivery: {
-        total: '1-2 Business Days',
-        phases: [
-          { tag: 'Week 1', title: 'Account Setup', detail: 'Flipkart seller account registered, documents verified.' },
-          { tag: 'Week 2', title: 'Catalog Published', detail: 'SEO listings approved and live on Flipkart marketplace.' },
-          { tag: 'Week 3', title: 'Operations Ready', detail: 'Order, fulfillment and return management fully trained.' },
-          { tag: 'Week 4', title: 'First Orders', detail: 'Promotion support until first Flipkart orders are received.' },
-          { tag: 'Month 2', title: 'Growth Roadmap', detail: 'Scaling strategy and performance optimisation plan delivered.' }
-        ],
-        outcome: 'Your Flipkart account activation begins <b>immediately after payment</b>, usually within <b>1–2 business days</b>.'
-      },
+      whoFor: ['Business Owners', 'Existing Sellers', 'Retailers', 'Manufacturers', 'Beginners'],
       faqs: [
-        { q: 'What documents do I need for Flipkart?', a: 'PAN, GST, Aadhaar, bank details and address proof. We guide you through collecting all of them.' },
-        { q: 'Can beginners join this plan?', a: 'Yes. Designed for complete beginners with zero marketplace experience.' },
-        { q: 'Does Flipkart handle delivery?', a: 'Yes. We train you on Flipkart Smart Fulfillment and logistics options.' },
-        { q: 'What if my listing is rejected?', a: 'Our team diagnoses the issue, fixes it and resubmits until approved.' },
-        { q: 'Is GST mandatory?', a: 'Yes for most categories. We assist with GST registration if you do not have it yet.' },
-        { q: 'When will I get my first Flipkart order?', a: 'Most sellers receive their first order within 2–4 weeks of going live.' }
+        { q: 'Is GST mandatory?', a: 'Yes for most categories. We assist if you need registration help.' },
+        { q: 'Do you create listings?', a: 'Yes. Product research and listing optimization are included.' },
+        { q: 'Does Flipkart handle delivery?', a: 'Yes. We train you on Flipkart fulfillment options.' },
+        { q: 'Is this one-time?', a: 'Yes. ₹3,999 one-time with included mentor support.' },
+        { q: 'When does onboarding start?', a: 'Immediately after payment confirmation.' }
       ]
     },
     'amazon-in': {
@@ -3022,127 +3069,102 @@ delivery: {
       price: '3,999',
       currency: '₹',
       priceNote: 'One-Time Payment',
-      badge: 'Professional',
-      description: 'Start selling on Amazon India with a fully set up Seller Central account, winning products and optimized listings.',
+      badge: 'Amazon India',
+      description: 'Start selling on Amazon.in with guided Seller Central setup and optimized listings.',
+      overview: [
+        'Seller Central setup with GST and KYC guidance.',
+        'Keyword-ready listings built for Amazon search.',
+        'Order and account health basics trained clearly.',
+        'Specialist support through early selling stages.'
+      ],
       included: [
-        { title: 'Amazon Seller Central Setup', desc: 'Complete Amazon.in seller account registration, verification and activation.' },
-        { title: 'GST & Compliance Guidance', desc: 'Full assistance with GST registration and Amazon India compliance requirements.' },
-        { title: 'Winning Product Research', desc: 'High-demand, high-margin products identified using Amazon India sales data.' },
-        { title: 'Keyword-Optimized Listings', desc: 'SEO-rich titles, bullet points and descriptions designed to rank on Amazon search.' },
-        { title: 'Professional Listing Images', desc: 'Amazon-compliant main images and lifestyle photos meeting all guidelines.' },
-        { title: 'Supplier Sourcing & Coordination', desc: 'Verified suppliers connected with competitive pricing for your products.' },
-        { title: 'FBA vs Self-Ship Guidance', desc: 'Clear explanation of both fulfillment options with recommendation for your products.' },
-        { title: 'Buy Box Strategy Basics', desc: 'Pricing and listing tactics to help you win the Amazon Buy Box on your products.' },
-        { title: 'Account Health & A-to-Z Training', desc: 'How to maintain seller rating, handle claims and avoid account suspension.' },
-        { title: 'Dedicated Amazon Mentor', desc: 'Personal support from account creation through your first Amazon.in orders.' }
+        'Seller Account Setup',
+        'GST & Compliance Guidance',
+        'Product Research',
+        'Product Listing',
+        'SEO Optimization',
+        'Supplier Coordination',
+        'Order Handling Training',
+        'Amazon Specialist Support',
+        'WhatsApp Support',
+        'Business Guidance'
       ],
-      benefits: [
-        { iconId: 'amazon-in', title: 'India\'s #1 Marketplace', desc: 'Sell on the platform Indian buyers trust most for online shopping.' },
-        { iconId: 'time', title: 'Avoid Costly Mistakes', desc: 'Skip listing suppressions and policy violations with guided Seller Central setup.' },
-        { iconId: 'target', title: 'Amazon Specialists', desc: 'Team experienced in Amazon SEO, policies, FBA and Indian marketplace dynamics.' },
-        { iconId: 'rocket', title: 'Fast Account Activation', desc: 'Amazon.in seller onboarding starts immediately after payment with guided activation.' },
-        { iconId: 'growth', title: 'Buy Box Ready', desc: 'Listings optimized with keywords and pricing strategy to compete for the Buy Box.' },
-        { iconId: 'handshake', title: 'Mentor Support', desc: 'Dedicated guidance from Seller Central setup through your first Amazon sale.' }
-      ],
-      process: [
-        { tag: 'Step 1', title: 'Seller Central Setup', range: 'Week 1', items: ['Amazon.in seller account registered', 'GST, PAN and bank verification completed', 'Product niche and category research done'] },
-        { tag: 'Step 2', title: 'Supplier & Pricing', range: 'Week 1 – Week 2', items: ['Winning products finalized with suppliers', 'Margin and competitive pricing strategy set', 'FBA or self-ship fulfillment method chosen'] },
-        { tag: 'Step 3', title: 'Listings Published', range: 'Week 2', items: ['Keyword-optimized listings created and submitted', 'Images and A+ content guidance provided', 'Listings approved and live on Amazon.in'] },
-        { tag: 'Step 4', title: 'Launch & Orders', range: 'Week 3', items: ['Order management workflow configured', 'Return and A-to-Z claim handling trained', 'Account health monitoring dashboard explained'] },
-        { tag: 'Step 5', title: 'Optimize & Scale', range: 'Week 4', items: ['Amazon Ads introduction and setup guidance', 'Performance review and listing optimization', 'Month 2 growth roadmap delivered'] }
-      ],
+      timeline: timeline([
+        'Niche and Amazon strategy confirmed.',
+        'PAN, GST, bank, and KYC docs collected.',
+        'Seller Central account set up.',
+        'Listings created and optimized.',
+        'Account ready for live selling.',
+        'Specialist support for early orders.'
+      ]),
       documents: [
-        { name: 'PAN Card', required: true, note: 'Mandatory for Amazon Seller Central registration in India.' },
-        { name: 'GST Certificate', required: true, note: 'GST registration required for Amazon.in — we guide you through it.' },
-        { name: 'Aadhaar Card', required: true, note: 'Identity verification required during Amazon seller KYC.' },
-        { name: 'Bank Account & Cancelled Cheque', required: true, note: 'For Amazon payment disbursements to your bank account.' },
-        { name: 'Business Address Proof', required: true, note: 'Registered business address for Amazon seller verification.' },
-        { name: 'Brand Registry Documents', required: false, note: 'Only needed if selling branded products — we assist if required.' }
+        { name: 'PAN Card', required: true },
+        { name: 'GST Certificate', required: true },
+        { name: 'Bank Account', required: true },
+        { name: 'Cancelled Cheque', required: true },
+        { name: 'Aadhaar / Address Proof', required: true },
+        { name: 'Email', required: true },
+        { name: 'Mobile Number', required: true }
       ],
-            setupLabel: 'Account Activation',
-delivery: {
-        total: '1-2 Business Days',
-        phases: [
-          { tag: 'Week 1', title: 'Account & GST', detail: 'Seller Central registered, GST and KYC completed.' },
-          { tag: 'Week 2', title: 'Listings Live', detail: 'Keyword-optimized listings approved on Amazon.in.' },
-          { tag: 'Week 3', title: 'Operations', detail: 'Order management, returns and account health trained.' },
-          { tag: 'Week 4', title: 'First Sales', detail: 'Ads guidance and support until first Amazon orders arrive.' },
-          { tag: 'Month 2', title: 'Scale Plan', detail: 'Growth roadmap and listing optimization delivered.' }
-        ],
-        outcome: 'Your Amazon.in account activation begins <b>immediately after payment</b>, usually within <b>1–2 business days</b>.'
-      },
+      whoFor: ['Business Owners', 'Existing Sellers', 'Manufacturers', 'Retailers', 'Beginners'],
       faqs: [
-        { q: 'Is GST mandatory for Amazon.in?', a: 'Yes. We guide you through GST registration and compliance if you do not have it yet.' },
-        { q: 'Should I use FBA or self-ship?', a: 'We analyze your products and budget, then recommend the best fulfillment option for you.' },
-        { q: 'How is this different from the mastery course?', a: 'This is a full done-for-you setup — we build your store, not just teach you how.' },
-        { q: 'When will I get my first Amazon order?', a: 'Most sellers receive their first order within 2–4 weeks of listings going live.' },
-        { q: 'Do I need prior ecommerce experience?', a: 'No. This plan is built for complete beginners with step-by-step hand-holding.' },
-        { q: 'What ongoing support is included?', a: 'Dedicated mentor support through setup, launch and your first sales period.' }
+        { q: 'Is GST mandatory for Amazon.in?', a: 'Yes. We guide you through compliance if needed.' },
+        { q: 'Do you help with product research?', a: 'Yes. Winning product research is included.' },
+        { q: 'Is FBA included?', a: 'FBA guidance is included; FBA fees are paid to Amazon.' },
+        { q: 'Who manages the account?', a: 'You own the account. We train and support you.' },
+        { q: 'When does onboarding start?', a: 'Immediately after payment confirmation.' }
       ]
     },
     'amazon-com': {
-      name: 'Amazon.com USA Business',
+      name: 'Amazon.com USA',
       iconId: 'amazon-com',
       price: '6,999',
-      currency: '$',
-      priceNote: 'One-Time � Lifetime Value',
+      currency: '₹',
+      priceNote: 'One-Time Payment',
       badge: 'Global',
-      description: 'Sell on Amazon USA and earn in dollars — full global account setup, FBA guidance and international growth strategy.',
+      description: 'Enter Amazon.com with guided global seller onboarding, listings, and export-ready support.',
+      overview: [
+        'USA seller onboarding with compliance direction.',
+        'Product and listing strategy built for Amazon.com.',
+        'Shipping and fulfillment options explained clearly.',
+        'Global mentor support from setup through launch.'
+      ],
       included: [
-        { title: 'Amazon.com Seller Account Setup', desc: 'Complete USA Amazon seller account registration and international compliance setup.' },
-        { title: 'USA Market Product Research', desc: 'High-demand products identified specifically for the US Amazon marketplace.' },
-        { title: 'Global Supplier Sourcing', desc: 'International and Indian suppliers connected for US market product fulfillment.' },
-        { title: 'USA-Optimized Listings', desc: 'American English keyword-rich listings designed to rank on Amazon.com search.' },
-        { title: 'FBA Shipment Preparation', desc: 'Step-by-step guidance on preparing and sending inventory to Amazon USA warehouses.' },
-        { title: 'International Payment Setup', desc: 'Wise, Payoneer or similar international payment account setup guidance.' },
-        { title: 'Cross-Border Compliance Guide', desc: 'US tax, import and Amazon global selling compliance explained clearly.' },
-        { title: 'Amazon USA Ads Introduction', desc: 'Sponsored Products campaign setup basics for the US marketplace.' },
-        { title: 'USD Revenue Strategy', desc: 'Pricing strategy optimized for US buyers and maximum dollar earnings.' },
-        { title: 'Dedicated Global Business Mentor', desc: 'Personal mentor with Amazon USA experience guiding you through every phase.' }
+        'Amazon.com Account Setup',
+        'Compliance Guidance',
+        'Product Research',
+        'Product Listing',
+        'SEO Optimization',
+        'Supplier Coordination',
+        'Fulfillment Guidance',
+        'Global Business Mentor',
+        'WhatsApp Support',
+        'Business Guidance'
       ],
-      benefits: [
-        { icon: '🌍', title: 'Earn in US Dollars', desc: 'Access the world\'s largest ecommerce market with significantly higher price points.' },
-        { iconId: 'time', title: 'Skip Years of Trial', desc: 'Avoid expensive global selling mistakes with structured expert guidance.' },
-        { iconId: 'target', title: 'Global Specialists', desc: 'Mentors experienced in Amazon USA, FBA, cross-border logistics and USD payments.' },
-        { iconId: 'rocket', title: '8-Week Launch Path', desc: 'Structured timeline from USA account creation to live Amazon.com listings.' },
-        { iconId: 'growth', title: 'Highest Earning Potential', desc: 'Our premium plan with the greatest revenue opportunity in the entire lineup.' },
-        { icon: '💎', title: 'Lifetime Value', desc: 'One-time investment for a business that can generate USD income for years.' }
-      ],
-      process: [
-        { tag: 'Step 1', title: 'Global Strategy Call', range: 'Week 1 – Week 2', items: ['USA market opportunity assessment', 'Amazon.com seller account registration', 'International compliance and tax guidance'] },
-        { tag: 'Step 2', title: 'Product & Supplier', range: 'Week 2 – Week 3', items: ['US market winning product research', 'Global supplier sourcing and pricing', 'USD pricing and margin strategy set'] },
-        { tag: 'Step 3', title: 'Listings & FBA Prep', range: 'Week 3 – Week 4', items: ['USA-optimized listings created and submitted', 'FBA shipment preparation guided step by step', 'Listings approved and live on Amazon.com'] },
-        { tag: 'Step 4', title: 'USA Launch', range: 'Week 5 – Week 6', items: ['International payment account activated', 'Amazon USA ads campaign basics set up', 'Order and shipment management trained'] },
-        { tag: 'Step 5', title: 'Scale Globally', range: 'Week 7 – Week 8', items: ['Performance review and listing optimization', 'Multi-product expansion strategy planned', 'Long-term global growth roadmap delivered'] }
-      ],
+      timeline: timeline([
+        'Global goals and product direction confirmed.',
+        'Identity, tax, and banking docs collected.',
+        'Amazon.com seller account configured.',
+        'Listings prepared for the USA catalog.',
+        'Launch checklist completed.',
+        'Mentor support for early global selling.'
+      ]),
       documents: [
-        { name: 'Passport or National ID', required: true, note: 'Required for Amazon.com international seller identity verification.' },
-        { name: 'PAN Card', required: true, note: 'Indian tax identification required for cross-border seller registration.' },
-        { name: 'Bank Account (Indian)', required: true, note: 'Indian bank account linked to international payment platform (Wise/Payoneer).' },
-        { name: 'International Payment Account', required: true, note: 'Wise or Payoneer account for receiving USD payments — we guide setup.' },
-        { name: 'GST Certificate', required: true, note: 'Required for export compliance and Indian tax obligations on global sales.' },
-        { name: 'Business Address Proof', required: true, note: 'Registered address for Amazon global seller verification.' },
-        { name: 'Product Compliance Certificates', required: false, note: 'Only needed for specific product categories — we advise per product.' }
+        { name: 'PAN Card', required: true },
+        { name: 'GST Certificate', required: true },
+        { name: 'Bank Account', required: true },
+        { name: 'Passport / Address Proof', required: true },
+        { name: 'Email', required: true },
+        { name: 'Mobile Number', required: true },
+        { name: 'IEC', required: false }
       ],
-            setupLabel: 'Onboarding Time',
-delivery: {
-        total: '1-2 Business Days',
-        phases: [
-          { tag: 'Week 1–2', title: 'USA Account', detail: 'Amazon.com seller account registered, compliance completed.' },
-          { tag: 'Week 3–4', title: 'Listings & FBA', detail: 'USA listings live, FBA shipment preparation complete.' },
-          { tag: 'Week 5–6', title: 'USA Launch', detail: 'Payment account active, ads basics configured, first visibility live.' },
-          { tag: 'Week 7–8', title: 'First USD Sales', detail: 'Optimization and support until first Amazon.com orders arrive.' },
-          { tag: 'Month 3+', title: 'Global Scale', detail: 'Expansion roadmap for growing your USA Amazon business long-term.' }
-        ],
-        outcome: 'Your Amazon.com USA onboarding starts <b>immediately after payment</b>, with guided activation in <b>1–2 business days</b>.'
-      },
+      whoFor: ['Exporters', 'Manufacturers', 'Existing Sellers', 'Business Owners', 'Ambitious Beginners'],
       faqs: [
-        { q: 'Do I need a USA bank account?', a: 'No. We set up Wise or Payoneer so you receive USD payments directly in India.' },
-        { q: 'Is this plan suitable for beginners?', a: 'Best for serious entrepreneurs. We provide full guidance, but global selling requires commitment.' },
-        { q: 'What is FBA shipment support?', a: 'We guide you through preparing and sending inventory to Amazon USA warehouses for fulfillment.' },
-        { q: 'Why is the price in US dollars?', a: 'You earn in USD on this plan — the investment reflects the significantly higher revenue potential.' },
-        { q: 'How long does the full setup take?', a: 'Most students go live on Amazon.com within 6–8 weeks depending on product and compliance.' },
-        { q: 'What makes this the premium plan?', a: 'Global account, FBA support, USD strategy and dedicated mentorship not available in standard plans.' }
+        { q: 'Can I sell from India?', a: 'Yes. We guide Indian sellers for Amazon.com onboarding.' },
+        { q: 'Is IEC required?', a: 'Often recommended for exports. We advise based on your model.' },
+        { q: 'Do you invent prices?', a: 'No. This plan is ₹6,999 one-time as listed.' },
+        { q: 'Is fulfillment included?', a: 'Guidance is included; carrier/FBA fees are separate.' },
+        { q: 'When does onboarding start?', a: 'Immediately after payment confirmation.' }
       ]
     },
     website: {
@@ -3151,93 +3173,322 @@ delivery: {
       price: '9,999',
       currency: '₹',
       priceNote: 'One-Time Payment',
-      badge: 'Premium',
-      description: 'Get your own professional ecommerce website — fully branded, mobile-ready and 100% owned by you with no monthly platform fees.',
+      badge: 'Brand Owners',
+      description: 'Get a professional ecommerce website designed, built, and handed over with payment integration.',
+      overview: [
+        'Custom storefront built for mobile and desktop.',
+        'Payment gateway integrated for secure checkout.',
+        'SEO basics and product structure configured.',
+        'Full ownership and admin training included.'
+      ],
       included: [
-        { title: 'Custom Website Design', desc: 'Professionally designed website tailored to your brand, niche and target customers.' },
-        { title: 'E-Commerce Functionality', desc: 'Full shopping cart, product pages, collections and secure checkout built in.' },
-        { title: 'Payment Gateway Integration', desc: 'Razorpay or equivalent payment gateway connected for instant online payments.' },
-        { title: 'Mobile-Responsive Design', desc: 'Website looks and works perfectly on mobile, tablet and desktop devices.' },
-        { title: 'Product Pages & Collections', desc: 'All your products organized into collections with professional product detail pages.' },
-        { title: 'SEO Optimization', desc: 'Basic on-page SEO configured so Google can find and rank your website.' },
-        { title: 'SSL Security Certificate', desc: 'HTTPS security installed so customers trust your site with their payment details.' },
-        { title: 'Fast Loading Speed', desc: 'Website optimized for speed — loads quickly on all devices and connections.' },
-        { title: 'Domain Connection Guidance', desc: 'Help connecting your custom domain name to your new website.' },
-        { title: 'Admin Training & Handover', desc: 'Training session so you can add products, manage orders and run your site independently.' }
+        'Custom Website Design',
+        'Ecommerce Functionality',
+        'Mobile Responsive Build',
+        'Payment Gateway Integration',
+        'SEO Basics',
+        'Product Upload Setup',
+        'Security & SSL Guidance',
+        'Admin Training',
+        'Developer Support',
+        'Business Guidance'
       ],
-      benefits: [
-        { iconId: 'website', title: 'Your Own Brand', desc: 'A professional store you fully own — no dependency on marketplaces or algorithms.' },
-        { iconId: 'time', title: 'Project Starts Immediately', desc: 'Website development begins immediately after payment with dedicated support from day one.' },
-        { iconId: 'target', title: 'Expert Developers', desc: 'Professional team builds it right the first time — no freelancer headaches.' },
-        { iconId: 'rocket', title: 'Start Selling Immediately', desc: 'Payment gateway live from day one — accept orders as soon as website launches.' },
-        { icon: '🔒', title: '100% Ownership', desc: 'No monthly Shopify or platform fees — the website belongs to you forever.' },
-        { iconId: 'growth', title: 'Scale Your Brand', desc: 'Build long-term brand equity that marketplaces can never take away from you.' }
-      ],
-      process: [
-        { tag: 'Step 1', title: 'Discovery & Design', range: 'Day 1 – Day 5', items: ['Brand consultation and requirements gathering', 'Wireframe and design mockup created', 'Design approved by you before development starts'] },
-        { tag: 'Step 2', title: 'Development', range: 'Day 6 – Day 14', items: ['Website built with full ecommerce functionality', 'Product pages and collections added', 'Payment gateway integrated and tested'] },
-        { tag: 'Step 3', title: 'Content & SEO', range: 'Day 12 – Day 16', items: ['Product content uploaded to all pages', 'SEO meta titles and descriptions configured', 'Mobile responsiveness verified on all devices'] },
-        { tag: 'Step 4', title: 'Testing & QA', range: 'Day 17 – Day 19', items: ['Full checkout flow tested end to end', 'Speed and security audit completed', 'Final revisions based on your feedback'] },
-        { tag: 'Step 5', title: 'Launch & Handover', range: 'Day 20 – Day 21', items: ['Website published and live on your domain', 'Admin panel training session conducted', '100% ownership and access credentials transferred'] }
-      ],
+      timeline: timeline([
+        'Brand goals and store structure confirmed.',
+        'Logo, products, and domain details collected.',
+        'Store framework and pages built.',
+        'Products and SEO structure added.',
+        'Website published and access handed over.',
+        'Post-launch guidance and training.'
+      ]),
       documents: [
-        { name: 'Brand Name & Logo', required: true, note: 'Your business name and logo (we help create a simple logo if needed).' },
-        { name: 'Product List & Images', required: true, note: 'List of products to sell — we can source images if you do not have them.' },
-        { name: 'Domain Name', required: false, note: 'Optional custom domain — we guide you on purchasing and connecting one.' },
-        { name: 'PAN Card', required: true, note: 'Required for Razorpay payment gateway business account verification.' },
-        { name: 'Bank Account Details', required: true, note: 'For payment gateway settlement — money goes directly to your bank.' },
-        { name: 'GST Certificate', required: false, note: 'Required for GST invoicing if applicable — we advise based on your business type.' },
-        { name: 'Business Description', required: true, note: 'Brief description of what you sell — provided during consultation call.' }
+        { name: 'Brand Name & Logo', required: true },
+        { name: 'Product List', required: true },
+        { name: 'PAN Card', required: true },
+        { name: 'Bank Account', required: true },
+        { name: 'Email', required: true },
+        { name: 'Mobile Number', required: true },
+        { name: 'Domain Name', required: false },
+        { name: 'GST Certificate', required: false }
       ],
-            setupLabel: 'Project Start',
-delivery: {
-        total: 'Immediately After Payment',
-        phases: [
-          { tag: 'Day 1–5', title: 'Design Approved', detail: 'Brand consultation done, website design mockup approved by you.' },
-          { tag: 'Day 6–14', title: 'Website Built', detail: 'Full ecommerce site developed with payment gateway integrated.' },
-          { tag: 'Day 12–16', title: 'Content & SEO', detail: 'Products uploaded, SEO configured, mobile tested.' },
-          { tag: 'Day 17–19', title: 'QA Complete', detail: 'Checkout tested, speed optimized, revisions done.' },
-          { tag: 'Day 20–21', title: 'Website Live', detail: 'Site published, training done, full ownership handed to you.' }
-        ],
-        outcome: 'Your website project starts <b>immediately after payment</b>, with dedicated development support from day one.'
-      },
+      whoFor: ['Brand Owners', 'Business Owners', 'Manufacturers', 'Existing Sellers', 'Startups'],
       faqs: [
-        { q: 'Which platform is my website built on?', a: 'We use trusted ecommerce platforms best suited for your products, budget and long-term goals.' },
-        { q: 'Do I fully own the website?', a: 'Yes. 100% ownership transferred to you — no recurring fees to us or any platform.' },
-        { q: 'Is hosting included in the price?', a: 'We guide you to affordable hosting (typically ₹500–₹1,000/month). Hosting cost is separate.' },
-        { q: 'Can I add products myself after launch?', a: 'Yes. Admin training is included so you can manage products and orders independently.' },
-        { q: 'Is the payment gateway included?', a: 'Yes. Razorpay or equivalent integration is fully included in the development package.' },
-        { q: 'What if I want changes after launch?', a: 'Minor post-launch tweaks are covered. Major feature additions can be quoted separately.' }
+        { q: 'Do I own the website?', a: 'Yes. 100% ownership is transferred to you.' },
+        { q: 'Is hosting included?', a: 'We guide hosting setup. Hosting fees are separate.' },
+        { q: 'Is Razorpay included?', a: 'Yes. Payment gateway integration is included.' },
+        { q: 'Can I add products later?', a: 'Yes. Admin training is included.' },
+        { q: 'When does the project start?', a: 'Immediately after payment confirmation.' }
+      ]
+    },
+    shopify: {
+      name: 'Shopify Store Setup',
+      iconId: 'shopify',
+      price: 'Custom',
+      currency: '',
+      priceNote: 'Custom Quote',
+      badge: 'Store Setup',
+      description: 'Get a conversion-ready Shopify store with products, theme setup, and launch guidance.',
+      overview: [
+        'Shopify store configured for Indian and global selling.',
+        'Theme, collections, and checkout flow set up properly.',
+        'Products and basic SEO structure added.',
+        'Launch checklist and support for go-live.'
+      ],
+      included: [
+        'Shopify Store Setup',
+        'Theme Configuration',
+        'Collection Structure',
+        'Product Upload Setup',
+        'Payment Setup Guidance',
+        'SEO Basics',
+        'Mobile Optimization',
+        'Launch Checklist',
+        'WhatsApp Support',
+        'Business Guidance'
+      ],
+      timeline: timeline([
+        'Store goals and catalog scope confirmed.',
+        'Brand assets and product data collected.',
+        'Shopify store and theme configured.',
+        'Products and collections added.',
+        'Store ready for launch.',
+        'Support during go-live.'
+      ]),
+      documents: [
+        { name: 'Email', required: true },
+        { name: 'Mobile Number', required: true },
+        { name: 'Brand Logo', required: true },
+        { name: 'Product List', required: true },
+        { name: 'Bank Account', required: false },
+        { name: 'GST Certificate', required: false }
+      ],
+      whoFor: ['Brand Owners', 'Business Owners', 'Existing Sellers', 'Startups'],
+      faqs: [
+        { q: 'Is pricing fixed?', a: 'No. Shopify setup is quoted based on your catalog and needs.' },
+        { q: 'Do you create the store?', a: 'Yes. Setup, theme, and launch guidance are included.' },
+        { q: 'Is Shopify subscription included?', a: 'No. Shopify monthly fees are paid to Shopify.' },
+        { q: 'Can I sell in India?', a: 'Yes. We configure for your target markets.' },
+        { q: 'How do I start?', a: 'Proceed to consultation to get your custom quote.' }
+      ]
+    },
+    branding: {
+      name: 'Branding',
+      iconId: 'branding',
+      price: 'Custom',
+      currency: '',
+      priceNote: 'Custom Quote',
+      badge: 'Brand Identity',
+      description: 'Build a clear brand identity — name direction, visuals, and positioning for ecommerce.',
+      overview: [
+        'Brand positioning defined for your audience.',
+        'Visual direction for logo, colors, and store presence.',
+        'Messaging that supports marketplace and social selling.',
+        'Assets ready to use across platforms.'
+      ],
+      included: [
+        'Brand Positioning',
+        'Logo Direction',
+        'Color & Style Guide',
+        'Brand Messaging',
+        'Social Profile Alignment',
+        'Store Visual Guidance',
+        'Asset Handover',
+        'Revision Round',
+        'WhatsApp Support',
+        'Business Guidance'
+      ],
+      timeline: timeline([
+        'Brand goals and audience confirmed.',
+        'References and business details collected.',
+        'Identity direction drafted.',
+        'Core brand assets prepared.',
+        'Final brand kit delivered.',
+        'Guidance on applying branding live.'
+      ]),
+      documents: [
+        { name: 'Business Name', required: true },
+        { name: 'Email', required: true },
+        { name: 'Mobile Number', required: true },
+        { name: 'Reference Brands', required: false },
+        { name: 'Existing Logo', required: false }
+      ],
+      whoFor: ['Startups', 'Brand Owners', 'Manufacturers', 'Business Owners'],
+      faqs: [
+        { q: 'Is this logo-only?', a: 'No. It covers positioning, visuals, and messaging.' },
+        { q: 'Do I get editable files?', a: 'Final asset handover is included as agreed in your quote.' },
+        { q: 'Can this work with Amazon or Meesho?', a: 'Yes. Branding is built for ecommerce use.' },
+        { q: 'How is pricing decided?', a: 'Based on scope after a short consultation.' },
+        { q: 'How do I start?', a: 'Book a consultation for your custom quote.' }
+      ]
+    },
+    trademark: {
+      name: 'Trademark Filing Support',
+      iconId: 'document',
+      price: 'Custom',
+      currency: '',
+      priceNote: 'Custom Quote',
+      badge: 'Legal Support',
+      description: 'Get guided support for trademark filing preparation and documentation for your brand.',
+      overview: [
+        'Brand name and class direction reviewed.',
+        'Required documents checklist shared clearly.',
+        'Filing preparation support with expert guidance.',
+        'Next steps explained in simple language.'
+      ],
+      included: [
+        'Trademark Consultation',
+        'Class Guidance',
+        'Document Checklist',
+        'Application Preparation Support',
+        'Filing Process Guidance',
+        'Status Follow-up Direction',
+        'WhatsApp Support',
+        'Business Guidance'
+      ],
+      timeline: timeline([
+        'Brand and category discussed.',
+        'Identity and business proofs collected.',
+        'Application details prepared.',
+        'Filing package reviewed.',
+        'Submission guidance completed.',
+        'Follow-up support for next steps.'
+      ]),
+      documents: [
+        { name: 'Brand Name / Logo', required: true },
+        { name: 'PAN Card', required: true },
+        { name: 'Aadhaar / Address Proof', required: true },
+        { name: 'Business Proof', required: false },
+        { name: 'Email', required: true },
+        { name: 'Mobile Number', required: true }
+      ],
+      whoFor: ['Brand Owners', 'Manufacturers', 'Exporters', 'Business Owners'],
+      faqs: [
+        { q: 'Do you guarantee approval?', a: 'No authority can guarantee approval. We guide preparation and process.' },
+        { q: 'Are government fees included?', a: 'Government/statutory fees are separate unless stated in your quote.' },
+        { q: 'How long does filing take?', a: 'Preparation starts after consultation and documents are ready.' },
+        { q: 'Can individuals apply?', a: 'Yes, depending on your business structure and class.' },
+        { q: 'How do I start?', a: 'Proceed to consultation for a custom quote.' }
+      ]
+    },
+    gst: {
+      name: 'GST Registration Support',
+      iconId: 'document',
+      price: 'Custom',
+      currency: '',
+      priceNote: 'Custom Quote',
+      badge: 'Compliance',
+      description: 'Get clear GST registration guidance so you can start selling on marketplaces faster.',
+      overview: [
+        'Eligibility and document checklist explained.',
+        'Application preparation support provided.',
+        'Marketplace-ready GST guidance for sellers.',
+        'Simple follow-up steps after submission.'
+      ],
+      included: [
+        'GST Consultation',
+        'Document Checklist',
+        'Application Guidance',
+        'Portal Process Support',
+        'Marketplace Compliance Tips',
+        'Follow-up Direction',
+        'WhatsApp Support',
+        'Business Guidance'
+      ],
+      timeline: timeline([
+        'Business type and needs confirmed.',
+        'PAN, address, and bank docs collected.',
+        'Application details prepared.',
+        'Submission guidance provided.',
+        'Registration follow-up explained.',
+        'Support for marketplace use of GSTIN.'
+      ]),
+      documents: [
+        { name: 'PAN Card', required: true },
+        { name: 'Aadhaar / Address Proof', required: true },
+        { name: 'Bank Account', required: true },
+        { name: 'Cancelled Cheque', required: true },
+        { name: 'Email', required: true },
+        { name: 'Mobile Number', required: true },
+        { name: 'Business Proof', required: false }
+      ],
+      whoFor: ['Beginners', 'Business Owners', 'Existing Sellers', 'Manufacturers'],
+      faqs: [
+        { q: 'Is GST mandatory for marketplaces?', a: 'Usually yes for Amazon, Flipkart, and Meesho selling.' },
+        { q: 'Do you file for me?', a: 'We guide preparation and process as per your quote scope.' },
+        { q: 'Are government fees included?', a: 'Statutory fees are separate unless stated in your quote.' },
+        { q: 'How fast can I start?', a: 'Consultation starts quickly once you share documents.' },
+        { q: 'How do I begin?', a: 'Book a consultation for your custom quote.' }
+      ]
+    },
+    iec: {
+      name: 'IEC Registration Support',
+      iconId: 'document',
+      price: 'Custom',
+      currency: '',
+      priceNote: 'Custom Quote',
+      badge: 'Export Ready',
+      description: 'Get guided IEC registration support for export and global marketplace selling.',
+      overview: [
+        'Export readiness and IEC requirements explained.',
+        'Document checklist shared clearly.',
+        'Application preparation support provided.',
+        'Next steps for global selling clarified.'
+      ],
+      included: [
+        'IEC Consultation',
+        'Document Checklist',
+        'Application Guidance',
+        'Portal Process Support',
+        'Export Readiness Tips',
+        'Follow-up Direction',
+        'WhatsApp Support',
+        'Business Guidance'
+      ],
+      timeline: timeline([
+        'Export goals confirmed.',
+        'PAN, bank, and business docs collected.',
+        'Application details prepared.',
+        'Submission guidance provided.',
+        'IEC follow-up explained.',
+        'Support for using IEC in global selling.'
+      ]),
+      documents: [
+        { name: 'PAN Card', required: true },
+        { name: 'Bank Account', required: true },
+        { name: 'Cancelled Cheque', required: true },
+        { name: 'Aadhaar / Address Proof', required: true },
+        { name: 'Email', required: true },
+        { name: 'Mobile Number', required: true },
+        { name: 'Business Proof', required: false }
+      ],
+      whoFor: ['Exporters', 'Manufacturers', 'Amazon.com Sellers', 'Business Owners'],
+      faqs: [
+        { q: 'Who needs IEC?', a: 'Typically required for exports and many global selling models.' },
+        { q: 'Is IEC linked to PAN?', a: 'Yes. PAN is a core document for IEC.' },
+        { q: 'Are government fees included?', a: 'Statutory fees are separate unless stated in your quote.' },
+        { q: 'Can this help Amazon.com sellers?', a: 'Yes. IEC support is useful for export-ready selling.' },
+        { q: 'How do I start?', a: 'Proceed to consultation for your custom quote.' }
       ]
     }
   };
 
   function esc(s) {
-    return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+    return String(s == null ? '' : s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
   }
 
-  const FEATURE_ICONS = ['target','package','tools','chart','lightning','handshake','whatsapp','rocket','check','star'];
-  const SUPPORT_LABELS = {
-    whatsapp: '24/7 WhatsApp Support',
-    instagram: 'Social Media Mentor',
-    meesho: 'Dedicated Account Manager',
-    flipkart: 'Dedicated Seller Mentor',
-    'amazon-in': 'Amazon Specialist Support',
-    'amazon-com': 'Global Business Mentor',
-    website: 'Developer + Training Support'
-  };
+  var FEATURE_ICONS = ['check','package','tools','chart','lightning','handshake','whatsapp','rocket','star','target'];
 
   function docIcon(name) {
-    const n = (name || '').toLowerCase();
-    if (n.includes('aadhaar') || n.includes('passport') || n.includes('pan')) return 'document';
-    if (n.includes('bank') || n.includes('cheque') || n.includes('upi') || n.includes('payment')) return 'money';
-    if (n.includes('gst') || n.includes('tax') || n.includes('compliance')) return 'document';
-    if (n.includes('logo') || n.includes('brand') || n.includes('photo')) return 'branding';
-    if (n.includes('domain') || n.includes('website')) return 'website';
-    if (n.includes('product') || n.includes('image')) return 'product-listing';
-    if (n.includes('address') || n.includes('business')) return 'business';
-    if (n.includes('smartphone') || n.includes('whatsapp')) return 'whatsapp';
-    if (n.includes('laptop') || n.includes('email')) return 'email';
+    var n = (name || '').toLowerCase();
+    if (n.indexOf('aadhaar') !== -1 || n.indexOf('passport') !== -1 || n.indexOf('pan') !== -1) return 'document';
+    if (n.indexOf('bank') !== -1 || n.indexOf('cheque') !== -1 || n.indexOf('upi') !== -1) return 'money';
+    if (n.indexOf('gst') !== -1 || n.indexOf('iec') !== -1 || n.indexOf('tax') !== -1) return 'document';
+    if (n.indexOf('logo') !== -1 || n.indexOf('brand') !== -1) return 'branding';
+    if (n.indexOf('domain') !== -1 || n.indexOf('website') !== -1) return 'website';
+    if (n.indexOf('product') !== -1) return 'product-listing';
+    if (n.indexOf('address') !== -1 || n.indexOf('business') !== -1) return 'business';
+    if (n.indexOf('whatsapp') !== -1 || n.indexOf('mobile') !== -1) return 'whatsapp';
+    if (n.indexOf('email') !== -1) return 'email';
     return 'document';
   }
 
@@ -3245,30 +3496,40 @@ delivery: {
     return 'consultation.html?plan=' + encodeURIComponent(planId);
   }
 
+  function priceHtml(plan) {
+    if (!plan.currency) {
+      return '<div class="plan-price pd-price-custom">' + esc(plan.price) + '</div>';
+    }
+    return '<div class="plan-price"><span class="currency">' + esc(plan.currency) + '</span>' + esc(plan.price) + '</div>';
+  }
+
+  function ctaPair(planId, primaryClass, secondaryClass) {
+    var cta = getConsultationUrl(planId);
+    return ''
+      + '<a href="' + cta + '" class="' + primaryClass + '">Proceed to Secure Payment</a>'
+      + '<a href="https://wa.me/917428329102" class="' + secondaryClass + '" target="_blank" rel="noopener">Talk to Expert</a>';
+  }
+
   function renderStickySidebar(plan, planId, extraClass) {
-    const cta = getConsultationUrl(planId);
-    const support = SUPPORT_LABELS[planId] || 'Dedicated Live Support';
-    const visible = extraClass && extraClass.indexOf('pd-page-sticky') !== -1 ? ' visible' : '';
-    const cls = 'pd-sticky reveal' + visible + (extraClass ? ' ' + extraClass : '');
+    var visible = extraClass && extraClass.indexOf('pd-page-sticky') !== -1 ? ' visible' : '';
+    var cls = 'pd-sticky reveal' + visible + (extraClass ? ' ' + extraClass : '');
     return ''
       + '<aside class="' + cls + '">'
       + '<div class="pd-sticky-inner">'
       + '<div class="plan-platform-icon platform-icon platform-logo brand-icon-wrap" data-icon="' + (plan.iconId || 'target') + '" aria-hidden="true"></div>'
       + '<h3>' + esc(plan.name) + '</h3>'
-      + '<div class="plan-price"><span class="currency">' + esc(plan.currency) + '</span>' + esc(plan.price) + '</div>'
+      + priceHtml(plan)
+      + '<p class="pd-sticky-note">' + esc(plan.priceNote) + '</p>'
       + '<ul class="pd-sticky-meta">'
-      + '<li><span>' + esc(plan.setupLabel || 'Setup Time') + '</span><b>' + esc(plan.delivery.total) + '</b></li>'
-      + '<li><span>Features Included</span><b>' + plan.included.length + ' Items</b></li>'
-      + '<li><span>Support</span><b>' + esc(support) + '</b></li>'
-      + '<li><span>Payment</span><b>' + esc(plan.priceNote) + '</b></li>'
+      + '<li><span>Included</span><b>' + plan.included.length + ' Items</b></li>'
+      + '<li><span>Project Start</span><b>After Payment</b></li>'
+      + '<li><span>Support</span><b>Dedicated</b></li>'
       + '</ul>'
-      + '<a href="' + cta + '" class="btn primary">Continue to Consultation</a>'
-      + '<a href="https://wa.me/917428329102" class="btn ghost" target="_blank"><span class="brand-icon-wrap" data-icon="whatsapp" aria-hidden="true"></span> WhatsApp Us</a>'
+      + ctaPair(planId, 'btn primary', 'btn ghost')
       + '</div></aside>';
   }
 
   function renderHero(plan, planId) {
-    const cta = getConsultationUrl(planId);
     return ''
       + '<div class="pd-hero-wrap reveal visible">'
       + '<a href="index.html#plans" class="plan-detail-back">← Back to All Plans</a>'
@@ -3279,125 +3540,131 @@ delivery: {
       + '<span class="pd-hero-icon pd-hero-icon-inline platform-icon platform-logo brand-icon-wrap" data-icon="' + (plan.iconId || 'target') + '" aria-hidden="true"></span>'
       + '<h2>' + esc(plan.name) + '</h2>'
       + '</div>'
-      + '<div class="plan-price"><span class="currency">' + esc(plan.currency) + '</span>' + esc(plan.price) + '</div>'
-      + '<p class="plan-old-price pd-hero-price-note">' + esc(plan.priceNote) + '</p>'
       + '<p class="pd-hero-desc">' + esc(plan.description) + '</p>'
-      + '<div class="pd-hero-badges">'
-      + '<span class="pill">Best for: ' + esc(plan.badge) + '</span>'
-      + '<span class="pill" style="color:#14a8ff;background:rgba(20,168,255,0.1);border-color:rgba(20,168,255,0.35);">⏱️ ' + esc(plan.setupLabel || 'Setup Time') + ': ' + esc(plan.delivery.total) + '</span>'
-      + '</div>'
+      + priceHtml(plan)
+      + '<p class="plan-old-price pd-hero-price-note">' + esc(plan.priceNote) + '</p>'
       + '<div class="pd-hero-actions">'
-      + '<a href="' + cta + '" class="btn primary">Continue to Consultation</a>'
-      + '<a href="https://wa.me/917428329102" class="btn ghost" target="_blank"><span class="brand-icon-wrap" data-icon="whatsapp" aria-hidden="true"></span> Chat on WhatsApp</a>'
+      + ctaPair(planId, 'btn primary', 'btn ghost')
+      + '</div>'
+      + '<div class="pd-hero-trust" aria-label="Trust badges">'
+      + '<span>GST Invoice</span>'
+      + '<span>Secure Payment</span>'
+      + '<span>Dedicated Support</span>'
       + '</div>'
       + '</div></div></div>';
   }
 
-  function renderQuickOverview(plan, planId) {
-    const support = SUPPORT_LABELS[planId] || 'Live Support';
+  function renderQuickOverview(plan) {
+    var lines = (plan.overview || []).map(function(line) {
+      return '<li>' + esc(line) + '</li>';
+    }).join('');
     return ''
-      + '<section class="section reveal">'
-      + '<div class="section-head"><span class="pill">Quick Overview</span><h2>Plan at a Glance</h2></div>'
-      + '<div class="pd-overview-grid">'
-      + '<div class="pd-overview-card"><span class="pd-ov-icon brand-icon-wrap" data-icon="time" aria-hidden="true"></span><h4>' + esc(plan.setupLabel || 'Setup Time') + '</h4><p>' + esc(plan.delivery.total) + '</p></div>'
-      + '<div class="pd-overview-card"><span class="pd-ov-icon brand-icon-wrap" data-icon="handshake" aria-hidden="true"></span><h4>Support</h4><p>' + esc(support) + '</p></div>'
-      + '<div class="pd-overview-card"><span class="pd-ov-icon brand-icon-wrap" data-icon="' + (plan.iconId || 'target') + '" aria-hidden="true"></span><h4>Platform</h4><p>' + esc(plan.name) + '</p></div>'
-      + '<div class="pd-overview-card"><span class="pd-ov-icon brand-icon-wrap" data-icon="rocket" aria-hidden="true"></span><h4>Project Start</h4><p>Immediately After Payment</p></div>'
-      + '</div></section>';
+      + '<section class="section reveal pd-overview-section">'
+      + '<div class="section-head"><span class="pill">Quick Overview</span><h2>What This Service Includes</h2></div>'
+      + '<ul class="pd-overview-list">' + lines + '</ul>'
+      + '</section>';
   }
 
   function renderIncluded(plan) {
-    const cards = plan.included.map(function(item, i) {
-      const icon = FEATURE_ICONS[i % FEATURE_ICONS.length];
-      return '<div class="pd-feature-card"><div class="pd-feat-icon brand-icon-wrap" data-icon="' + icon + '" aria-hidden="true"></div><div><h3>' + esc(item.title) + '</h3><p>' + esc(item.desc) + '</p></div></div>';
+    var cards = plan.included.slice(0, 10).map(function(item, i) {
+      var title = typeof item === 'string' ? item : item.title;
+      var icon = FEATURE_ICONS[i % FEATURE_ICONS.length];
+      return '<div class="pd-include-card"><span class="pd-include-check brand-icon-wrap" data-icon="' + icon + '" aria-hidden="true"></span><h3>' + esc(title) + '</h3></div>';
     }).join('');
     return ''
       + '<section class="section reveal">'
-      + '<div class="section-head"><span class="pill">What\'s Included</span><h2>Everything You Get</h2><p>' + plan.included.length + ' features, services and support included in this plan.</p></div>'
-      + '<div class="pd-features-grid">' + cards + '</div>'
-      + '</section>';
-  }
-
-  function renderBenefits(plan) {
-    const cards = plan.benefits.map(function(b) {
-      return '<div class="pd-benefit-card"><span class="pd-ben-icon brand-icon-wrap" data-icon="' + (b.iconId || 'check') + '" aria-hidden="true"></span><h3>' + esc(b.title) + '</h3><p>' + esc(b.desc) + '</p></div>';
-    }).join('');
-    return ''
-      + '<section class="section reveal">'
-      + '<div class="section-head"><span class="pill">Benefits</span><h2>Why Choose This Plan</h2><p>The real advantages that make this plan worth every rupee.</p></div>'
-      + '<div class="pd-benefits-grid">' + cards + '</div>'
-      + '</section>';
-  }
-
-  function renderProcess(plan) {
-    const cards = plan.process.map(function(step, idx) {
-      const items = step.items.map(function(it) { return '<li>' + esc(it) + '</li>'; }).join('');
-      return '<div class="pd-process-card reveal">'
-        + '<div class="pd-process-num">' + (idx + 1) + '</div>'
-        + '<h3>' + esc(step.title) + '</h3>'
-        + '<span class="pd-process-range">' + esc(step.tag) + ' � ' + esc(step.range) + '</span>'
-        + '<ul>' + items + '</ul>'
-        + '</div>';
-    }).join('');
-    return ''
-      + '<section class="process-section section reveal">'
-      + '<div class="section-head"><span class="pill">How We Work</span><h2>Our Step-by-Step Process</h2><p>Clear milestones from consultation to your first sale.</p></div>'
-      + '<div class="pd-process-grid">' + cards + '</div>'
+      + '<div class="section-head"><span class="pill">What\'s Included</span><h2>Everything You Get</h2></div>'
+      + '<div class="pd-include-grid">' + cards + '</div>'
       + '</section>';
   }
 
   function renderTimeline(plan) {
-    const phases = (plan.delivery && plan.delivery.phases) ? plan.delivery.phases : [];
-    const steps = phases.map(function(phase, idx) {
+    var steps = (plan.timeline || []).map(function(phase, idx) {
       return '<div class="pd-timeline-step reveal">'
         + '<div class="pd-timeline-num">' + (idx + 1) + '</div>'
         + '<div class="pd-timeline-body">'
         + '<h3>' + esc(phase.title) + '</h3>'
-        + '<span class="pd-timeline-range">' + esc(phase.tag) + '</span>'
         + '<p>' + esc(phase.detail) + '</p>'
         + '</div></div>';
     }).join('');
     return ''
       + '<section class="section reveal">'
-      + '<div class="section-head"><span class="pill">Timeline</span><h2>Onboarding Timeline</h2><p>' + esc(plan.setupLabel || 'Setup Time') + ': <strong style="color:#D4AF37">' + esc(plan.delivery.total) + '</strong></p></div>'
+      + '<div class="section-head"><span class="pill">Setup Timeline</span><h2>How Onboarding Works</h2><p>Clear stages from consultation to dedicated support.</p></div>'
       + '<div class="pd-delivery-timeline"><div class="pd-timeline">' + steps + '</div></div>'
-      + '<div class="roadmap-outcome" style="margin-top:28px;">🚀 ' + plan.delivery.outcome + '</div>'
       + '</section>';
   }
 
   function renderDocuments(plan) {
-    const docs = plan.documents.map(function(doc) {
-      const tagCls = doc.required ? 'required' : 'optional';
-      const tagLabel = doc.required ? 'Required' : 'Optional';
+    var docs = (plan.documents || []).map(function(doc) {
+      var tagCls = doc.required ? 'required' : 'optional';
+      var tagLabel = doc.required ? 'Required' : 'Optional';
       return '<div class="pd-doc-card"><div class="pd-doc-icon brand-icon-wrap" data-icon="' + docIcon(doc.name) + '" aria-hidden="true"></div>'
-        + '<div class="pd-doc-body"><h3>' + esc(doc.name) + ' <span class="doc-tag ' + tagCls + '">' + tagLabel + '</span></h3>'
-        + '<p>' + esc(doc.note) + '</p></div></div>';
+        + '<div class="pd-doc-body"><h3>' + esc(doc.name) + ' <span class="doc-tag ' + tagCls + '">' + tagLabel + '</span></h3></div></div>';
     }).join('');
     return ''
       + '<section class="section reveal">'
-      + '<div class="section-head"><span class="pill">Documents Required</span><h2>What You Need to Get Started</h2><p>Gather these before your consultation — we guide you through anything missing.</p></div>'
-      + '<div class="pd-docs-grid">' + docs + '</div>'
+      + '<div class="section-head"><span class="pill">Documents Required</span><h2>What You Need</h2></div>'
+      + '<div class="pd-docs-grid pd-docs-grid-compact">' + docs + '</div>'
+      + '</section>';
+  }
+
+  function renderWhoFor(plan) {
+    var chips = (plan.whoFor || []).map(function(item) {
+      return '<span class="pd-who-chip">' + esc(item) + '</span>';
+    }).join('');
+    return ''
+      + '<section class="section reveal">'
+      + '<div class="section-head"><span class="pill">Who Should Buy</span><h2>This Plan Is Ideal For</h2></div>'
+      + '<div class="pd-who-grid">' + chips + '</div>'
+      + '</section>';
+  }
+
+  function renderWhyDg() {
+    var cards = WHY_DG.map(function(b) {
+      return '<div class="pd-benefit-card"><span class="pd-ben-icon brand-icon-wrap" data-icon="' + (b.iconId || 'check') + '" aria-hidden="true"></span><h3>' + esc(b.title) + '</h3><p>' + esc(b.desc) + '</p></div>';
+    }).join('');
+    return ''
+      + '<section class="section reveal">'
+      + '<div class="section-head"><span class="pill">Why DropshipGuru</span><h2>Why Choose DropshipGuru</h2></div>'
+      + '<div class="pd-benefits-grid">' + cards + '</div>'
       + '</section>';
   }
 
   function renderFaqs(plan) {
-    const faqs = plan.faqs.map(function(f) {
-      return '<div class="faq-item"><button>' + esc(f.q) + ' <span>+</span></button><p>' + esc(f.a) + '</p></div>';
+    var faqs = (plan.faqs || []).slice(0, 6).map(function(f) {
+      return '<div class="faq-item"><button type="button">' + esc(f.q) + ' <span>+</span></button><p>' + esc(f.a) + '</p></div>';
     }).join('');
     return ''
       + '<section class="faq-section section reveal pd-faq-wrap" id="faq">'
-      + '<div class="section-head"><span class="pill">FAQ</span><h2>Frequently Asked Questions</h2><p>Plan-specific answers to help you decide with confidence.</p></div>'
+      + '<div class="section-head"><span class="pill">FAQ</span><h2>Frequently Asked Questions</h2></div>'
       + '<div class="faq-list">' + faqs + '</div>'
       + '</section>';
   }
 
+  function renderReviews() {
+    var cards = REVIEWS.map(function(r) {
+      return '<div class="pd-review-card">'
+        + '<div class="pd-review-stars" aria-hidden="true">★★★★★</div>'
+        + '<p>"' + esc(r.text) + '"</p>'
+        + '<div class="pd-review-person"><strong>' + esc(r.name) + '</strong><span>' + esc(r.place) + '</span></div>'
+        + '</div>';
+    }).join('');
+    return ''
+      + '<section class="section reveal">'
+      + '<div class="section-head"><span class="pill">Reviews</span><h2>What Customers Say</h2></div>'
+      + '<div class="pd-reviews-grid">' + cards + '</div>'
+      + '</section>';
+  }
+
   function renderFinalCta(plan, planId) {
-    const cta = getConsultationUrl(planId);
     return ''
       + '<section class="pd-final-cta reveal">'
-      + '<h2>Ready to Launch Your Business?</h2>'
-      + '<p>Book your free consultation and our team will help you launch your ' + esc(plan.name) + ' business.</p>'
-      + '<a href="' + cta + '" class="btn primary">Continue to Consultation</a>'
+      + '<h2>Ready to Start Your Business?</h2>'
+      + priceHtml(plan)
+      + '<p class="pd-final-price-note">' + esc(plan.priceNote) + '</p>'
+      + '<div class="pd-final-actions">'
+      + ctaPair(planId, 'btn primary', 'btn ghost')
+      + '</div>'
       + '</section>';
   }
 
@@ -3407,13 +3674,14 @@ delivery: {
       + '<div class="pd-page-main">'
       + renderHero(plan, planId)
       + '<div class="pd-content">'
-      + renderQuickOverview(plan, planId)
+      + renderQuickOverview(plan)
       + renderIncluded(plan)
-      + renderBenefits(plan)
-      + renderProcess(plan)
-      + renderDocuments(plan)
       + renderTimeline(plan)
+      + renderDocuments(plan)
+      + renderWhoFor(plan)
+      + renderWhyDg()
       + renderFaqs(plan)
+      + renderReviews()
       + '</div>'
       + '</div>'
       + renderStickySidebar(plan, planId, 'pd-page-sticky')
@@ -3436,7 +3704,7 @@ delivery: {
   }
 
   function bindRevealAnimations() {
-    const revealIo = new IntersectionObserver(function(entries) {
+    var revealIo = new IntersectionObserver(function(entries) {
       entries.forEach(function(e) {
         if (e.isIntersecting) {
           e.target.classList.add('visible');
@@ -3450,10 +3718,10 @@ delivery: {
   }
 
   function initPlanPage() {
-    const params = new URLSearchParams(window.location.search);
-    const planId = params.get('plan');
-    const app = document.getElementById('planDetailsApp');
-    const plan = planId && PLANS[planId];
+    var params = new URLSearchParams(window.location.search);
+    var planId = params.get('plan');
+    var app = document.getElementById('planDetailsApp');
+    var plan = planId && PLANS[planId];
     app.innerHTML = plan ? renderPlan(plan, planId) : renderNotFound();
     if (window.BrandIcons) BrandIcons.mountAll(app);
     if (plan) document.title = plan.name + ' Plan Details | Dropship Guru';

@@ -241,7 +241,7 @@
           </div>
           <div class="consult-plan-meta">
             <div class="consult-plan-meta-item">
-              <span class="consult-plan-meta-label">Delivery Time</span>
+              <span class="consult-plan-meta-label">Setup Time</span>
               <span class="consult-plan-meta-val" id="selectedPlanSetup"></span>
             </div>
             <div class="consult-plan-meta-item">
@@ -1073,25 +1073,25 @@ document.querySelectorAll('.prog-card').forEach(c=>{
 
 /* ═══ CONSULTATION — plan from URL & form steps ═══ */
 const CONSULT_PLANS={
-  whatsapp:{name:'WhatsApp Business',iconId:'whatsapp',price:'599',displayAmount:'₹599',setupTime:'3–5 Days',supportType:'WhatsApp Mentorship',kind:'plan'},
-  instagram:{name:'Instagram & Facebook',iconId:'social',price:'1299',displayAmount:'₹1,299',setupTime:'5–7 Days',supportType:'Social Commerce Support',kind:'plan'},
-  meesho:{name:'Meesho Business',iconId:'meesho',price:'3999',displayAmount:'₹3,999',setupTime:'7–14 Days',supportType:'1 Year Expert Support',kind:'plan'},
-  flipkart:{name:'Flipkart Business',iconId:'flipkart',price:'3999',displayAmount:'₹3,999',setupTime:'7–14 Days',supportType:'1 Year Expert Support',kind:'plan'},
-  'amazon-in':{name:'Amazon.in Business',iconId:'amazon-in',price:'3999',displayAmount:'₹3,999',setupTime:'7–14 Days',supportType:'1 Year Expert Support',kind:'plan'},
-  'amazon-com':{name:'Amazon.com USA',iconId:'amazon-com',price:'6999',displayAmount:'₹6,999',setupTime:'14–21 Days',supportType:'USA Marketplace Support',kind:'plan'},
-  website:{name:'Website Development',iconId:'website',price:'9999',displayAmount:'₹9,999',setupTime:'21–30 Days',supportType:'Full Development Support',kind:'plan'},
-  'whatsapp-business':{name:'WhatsApp Business Mastery Course',iconId:'whatsapp',price:'149',displayAmount:'₹149',setupTime:'Instant Access',supportType:'Lifetime Course Access',kind:'course'},
-  'instagram-facebook':{name:'Instagram & Facebook Mastery Course',iconId:'social',price:'199',displayAmount:'₹199',setupTime:'Instant Access',supportType:'Lifetime Course Access',kind:'course'},
-  'marketplace-mastery':{name:'Meesho, Amazon & Flipkart Mastery Course',iconId:'meesho',price:'299',displayAmount:'₹299',setupTime:'Instant Access',supportType:'Lifetime Course Access',kind:'course'},
-  'amazon-seller':{name:'Amazon Seller Mastery Course',iconId:'amazon-in',price:'299',displayAmount:'₹299',setupTime:'Instant Access',supportType:'Lifetime Course Access',kind:'course'},
-  'ecommerce-website':{name:'Ecommerce Website Mastery Course',iconId:'website',price:'399',displayAmount:'₹399',setupTime:'Instant Access',supportType:'Lifetime Course Access',kind:'course'},
-  'store-setup':{name:'Store Setup',iconId:'shopify',price:'',displayAmount:'',setupTime:'Custom Timeline',supportType:'Expert Support',kind:'service'},
-  'marketplace-listing':{name:'Marketplace Listing',iconId:'meesho',price:'',displayAmount:'',setupTime:'Custom Timeline',supportType:'Expert Support',kind:'service'},
-  'product-research':{name:'Product Research',iconId:'target',price:'',displayAmount:'',setupTime:'Custom Timeline',supportType:'Expert Support',kind:'service'},
-  'branding':{name:'Branding',iconId:'branding',price:'',displayAmount:'',setupTime:'Custom Timeline',supportType:'Expert Support',kind:'service'},
-  'marketing-support':{name:'Marketing Support',iconId:'marketing',price:'',displayAmount:'',setupTime:'Custom Timeline',supportType:'Expert Support',kind:'service'},
-  'mentorship':{name:'Mentorship',iconId:'mentorship',price:'',displayAmount:'',setupTime:'Custom Timeline',supportType:'Expert Support',kind:'service'},
-  'website-development':{name:'Website Development',iconId:'website',price:'',displayAmount:'',setupTime:'Custom Timeline',supportType:'Expert Support',kind:'service'}
+  whatsapp:{name:'WhatsApp Business',iconId:'whatsapp',price:'599',displayAmount:'₹599',setupTime:'24–48 Hours',setupLabel:'Setup Time',supportType:'WhatsApp Mentorship',kind:'plan'},
+  instagram:{name:'Instagram & Facebook',iconId:'social',price:'1299',displayAmount:'₹1,299',setupTime:'24–48 Hours',setupLabel:'Setup Time',supportType:'Social Commerce Support',kind:'plan'},
+  meesho:{name:'Meesho Business',iconId:'meesho',price:'3999',displayAmount:'₹3,999',setupTime:'1–2 Business Days',setupLabel:'Account Activation',supportType:'1 Year Expert Support',kind:'plan'},
+  flipkart:{name:'Flipkart Business',iconId:'flipkart',price:'3999',displayAmount:'₹3,999',setupTime:'1–2 Business Days',setupLabel:'Account Activation',supportType:'1 Year Expert Support',kind:'plan'},
+  'amazon-in':{name:'Amazon.in Business',iconId:'amazon-in',price:'3999',displayAmount:'₹3,999',setupTime:'1–2 Business Days',setupLabel:'Account Activation',supportType:'1 Year Expert Support',kind:'plan'},
+  'amazon-com':{name:'Amazon.com USA',iconId:'amazon-com',price:'6999',displayAmount:'₹6,999',setupTime:'1–2 Business Days',setupLabel:'Onboarding Time',supportType:'USA Marketplace Support',kind:'plan'},
+  website:{name:'Website Development',iconId:'website',price:'9999',displayAmount:'₹9,999',setupTime:'Immediately After Payment',setupLabel:'Project Start',supportType:'Full Development Support',kind:'plan'},
+  'whatsapp-business':{name:'WhatsApp Business Mastery Course',iconId:'whatsapp',price:'149',displayAmount:'₹149',setupTime:'Instant Access',setupLabel:'Access',supportType:'Lifetime Course Access',kind:'course'},
+  'instagram-facebook':{name:'Instagram & Facebook Mastery Course',iconId:'social',price:'199',displayAmount:'₹199',setupTime:'Instant Access',setupLabel:'Access',supportType:'Lifetime Course Access',kind:'course'},
+  'marketplace-mastery':{name:'Meesho, Amazon & Flipkart Mastery Course',iconId:'meesho',price:'299',displayAmount:'₹299',setupTime:'Instant Access',setupLabel:'Access',supportType:'Lifetime Course Access',kind:'course'},
+  'amazon-seller':{name:'Amazon Seller Mastery Course',iconId:'amazon-in',price:'299',displayAmount:'₹299',setupTime:'Instant Access',setupLabel:'Access',supportType:'Lifetime Course Access',kind:'course'},
+  'ecommerce-website':{name:'Ecommerce Website Mastery Course',iconId:'website',price:'399',displayAmount:'₹399',setupTime:'Instant Access',setupLabel:'Access',supportType:'Lifetime Course Access',kind:'course'},
+  'store-setup':{name:'Store Setup',iconId:'shopify',price:'',displayAmount:'',setupTime:'Within 30 Minutes',setupLabel:'Consultation Availability',supportType:'Expert Support',kind:'service'},
+  'marketplace-listing':{name:'Marketplace Listing',iconId:'meesho',price:'',displayAmount:'',setupTime:'Within 30 Minutes',setupLabel:'Consultation Availability',supportType:'Expert Support',kind:'service'},
+  'product-research':{name:'Product Research',iconId:'target',price:'',displayAmount:'',setupTime:'Within 30 Minutes',setupLabel:'Consultation Availability',supportType:'Expert Support',kind:'service'},
+  'branding':{name:'Branding',iconId:'branding',price:'',displayAmount:'',setupTime:'Within 30 Minutes',setupLabel:'Consultation Availability',supportType:'Expert Support',kind:'service'},
+  'marketing-support':{name:'Marketing Support',iconId:'marketing',price:'',displayAmount:'',setupTime:'Within 30 Minutes',setupLabel:'Consultation Availability',supportType:'Expert Support',kind:'service'},
+  'mentorship':{name:'Mentorship',iconId:'mentorship',price:'',displayAmount:'',setupTime:'Within 30 Minutes',setupLabel:'Consultation Availability',supportType:'Expert Support',kind:'service'},
+  'website-development':{name:'Website Development',iconId:'website',price:'',displayAmount:'',setupTime:'Within 30 Minutes',setupLabel:'Consultation Availability',supportType:'Expert Support',kind:'service'}
 };
 const INDIAN_STATES=[
   'Andhra Pradesh','Arunachal Pradesh','Assam','Bihar','Chhattisgarh','Goa','Gujarat','Haryana',
@@ -1158,7 +1158,7 @@ function initConsultationPlan(){
   if(supportEl)supportEl.textContent=selectedPlanFromUrl.supportType;
   const setupLabel=document.querySelector('#selectedPlanCard .consult-plan-meta-item:first-child .consult-plan-meta-label');
   const supportLabel=document.querySelector('#selectedPlanCard .consult-plan-meta-item:last-child .consult-plan-meta-label');
-  if(setupLabel)setupLabel.textContent=selectedPlanFromUrl.kind==='course'?'Access':'Delivery Time';
+  if(setupLabel)setupLabel.textContent=selectedPlanFromUrl.setupLabel||(selectedPlanFromUrl.kind==='course'?'Access':'Setup Time');
   if(supportLabel)supportLabel.textContent=selectedPlanFromUrl.kind==='course'?'Format':'Support';
   document.title='Book '+selectedPlanFromUrl.name+' Consultation | Dropship Guru';
   updateSubmitButtonLabel();

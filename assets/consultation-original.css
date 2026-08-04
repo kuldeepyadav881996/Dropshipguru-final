@@ -1351,9 +1351,11 @@ footer::before, footer::after { display: none !important; }
 footer {
   background: #0E1013 !important;
   border-top: 1px solid rgba(255,255,255,0.05) !important;
-  padding-top: 72px !important;
+  padding-top: 0 !important;
 }
-.footer-inner { width: min(1280px, calc(100% - 48px)) !important; gap: 40px !important; }
+#siteFooter.footer-inner,
+#siteFooter .footer-inner { /* footer.css owns layout */ }
+.footer-inner { width: min(1120px, calc(100% - 40px)) !important; gap: 16px 20px !important; }
 .footer-bottom { border-top: 1px solid rgba(255,255,255,0.05) !important; }
 .footer-trust-badges { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: flex-end; }
 

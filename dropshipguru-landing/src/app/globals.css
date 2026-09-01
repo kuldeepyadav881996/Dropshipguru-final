@@ -1,0 +1,132 @@
+@import "tailwindcss";
+
+/* PlatformLogo — shared 44×24 icon system */
+:root {
+  --pi-box: 44px;
+  --pi-icon: 24px;
+  --pi-radius: 14px;
+  --pi-bg: #1e232e;
+  --pi-border: rgba(212, 175, 55, 0.35);
+}
+
+.platform-icon,
+.platform-logo,
+.brand-icon-wrap.platform-icon {
+  box-sizing: border-box;
+  width: var(--pi-box);
+  height: var(--pi-box);
+  min-width: var(--pi-box);
+  min-height: var(--pi-box);
+  max-width: var(--pi-box);
+  max-height: var(--pi-box);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  overflow: visible;
+  border-radius: var(--pi-radius);
+  background: var(--pi-bg);
+  border: 1px solid var(--pi-border);
+}
+
+.platform-icon svg,
+.platform-logo svg,
+.brand-icon-svg {
+  width: var(--pi-icon);
+  height: var(--pi-icon);
+  max-width: var(--pi-icon);
+  max-height: var(--pi-icon);
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.amazon-icon-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1px;
+  overflow: visible;
+}
+
+.amazon-market-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1px 5px;
+  border-radius: 4px;
+  font-size: 7px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #e8c872;
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.18), rgba(212, 175, 55, 0.06));
+  border: 1px solid rgba(212, 175, 55, 0.32);
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.social-dual-icons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  width: var(--pi-box);
+  max-width: var(--pi-box);
+  overflow: visible;
+}
+
+.social-dual-icons svg {
+  width: 18px;
+  height: 18px;
+  max-width: 18px;
+  max-height: 18px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+@theme inline {
+  --color-gold: #f5b400;
+  --color-gold-dark: #ff8c00;
+  --color-purple: #8b5cf6;
+  --color-purple-deep: #6d28d9;
+  --color-bg-dark: #05050a;
+  --color-card-dark: #12121a;
+  --color-body-text: #a0a0a8;
+  --font-display: var(--font-playfair);
+  --font-body: var(--font-poppins);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #05050a;
+  color: #ffffff;
+  font-family: var(--font-poppins), system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+.glass-card {
+  background: rgba(18, 18, 26, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45);
+}
+
+.gold-gradient {
+  background: linear-gradient(90deg, #f5b400, #ff8c00);
+}
+
+.gold-gradient-text {
+  background: linear-gradient(90deg, #f5b400, #ff8c00);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}

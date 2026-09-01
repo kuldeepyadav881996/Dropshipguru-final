@@ -1,0 +1,351 @@
+/* #why-us — single story panel (What You Get | Perfect For)
+   Scoped only to #why-us.afu-story. No global animation / brand changes. */
+
+#why-us.afu-story {
+  padding: clamp(48px, 5vw, 68px) 0 !important;
+}
+
+#why-us.afu-story .section-head {
+  max-width: 720px;
+  margin-inline: auto;
+  margin-bottom: 0;
+}
+
+#why-us.afu-story .section-head p {
+  max-width: 56ch;
+  margin-inline: auto;
+  line-height: 1.55;
+}
+
+/* Neutralize legacy tall-card chrome if any leftover selectors hit this section */
+#why-us.afu-story #who-can-start {
+  padding: 0 !important;
+  margin: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  clip-path: none !important;
+  overflow: visible !important;
+  position: relative;
+}
+
+#why-us.afu-story #who-can-start::before {
+  display: none !important;
+}
+
+/* Glass panel */
+#why-us.afu-story .afu-panel {
+  width: min(1180px, calc(100% - 32px));
+  margin: clamp(24px, 3vw, 36px) auto 0;
+  padding: clamp(20px, 2.2vw, 28px);
+  border-radius: 28px;
+  position: relative;
+  z-index: 1;
+  border: 1px solid rgba(212, 175, 55, 0.16);
+  background:
+    radial-gradient(ellipse 70% 55% at 12% 0%, rgba(212, 175, 55, 0.08), transparent 55%),
+    radial-gradient(ellipse 55% 45% at 92% 100%, rgba(20, 168, 255, 0.05), transparent 50%),
+    linear-gradient(165deg, rgba(255, 255, 255, 0.045) 0%, rgba(255, 255, 255, 0.012) 48%, rgba(8, 9, 12, 0.72) 100%);
+  box-shadow:
+    0 28px 64px rgba(0, 0, 0, 0.34),
+    0 0 48px rgba(212, 175, 55, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+/* Side-by-side columns */
+#why-us.afu-story .afu-cols {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: clamp(16px, 2vw, 24px);
+  align-items: stretch;
+}
+
+#why-us.afu-story .afu-col {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+#why-us.afu-story .afu-col-title {
+  margin: 0 0 2px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #e8c872;
+}
+
+#why-us.afu-story .afu-split {
+  width: 1px;
+  align-self: stretch;
+  margin: 8px 0;
+  background: linear-gradient(
+    180deg,
+    transparent,
+    rgba(212, 175, 55, 0.4),
+    transparent
+  );
+  position: relative;
+}
+
+#why-us.afu-story .afu-split::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  background: #d4af37;
+  box-shadow: 0 0 10px rgba(212, 175, 55, 0.55);
+}
+
+#why-us.afu-story .afu-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Compact horizontal cards ~110–130px */
+#why-us.afu-story .afu-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-height: 112px;
+  max-height: 130px;
+  padding: 16px 18px;
+  border-radius: 16px;
+  border: 1px solid rgba(212, 175, 55, 0.14);
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.05) 0%,
+    rgba(255, 255, 255, 0.015) 50%,
+    rgba(8, 9, 12, 0.55) 100%
+  );
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.22);
+  transition:
+    transform 0.28s var(--ease-premium, cubic-bezier(0.22, 1, 0.36, 1)),
+    box-shadow 0.28s ease,
+    border-color 0.28s ease;
+  will-change: transform;
+}
+
+#why-us.afu-story .afu-card-hot {
+  border-color: rgba(20, 168, 255, 0.35);
+  background: linear-gradient(
+    135deg,
+    rgba(20, 168, 255, 0.1) 0%,
+    rgba(212, 175, 55, 0.04) 45%,
+    rgba(8, 9, 12, 0.55) 100%
+  );
+}
+
+#why-us.afu-story .afu-ico {
+  flex: 0 0 48px;
+  width: 48px !important;
+  height: 48px !important;
+  min-width: 48px;
+  border-radius: 14px !important;
+  display: grid !important;
+  place-items: center !important;
+  border: 1px solid rgba(212, 175, 55, 0.32) !important;
+  background: linear-gradient(145deg, rgba(212, 175, 55, 0.16), rgba(212, 175, 55, 0.04)) !important;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
+  font-size: 22px !important;
+  transition: transform 0.28s var(--ease-premium, cubic-bezier(0.22, 1, 0.36, 1)) !important;
+}
+
+#why-us.afu-story .afu-card:nth-child(2) .afu-ico {
+  border-color: rgba(20, 168, 255, 0.4) !important;
+  background: linear-gradient(145deg, rgba(20, 168, 255, 0.16), rgba(20, 168, 255, 0.04)) !important;
+}
+
+#why-us.afu-story .afu-card:nth-child(3) .afu-ico {
+  border-color: rgba(36, 213, 106, 0.38) !important;
+  background: linear-gradient(145deg, rgba(36, 213, 106, 0.14), rgba(36, 213, 106, 0.04)) !important;
+}
+
+#why-us.afu-story .afu-card:nth-child(4) .afu-ico {
+  border-color: rgba(139, 116, 255, 0.4) !important;
+  background: linear-gradient(145deg, rgba(139, 116, 255, 0.15), rgba(139, 116, 255, 0.04)) !important;
+}
+
+#why-us.afu-story .afu-card:nth-child(5) .afu-ico {
+  border-color: rgba(255, 91, 108, 0.38) !important;
+  background: linear-gradient(145deg, rgba(255, 91, 108, 0.14), rgba(255, 91, 108, 0.04)) !important;
+}
+
+#why-us.afu-story .afu-copy {
+  min-width: 0;
+  flex: 1;
+}
+
+#why-us.afu-story .afu-copy h4 {
+  margin: 0 0 4px;
+  font-family: Fraunces, Georgia, serif;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #f5f3eb;
+  line-height: 1.25;
+}
+
+#why-us.afu-story .afu-copy p {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.55);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+#why-us.afu-story .afu-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(212, 175, 55, 0.42);
+  box-shadow:
+    0 18px 40px rgba(0, 0, 0, 0.36),
+    0 0 28px rgba(212, 175, 55, 0.16);
+}
+
+#why-us.afu-story .afu-card:hover .afu-ico {
+  transform: scale(1.08);
+}
+
+/* CTA inside panel */
+#why-us.afu-story .afu-cta {
+  margin-top: clamp(18px, 2vw, 24px);
+  padding-top: clamp(16px, 1.8vw, 20px);
+  border-top: 1px solid rgba(212, 175, 55, 0.14);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px 24px;
+  flex-wrap: wrap;
+}
+
+#why-us.afu-story .afu-cta-title {
+  margin: 0;
+  flex: 1 1 220px;
+  font-family: Fraunces, Georgia, serif;
+  font-size: clamp(17px, 1.8vw, 22px);
+  font-weight: 700;
+  color: #f5f3eb;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+}
+
+#why-us.afu-story .afu-cta-btns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+#why-us.afu-story .afu-cta-btns .btn {
+  min-height: 44px;
+  padding: 0 20px;
+  transition:
+    transform 0.25s var(--ease-premium, cubic-bezier(0.22, 1, 0.36, 1)),
+    box-shadow 0.25s ease;
+}
+
+#why-us.afu-story .afu-cta-btns .btn:hover {
+  transform: translateY(-2px);
+}
+
+#why-us.afu-story .afu-cta-btns .btn.primary:hover {
+  box-shadow: 0 10px 24px rgba(247, 184, 36, 0.26), 0 0 18px rgba(212, 175, 55, 0.16);
+}
+
+/* Tablet — still 2 columns, tighter */
+@media (max-width: 980px) {
+  #why-us.afu-story .afu-panel {
+    width: min(100%, calc(100% - 28px));
+    padding: 18px;
+  }
+
+  #why-us.afu-story .afu-card {
+    min-height: 108px;
+    padding: 14px 14px;
+    gap: 12px;
+  }
+
+  #why-us.afu-story .afu-copy h4 {
+    font-size: 15px;
+  }
+
+  #why-us.afu-story .afu-copy p {
+    font-size: 12.5px;
+  }
+}
+
+/* Mobile — stack */
+@media (max-width: 740px) {
+  #why-us.afu-story .afu-cols {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  #why-us.afu-story .afu-split {
+    width: min(220px, 60%);
+    height: 1px;
+    margin: 0 auto;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(212, 175, 55, 0.4),
+      transparent
+    );
+  }
+
+  #why-us.afu-story .afu-split::after {
+    top: 50%;
+  }
+
+  #why-us.afu-story .afu-card {
+    min-height: 100px;
+    max-height: none;
+  }
+
+  #why-us.afu-story .afu-cta {
+    flex-direction: column;
+    text-align: center;
+    align-items: stretch;
+  }
+
+  #why-us.afu-story .afu-cta-btns {
+    justify-content: center;
+  }
+
+  #why-us.afu-story .afu-cta-btns .btn {
+    flex: 1 1 auto;
+  }
+}
+
+@media (max-width: 480px) {
+  #why-us.afu-story .afu-panel {
+    width: calc(100% - 20px);
+    padding: 14px;
+    border-radius: 20px;
+  }
+
+  #why-us.afu-story .afu-cta-btns {
+    flex-direction: column;
+  }
+
+  #why-us.afu-story .afu-cta-btns .btn {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #why-us.afu-story .afu-card,
+  #why-us.afu-story .afu-ico,
+  #why-us.afu-story .afu-cta-btns .btn {
+    transition: none !important;
+  }
+}

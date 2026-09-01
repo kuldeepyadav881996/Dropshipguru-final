@@ -1,0 +1,122 @@
+/**
+ * DropshipGuru — components layer
+ * Buttons, forms, cards, trust chips. Complements premium-ui.css.
+ */
+
+.btn,
+.submit-btn,
+.step-next-btn,
+.plan-cta,
+.course-cta,
+.nav-cta,
+.ab-cta,
+.cta-primary {
+  will-change: transform;
+  backface-visibility: hidden;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.btn:active,
+.submit-btn:active,
+.step-next-btn:active,
+.plan-cta:active,
+.course-cta:active,
+.nav-cta:active {
+  transform: translate3d(0, 1px, 0) scale(0.985);
+}
+
+.form-card,
+.lead-form,
+.plan-card,
+.course-card,
+.consult-plan-card {
+  contain: layout paint;
+}
+
+.lead-form input,
+.lead-form select,
+.lead-form textarea,
+.form-card input,
+.form-card select,
+.form-card textarea {
+  width: 100%;
+  max-width: 100%;
+  min-height: 48px;
+  border-radius: var(--dg-radius);
+  transition: border-color 0.25s var(--dg-ease), box-shadow 0.25s var(--dg-ease),
+    background-color 0.25s var(--dg-ease);
+}
+
+.lead-form input:focus,
+.lead-form select:focus,
+.lead-form textarea:focus,
+.form-card input:focus,
+.form-card select:focus,
+.form-card textarea:focus {
+  border-color: rgba(212, 175, 55, 0.55);
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.14);
+}
+
+.dg-pay-trust,
+.pay-trust,
+.secure-badges {
+  display: grid;
+  gap: 10px;
+}
+
+.dg-pay-chip,
+.pay-trust-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 40px;
+  padding: 8px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--dg-body);
+  font-size: 12.5px;
+  font-weight: 600;
+}
+
+.pricing-summary,
+#pricing-summary,
+.order-summary {
+  border-radius: var(--dg-radius-lg);
+  border: 1px solid var(--dg-line);
+  background: linear-gradient(180deg, rgba(27, 32, 40, 0.95), rgba(21, 25, 34, 0.98));
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.28);
+}
+
+.submit-btn.is-loading,
+.btn.is-loading {
+  pointer-events: none;
+  opacity: 0.85;
+}
+
+.submit-btn .btn-spinner,
+.dg-btn-spinner {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid rgba(0, 0, 0, 0.15);
+  border-top-color: #111;
+  animation: dg-spin 0.7s linear infinite;
+  display: inline-block;
+}
+
+@keyframes dg-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+#cursor-glow,
+.cursor-glow {
+  will-change: transform;
+  transform: translate3d(-50%, -50%, 0);
+  left: 0 !important;
+  top: 0 !important;
+  contain: strict;
+  pointer-events: none;
+}

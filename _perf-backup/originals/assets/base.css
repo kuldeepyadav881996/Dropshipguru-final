@@ -1,0 +1,102 @@
+/**
+ * DropshipGuru — base layer
+ * Tokens, reset, a11y, reduced-motion. Safe for all pages.
+ */
+:root {
+  --dg-gold: #d4af37;
+  --dg-gold-bright: #e8c872;
+  --dg-gold-deep: #b8922a;
+  --dg-bg: #0e1013;
+  --dg-bg-elevated: #151922;
+  --dg-panel: #1b2028;
+  --dg-text: #ffffff;
+  --dg-body: #b7bdc8;
+  --dg-muted: #7d8795;
+  --dg-line: rgba(212, 175, 55, 0.18);
+  --dg-success: #22c55e;
+  --dg-danger: #ef4444;
+  --dg-radius-sm: 10px;
+  --dg-radius: 14px;
+  --dg-radius-lg: 20px;
+  --dg-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --dg-space-1: 8px;
+  --dg-space-2: 12px;
+  --dg-space-3: 16px;
+  --dg-space-4: 24px;
+  --dg-space-5: 32px;
+  --dg-space-6: 48px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-width: 0;
+  overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img,
+svg,
+video,
+canvas {
+  max-width: 100%;
+  height: auto;
+}
+
+img {
+  display: block;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--dg-gold-bright);
+  outline-offset: 3px;
+}
+
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

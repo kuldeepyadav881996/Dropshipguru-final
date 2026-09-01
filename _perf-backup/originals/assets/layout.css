@@ -1,0 +1,46 @@
+/**
+ * DropshipGuru — layout layer
+ * Containers, grids, overflow safety. Does not override desktop hero art direction.
+ */
+
+.section,
+.plans-section,
+.reviews-section,
+.faq-section,
+.process-section,
+.final-cta,
+.lead-shell {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.hero-inner,
+.footer-inner,
+.lead-shell,
+.section-head {
+  min-width: 0;
+}
+
+/* Prevent accidental horizontal scroll from decorative layers */
+.ambient-scene,
+.hero-bg-scene,
+#constellation-bg {
+  max-width: 100vw;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+@media (min-width: 1024px) {
+  .hero-inner {
+    width: min(1280px, 100%);
+    margin-inline: auto;
+  }
+}
+
+@media (min-width: 1440px) {
+  .hero-inner,
+  .section > .section-head {
+    width: min(1320px, 100%);
+  }
+}

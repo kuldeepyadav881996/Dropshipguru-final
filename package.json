@@ -1,0 +1,24 @@
+{
+  "name": "dropshipguru-final",
+  "version": "1.0.0",
+  "description": "",
+  "main": "brand-icons.js",
+  "dependencies": {
+    "minimist": "^1.2.8",
+    "png-to-ico": "^3.0.2",
+    "pngjs": "^7.0.0",
+    "undici-types": "^7.24.6"
+  },
+  "devDependencies": {
+    "clean-css": "^5.3.3",
+    "purgecss": "^8.0.0",
+    "terser": "^5.49.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs"
+}

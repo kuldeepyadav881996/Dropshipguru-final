@@ -1,0 +1,368 @@
+{
+  "passed": [
+    "Page exists: index.html",
+    "Page exists: consultation.html",
+    "Page exists: plan-details.html",
+    "Page exists: about/index.html",
+    "Page exists: contact/index.html",
+    "Page exists: privacy-policy/index.html",
+    "Page exists: refund-policy/index.html",
+    "Page exists: terms-conditions/index.html",
+    "Page exists: earnings-disclaimer/index.html",
+    "Asset exists: assets/base.css",
+    "Asset exists: assets/components.css",
+    "Asset exists: assets/layout.css",
+    "Asset exists: assets/mobile.css",
+    "Asset exists: assets/premium-ui.css",
+    "Asset exists: assets/premium-ui.js",
+    "Asset exists: assets/app.css",
+    "Asset exists: assets/consultation.css",
+    "Asset exists: assets/consultation-footer.css",
+    "Asset exists: assets/consultation-motion.css",
+    "Asset exists: payment-client.js",
+    "Asset exists: google-sheet-submit.js",
+    "Asset exists: brand-icons.css",
+    "Asset exists: brand-icons.js",
+    "Asset exists: logo.png",
+    "Asset exists: hero-character.png",
+    "Asset exists: hero-character.webp",
+    "Asset exists: hero-character-mobile.webp",
+    "Asset exists: favicon.ico",
+    "Asset exists: site.webmanifest",
+    "Asset exists: assets/icons/favicon-32.png",
+    "Asset exists: assets/icons/favicon-16.png",
+    "Asset exists: assets/icons/apple-touch-icon.png",
+    "Has </html>: index.html",
+    "Has </html>: consultation.html",
+    "Has </html>: plan-details.html",
+    "Has </html>: about/index.html",
+    "Has </html>: contact/index.html",
+    "Has </html>: privacy-policy/index.html",
+    "Has </html>: refund-policy/index.html",
+    "Has </html>: terms-conditions/index.html",
+    "Has </html>: earnings-disclaimer/index.html",
+    "Payment/Sheets scripts deferred on consultation",
+    "Consultation guards DropshipGuruPayments usage",
+    "Form has required attributes (count=7)",
+    "payment-client has create-order",
+    "payment-client has verify",
+    "payment-client has ondismiss",
+    "payment-client has payment.failed",
+    "payment-client has loadRazorpayCheckout",
+    "payment-client has customer fields",
+    "Google Apps Script URL present",
+    "Backend payment routes present",
+    "CSS layer present: base.css",
+    "CSS layer present: components.css",
+    "CSS layer present: layout.css",
+    "CSS layer present: mobile.css",
+    "CSS layer present: premium-ui.css",
+    "Consultation fonts slimmed",
+    "mobile.css clips horizontal overflow"
+  ],
+  "warn": [
+    {
+      "msg": "mobile-layout.css is @import shim",
+      "file": "mobile-layout.css",
+      "line": 1,
+      "reason": "@import adds extra request if anything still links mobile-layout.css",
+      "fix": "Prefer linking assets/mobile.css only"
+    },
+    {
+      "msg": "premium-ui.css referenced multiple times on index",
+      "file": "index.html",
+      "line": 81,
+      "reason": "count=3 may download twice",
+      "fix": "Keep async preload OR end sync, not both"
+    },
+    {
+      "msg": "Live API health not 200",
+      "file": "backend",
+      "line": null,
+      "reason": "status=0 body=timeout",
+      "fix": "Wake Render service / check deploy"
+    }
+  ],
+  "fail": [
+    {
+      "msg": "Broken local link/asset",
+      "file": "index.html",
+      "line": 73,
+      "reason": "Missing: brand-icons.css?v=3",
+      "fix": "Restore asset or update URL"
+    },
+    {
+      "msg": "Broken local link/asset",
+      "file": "index.html",
+      "line": 825,
+      "reason": "Missing: consultation.html?plan=amazon-in",
+      "fix": "Restore asset or update URL"
+    },
+    {
+      "msg": "Broken local link/asset",
+      "file": "index.html",
+      "line": 834,
+      "reason": "Missing: consultation.html?plan=amazon-com",
+      "fix": "Restore asset or update URL"
+    },
+    {
+      "msg": "Broken local link/asset",
+      "file": "index.html",
+      "line": 843,
+      "reason": "Missing: consultation.html?plan=meesho",
+      "fix": "Restore asset or update URL"
+    },
+    {
+      "msg": "Broken local link/asset",
+      "file": "index.html",
+      "line": 851,
+      "reason": "Missing: consultation.html?plan=flipkart",
+      "fix": "Restore asset or update URL"
+    },
+    {
+      "msg": "Broken local link/asset",
+      "file": "index.html",
+      "line": 859,
+      "reason": "Missing: consultation.html?service=store-setup",
+      "fix": "Restore asset or update URL"
+    },
+    {
+      "msg": "Broken local link/asset",
+      "file": "index.html",
+      "line": 867,
+      "reason": "Missing: consultation.html?plan=whatsapp",
+      "fix": "Restore asset or update URL"
+    },
+    {
+      "msg": "Broken local link/asset",
+      "file": "index.html",
+      "line": 875,
+      "reason": "Missing: consultation.html?plan=instagram",
+      "fix": "Restore asset or update URL"
+    },
+    {
+      "msg": "Broken local link/asset",
+      "file": "index.html",
+      "line": 891,
+      "reason": "Missing: consultation.html?plan=website",
+      "fix": "Restore asset or update URL"
+    },
+    {
+      "msg": "Broken local link/asset",
+      "file": "index.html",
+      "line": 1053,
+      "reason": "Missing: plan-details.html?plan=whatsapp",
+      "fix": "Restore asset or update URL"
+    },
+    {
+      "msg": "Broken local link/asset",
+      "file": "index.html",
+      "line": 1086,
+      "reason": "Missing: plan-details.html?plan=instagram",
+      "fix": "Restore asset or update URL"
+    },
+    {
+      "msg": "Broken local link/asset",
+      "file": "index.html",
+      "line": 1119,
+      "reason": "Missing: plan-details.html?plan=meesho",
+      "fix": "Restore asset or update URL"
+    },
+    {
+      "msg": "Broken local link/asset",
+      "file": "index.html",
+      "line": 1152,
+      "reason": "Missing: plan-details.html?plan=flipkart",
+      "fix": "Restore asset or update URL"
+    },
+    {
+      "msg": "Broken local link/asset",
+      "file": "index.html",
+      "line": 1185,
+      "reason": "Missing: plan-details.html?plan=amazon-in",
+      "fix": "Restore asset or update URL"
+    },
+    {
+      "msg": "Broken local link/asset",
+      "file": "index.html",
+      "line": 1219,
+      "reason": "Missing: plan-details.html?plan=amazon-com",
+      "fix": "Restore asset or update URL"
+    },
+    {
+      "msg": "Broken local link/asset",
+      "file": "index.html",
+      "line": 1252,
+      "reason": "Missing: plan-details.html?plan=website",
+      "fix": "Restore asset or update URL"
+    },
+    {
+      "msg": "Broken local link/asset",
+      "file": "index.html",
+      "line": 1298,
+      "reason": "Missing: consultation.html?course=whatsapp-business",
+      "fix": "Restore asset or update URL"
+    },
+    {
+      "msg": "Broken local link/asset",
+      "file": "index.html",
+      "line": 1329,
+      "reason": "Missing: consultation.html?course=instagram-facebook",
+      "fix": "Restore asset or update URL"
+    },
+    {
+      "msg": "Broken local link/asset",
+      "file": "index.html",
+      "line": 1360,
+      "reason": "Missing: consultation.html?course=marketplace-mastery",
+      "fix": "Restore asset or update URL"
+    },
+    {
+      "msg": "Broken local link/asset",
+      "file": "index.html",
+      "line": 1391,
+      "reason": "Missing: consultation.html?course=amazon-seller",
+      "fix": "Restore asset or update URL"
+    },
+    {
+      "msg": "Broken local link/asset",
+      "file": "index.html",
+      "line": 1422,
+      "reason": "Missing: consultation.html?course=ecommerce-website",
+      "fix": "Restore asset or update URL"
+    },
+    {
+      "msg": "Broken local link/asset",
+      "file": "index.html",
+      "line": 1618,
+      "reason": "Missing: consultation.html?service=marketplace-listing",
+      "fix": "Restore asset or update URL"
+    },
+    {
+      "msg": "Broken local link/asset",
+      "file": "index.html",
+      "line": 1619,
+      "reason": "Missing: consultation.html?service=product-research",
+      "fix": "Restore asset or update URL"
+    },
+    {
+      "msg": "Broken local link/asset",
+      "file": "index.html",
+      "line": 1620,
+      "reason": "Missing: consultation.html?service=branding",
+      "fix": "Restore asset or update URL"
+    },
+    {
+      "msg": "Broken local link/asset",
+      "file": "index.html",
+      "line": 1621,
+      "reason": "Missing: consultation.html?service=marketing-support",
+      "fix": "Restore asset or update URL"
+    },
+    {
+      "msg": "Broken local link/asset",
+      "file": "index.html",
+      "line": 1622,
+      "reason": "Missing: consultation.html?service=mentorship",
+      "fix": "Restore asset or update URL"
+    },
+    {
+      "msg": "Broken local link/asset",
+      "file": "index.html",
+      "line": 1623,
+      "reason": "Missing: consultation.html?service=website-development",
+      "fix": "Restore asset or update URL"
+    },
+    {
+      "msg": "Broken local link/asset",
+      "file": "index.html",
+      "line": 2261,
+      "reason": "Missing: product-gallery.css?v=2",
+      "fix": "Restore asset or update URL"
+    },
+    {
+      "msg": "Broken local link/asset",
+      "file": "index.html",
+      "line": 2289,
+      "reason": "Missing: index.html#categories",
+      "fix": "Restore asset or update URL"
+    },
+    {
+      "msg": "Broken local link/asset",
+      "file": "index.html",
+      "line": 2383,
+      "reason": "Missing: product-gallery.js?v=4",
+      "fix": "Restore asset or update URL"
+    },
+    {
+      "msg": "Broken local link/asset",
+      "file": "index.html",
+      "line": 2384,
+      "reason": "Missing: brand-icons.js?v=10",
+      "fix": "Restore asset or update URL"
+    },
+    {
+      "msg": "Broken local link/asset",
+      "file": "consultation.html",
+      "line": 219,
+      "reason": "Missing: index.html#plans",
+      "fix": "Restore asset or update URL"
+    },
+    {
+      "msg": "Broken local link/asset",
+      "file": "consultation.html",
+      "line": 220,
+      "reason": "Missing: index.html#courses",
+      "fix": "Restore asset or update URL"
+    },
+    {
+      "msg": "Broken local link/asset",
+      "file": "consultation.html",
+      "line": 768,
+      "reason": "Missing: index.html#products",
+      "fix": "Restore asset or update URL"
+    },
+    {
+      "msg": "Broken local link/asset",
+      "file": "consultation.html",
+      "line": 769,
+      "reason": "Missing: index.html#why-us",
+      "fix": "Restore asset or update URL"
+    },
+    {
+      "msg": "Broken local link/asset",
+      "file": "consultation.html",
+      "line": 770,
+      "reason": "Missing: index.html#categories",
+      "fix": "Restore asset or update URL"
+    },
+    {
+      "msg": "Broken local link/asset",
+      "file": "consultation.html",
+      "line": 771,
+      "reason": "Missing: index.html#roadmap",
+      "fix": "Restore asset or update URL"
+    },
+    {
+      "msg": "Broken local link/asset",
+      "file": "consultation.html",
+      "line": 774,
+      "reason": "Missing: index.html#reviews",
+      "fix": "Restore asset or update URL"
+    },
+    {
+      "msg": "Broken local link/asset",
+      "file": "consultation.html",
+      "line": 775,
+      "reason": "Missing: index.html#faq",
+      "fix": "Restore asset or update URL"
+    },
+    {
+      "msg": "Broken local link/asset",
+      "file": "consultation.html",
+      "line": 785,
+      "reason": "Missing: consultation.html?service=store-setup",
+      "fix": "Restore asset or update URL"
+    }
+  ]
+}

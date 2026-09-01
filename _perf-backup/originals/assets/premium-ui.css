@@ -1,0 +1,641 @@
+/**
+ * DropshipGuru — Premium UI layer
+ * Enhances existing components. Does not replace business logic.
+ */
+:root {
+  --dg-gold: #d4af37;
+  --dg-gold-bright: #e8c872;
+  --dg-gold-deep: #b8922a;
+  --dg-bg: #0e1013;
+  --dg-bg-elevated: #151922;
+  --dg-panel: #1b2028;
+  --dg-text: #ffffff;
+  --dg-body: #b7bdc8;
+  --dg-muted: #7d8795;
+  --dg-line: rgba(212, 175, 55, 0.18);
+  --dg-success: #22c55e;
+  --dg-danger: #ef4444;
+  --dg-radius-sm: 10px;
+  --dg-radius: 14px;
+  --dg-radius-lg: 20px;
+  --dg-shadow: 0 10px 40px rgba(0, 0, 0, 0.35);
+  --dg-shadow-gold: 0 12px 40px rgba(212, 175, 55, 0.22);
+  --dg-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --dg-space-1: 8px;
+  --dg-space-2: 12px;
+  --dg-space-3: 16px;
+  --dg-space-4: 24px;
+  --dg-space-5: 32px;
+  --dg-space-6: 48px;
+}
+
+/* ========== Sticky glass navigation ========== */
+.site-header {
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 100 !important;
+  backdrop-filter: saturate(160%) blur(16px);
+  -webkit-backdrop-filter: saturate(160%) blur(16px);
+  background: rgba(14, 16, 19, 0.72) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  transition: background 0.35s var(--dg-ease), box-shadow 0.35s var(--dg-ease), border-color 0.35s var(--dg-ease);
+}
+.site-header.pm-scrolled,
+.site-header.is-scrolled {
+  background: rgba(14, 16, 19, 0.88) !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+  border-bottom-color: var(--dg-line);
+}
+#navMenu a {
+  position: relative;
+  transition: color 0.25s var(--dg-ease);
+}
+#navMenu a:not(.nav-cta)::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -4px;
+  width: 0;
+  height: 2px;
+  border-radius: 99px;
+  background: linear-gradient(90deg, var(--dg-gold), var(--dg-gold-bright));
+  transform: translateX(-50%);
+  transition: width 0.28s var(--dg-ease);
+}
+#navMenu a:not(.nav-cta):hover::after,
+#navMenu a:not(.nav-cta).is-active::after {
+  width: 70%;
+}
+#navMenu a:not(.nav-cta).is-active {
+  color: var(--dg-gold-bright) !important;
+}
+.nav-cta,
+a.nav-cta {
+  background: linear-gradient(135deg, var(--dg-gold-bright), var(--dg-gold), var(--dg-gold-deep)) !important;
+  color: #111 !important;
+  font-weight: 700 !important;
+  box-shadow: var(--dg-shadow-gold);
+  transition: transform 0.25s var(--dg-ease), box-shadow 0.25s var(--dg-ease), filter 0.25s var(--dg-ease) !important;
+}
+.nav-cta:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.05);
+  box-shadow: 0 14px 36px rgba(212, 175, 55, 0.35);
+}
+
+/* ========== Buttons ========== */
+.btn,
+.submit-btn,
+.step-next-btn,
+.plan-cta,
+.course-cta,
+.ab-cta,
+.cta-primary,
+.back-link {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  transition: transform 0.25s var(--dg-ease), box-shadow 0.25s var(--dg-ease), filter 0.25s var(--dg-ease), opacity 0.25s !important;
+}
+.btn.primary,
+.submit-btn,
+.step-next-btn,
+.plan-cta,
+.nav-cta,
+.ab-cta,
+.cta-primary {
+  background: linear-gradient(135deg, #f0d078 0%, var(--dg-gold) 45%, var(--dg-gold-deep) 100%) !important;
+  color: #121212 !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  box-shadow: 0 8px 28px rgba(212, 175, 55, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.35);
+}
+.btn.primary:hover,
+.submit-btn:hover,
+.step-next-btn:hover,
+.plan-cta:hover,
+.course-cta:hover {
+  transform: translateY(-3px);
+  filter: brightness(1.04);
+  box-shadow: 0 14px 36px rgba(212, 175, 55, 0.38), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+.btn.ghost,
+.hero-btn-glass,
+.cta-secondary {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.14) !important;
+  background: rgba(255, 255, 255, 0.04) !important;
+}
+.btn.ghost:hover,
+.hero-btn-glass:hover {
+  transform: translateY(-2px);
+  border-color: rgba(212, 175, 55, 0.45) !important;
+  background: rgba(212, 175, 55, 0.08) !important;
+}
+.btn:disabled,
+.submit-btn:disabled,
+.step-next-btn:disabled {
+  opacity: 0.55 !important;
+  cursor: not-allowed !important;
+  transform: none !important;
+  filter: grayscale(0.2);
+  box-shadow: none !important;
+}
+.btn.is-loading,
+.submit-btn.is-loading {
+  pointer-events: none;
+  opacity: 0.85;
+}
+.btn.is-loading::before,
+.submit-btn.is-loading::before {
+  content: "";
+  width: 1em;
+  height: 1em;
+  margin-right: 0.55em;
+  border: 2px solid rgba(0, 0, 0, 0.25);
+  border-top-color: #111;
+  border-radius: 50%;
+  display: inline-block;
+  vertical-align: -0.15em;
+  animation: dg-spin 0.7s linear infinite;
+}
+.dg-ripple {
+  position: absolute;
+  border-radius: 50%;
+  transform: scale(0);
+  animation: dg-ripple 0.6s ease-out forwards;
+  background: rgba(255, 255, 255, 0.35);
+  pointer-events: none;
+  z-index: 1;
+}
+@keyframes dg-ripple {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+@keyframes dg-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ========== Hero polish ========== */
+.hero {
+  position: relative;
+}
+.hero-inner {
+  position: relative;
+  z-index: 2;
+}
+.hero-text-col h1 {
+  letter-spacing: -0.02em;
+  line-height: 1.08;
+}
+.hero-desc {
+  max-width: 34rem;
+  line-height: 1.65;
+}
+.hero-actions {
+  gap: 14px;
+}
+.hero-bg-particles i {
+  background: radial-gradient(circle, rgba(232, 200, 114, 0.9) 0%, rgba(212, 175, 55, 0.2) 45%, transparent 70%) !important;
+  box-shadow: 0 0 12px rgba(212, 175, 55, 0.45);
+  animation: dg-float-particle 8s var(--dg-ease) infinite alternate;
+}
+.hero-bg-particles i:nth-child(odd) {
+  animation-duration: 10s;
+}
+.hero-bg-particles i:nth-child(3n) {
+  animation-duration: 12s;
+}
+@keyframes dg-float-particle {
+  from {
+    transform: translate3d(0, 0, 0);
+    opacity: 0.35;
+  }
+  to {
+    transform: translate3d(12px, -28px, 0);
+    opacity: 0.9;
+  }
+}
+.hero-bg-mesh,
+.hero-bg-glow {
+  opacity: 0.85;
+  filter: saturate(1.1);
+}
+
+/* ========== Pricing cards ========== */
+.plan-card,
+.course-card {
+  transition: transform 0.35s var(--dg-ease), box-shadow 0.35s var(--dg-ease), border-color 0.35s var(--dg-ease) !important;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: var(--dg-shadow);
+}
+.plan-card:hover,
+.course-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(212, 175, 55, 0.35);
+  box-shadow: 0 22px 50px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(212, 175, 55, 0.15);
+}
+.plan-card.popular,
+.course-card.popular,
+.plan-card.featured {
+  border-color: rgba(212, 175, 55, 0.45);
+  background: linear-gradient(180deg, rgba(212, 175, 55, 0.08), transparent 40%), var(--dg-panel);
+  box-shadow: var(--dg-shadow-gold);
+}
+.plan-tag {
+  background: linear-gradient(135deg, var(--dg-gold-bright), var(--dg-gold)) !important;
+  color: #111 !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.02em;
+  box-shadow: 0 6px 18px rgba(212, 175, 55, 0.35);
+}
+
+/* ========== Forms ========== */
+.lead-form .field-float,
+.lead-form .field {
+  margin-bottom: var(--dg-space-3);
+}
+.lead-form input,
+.lead-form select,
+.lead-form textarea,
+.lead-form .search-select-wrap input {
+  transition: border-color 0.25s var(--dg-ease), box-shadow 0.25s var(--dg-ease), background 0.25s var(--dg-ease) !important;
+}
+.lead-form input:focus,
+.lead-form select:focus,
+.lead-form textarea:focus,
+.lead-form .search-select-wrap input:focus {
+  border-color: var(--dg-gold) !important;
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.18) !important;
+  outline: none !important;
+}
+.lead-form .field-float.is-valid input,
+.lead-form .field-float.is-valid select,
+.lead-form .field-float.is-valid textarea {
+  border-color: rgba(34, 197, 94, 0.55) !important;
+}
+.lead-form .field-float.is-invalid input,
+.lead-form .field-float.is-invalid select {
+  border-color: rgba(239, 68, 68, 0.65) !important;
+  animation: dg-shake 0.35s var(--dg-ease);
+}
+@keyframes dg-shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-4px);
+  }
+  75% {
+    transform: translateX(4px);
+  }
+}
+.form-status.show.success {
+  border: 1px solid rgba(34, 197, 94, 0.35);
+  background: rgba(34, 197, 94, 0.1);
+  border-radius: var(--dg-radius);
+  padding: 12px 14px;
+}
+.form-status.show.error {
+  border: 1px solid rgba(239, 68, 68, 0.35);
+  background: rgba(239, 68, 68, 0.1);
+  border-radius: var(--dg-radius);
+  padding: 12px 14px;
+}
+.consult-plan-card {
+  border: 1px solid rgba(212, 175, 55, 0.28) !important;
+  background: linear-gradient(145deg, rgba(212, 175, 55, 0.1), rgba(27, 32, 40, 0.95)) !important;
+  box-shadow: var(--dg-shadow-gold);
+  border-radius: var(--dg-radius-lg) !important;
+}
+
+/* ========== Trust strip ========== */
+.dg-trust-strip {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 12px;
+  padding: 18px 16px;
+  margin: 28px auto;
+  max-width: 1120px;
+  border-radius: var(--dg-radius-lg);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(0, 0, 0, 0.15));
+  box-shadow: var(--dg-shadow);
+}
+.dg-trust-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-align: center;
+  min-height: 84px;
+  padding: 12px 8px;
+  border-radius: var(--dg-radius);
+  border: 1px solid transparent;
+  transition: border-color 0.25s var(--dg-ease), transform 0.25s var(--dg-ease), background 0.25s;
+}
+.dg-trust-item:hover {
+  border-color: rgba(212, 175, 55, 0.25);
+  background: rgba(212, 175, 55, 0.05);
+  transform: translateY(-2px);
+}
+.dg-trust-icon {
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(212, 175, 55, 0.12);
+  color: var(--dg-gold-bright);
+  font-size: 16px;
+  font-weight: 700;
+}
+.dg-trust-label {
+  font-size: 12px;
+  line-height: 1.35;
+  color: var(--dg-body);
+  font-weight: 600;
+}
+
+/* Consultation compact trust */
+.dg-pay-trust {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin: 14px 0 4px;
+}
+@media (max-width: 640px) {
+  .dg-pay-trust {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+.dg-pay-trust span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 38px;
+  padding: 8px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--dg-body);
+  font-size: 11px;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* ========== Payment processing overlay ========== */
+.dg-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(6, 8, 12, 0.72);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+.dg-overlay.is-open {
+  display: flex;
+  animation: dg-fade-in 0.25s var(--dg-ease);
+}
+@keyframes dg-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.dg-overlay-card {
+  width: min(440px, 100%);
+  padding: 32px 28px;
+  border-radius: 24px;
+  border: 1px solid rgba(212, 175, 55, 0.28);
+  background: linear-gradient(180deg, #1c222c, #12161c);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55), var(--dg-shadow-gold);
+  text-align: center;
+}
+.dg-overlay-card h3 {
+  margin: 16px 0 8px;
+  font-size: 1.35rem;
+  color: #fff;
+}
+.dg-overlay-card p {
+  margin: 0;
+  color: var(--dg-body);
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+.dg-spinner {
+  width: 52px;
+  height: 52px;
+  margin: 0 auto;
+  border-radius: 50%;
+  border: 3px solid rgba(212, 175, 55, 0.2);
+  border-top-color: var(--dg-gold);
+  animation: dg-spin 0.8s linear infinite;
+}
+.dg-success-mark {
+  width: 72px;
+  height: 72px;
+  margin: 0 auto;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 34px;
+  color: #04140a;
+  background: linear-gradient(135deg, #4ade80, #16a34a);
+  box-shadow: 0 12px 36px rgba(34, 197, 94, 0.4);
+  animation: dg-pop 0.45s var(--dg-ease);
+}
+@keyframes dg-pop {
+  0% {
+    transform: scale(0.6);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+.dg-success-meta {
+  margin: 18px 0 8px;
+  display: grid;
+  gap: 8px;
+  text-align: left;
+}
+.dg-success-meta div {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  font-size: 13px;
+}
+.dg-success-meta span:first-child {
+  color: var(--dg-muted);
+}
+.dg-success-meta span:last-child {
+  color: #fff;
+  font-weight: 600;
+  word-break: break-all;
+  text-align: right;
+}
+.dg-success-actions {
+  display: grid;
+  gap: 10px;
+  margin-top: 20px;
+}
+.dg-success-actions .btn,
+.dg-success-actions a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  border-radius: 14px;
+  font-weight: 700;
+  text-decoration: none;
+}
+.dg-success-actions .btn-wa {
+  background: #128c7e !important;
+  color: #fff !important;
+  border: none !important;
+  box-shadow: 0 8px 24px rgba(18, 140, 126, 0.35);
+}
+
+/* Progress bar enhance (GPU scaleX — avoid width animation) */
+#scroll-progress {
+  transform: scaleX(0);
+  transform-origin: left center;
+  will-change: transform;
+  width: 100% !important;
+}
+#scroll-progress,
+.progress-fill,
+#progressFill {
+  background: linear-gradient(90deg, var(--dg-gold-deep), var(--dg-gold-bright)) !important;
+}
+
+/* Order summary + secure payment strip */
+.pricing-summary,
+#pricing-summary {
+  padding: 18px 18px 16px;
+  border-radius: var(--dg-radius-lg);
+  border: 1px solid var(--dg-line);
+  background:
+    radial-gradient(120% 80% at 100% 0%, rgba(212, 175, 55, 0.1), transparent 55%),
+    linear-gradient(180deg, #1b2028, #151922);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.28);
+}
+.pricing-summary.visible {
+  animation: dg-summary-in 0.35s var(--dg-ease) both;
+}
+@keyframes dg-summary-in {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 8px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+.dg-pay-trust {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin: 16px 0 8px;
+}
+.dg-pay-trust > * {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 42px;
+  padding: 8px 10px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--dg-body);
+  font-size: 12px;
+  font-weight: 600;
+  text-align: center;
+}
+.dg-overlay {
+  backdrop-filter: blur(10px) saturate(140%);
+  -webkit-backdrop-filter: blur(10px) saturate(140%);
+}
+.dg-overlay-card {
+  transform: translate3d(0, 10px, 0) scale(0.98);
+  transition: transform 0.35s var(--dg-ease), opacity 0.35s var(--dg-ease);
+}
+.dg-overlay.is-open .dg-overlay-card {
+  transform: translate3d(0, 0, 0) scale(1);
+}
+
+/* Sticky payment CTA on mobile */
+@media (max-width: 768px) {
+  .dg-trust-strip {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin: 20px 12px;
+  }
+  .dg-pay-trust {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .lead-form .submit-btn,
+  #submitBtn {
+    position: sticky;
+    bottom: 12px;
+    z-index: 40;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45), var(--dg-shadow-gold) !important;
+  }
+  .site-header {
+    backdrop-filter: blur(14px);
+  }
+}
+
+@media (max-width: 414px) {
+  .dg-trust-strip {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    padding: 12px;
+  }
+  .dg-trust-label {
+    font-size: 11px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-bg-particles i,
+  .plan-card,
+  .course-card,
+  .btn,
+  .submit-btn,
+  .dg-overlay.is-open,
+  .dg-success-mark {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* Focus visibility */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--dg-gold-bright);
+  outline-offset: 3px;
+}

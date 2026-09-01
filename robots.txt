@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Block backup/build artifacts if ever deployed by mistake
+Disallow: /_perf-backup/
+Disallow: /scripts/
+Disallow: /legal/content/
+
+Sitemap: https://dropshipguru.in/sitemap.xml

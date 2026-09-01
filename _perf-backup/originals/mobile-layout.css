@@ -1,0 +1,257 @@
+/* ===== MOBILE LAYOUT FIX (≤767.98px) — desktop unchanged ===== */
+@media (max-width:768px){
+  html{overflow-x:clip}
+  body{overflow-x:visible!important}
+
+  /* Contain wide decorative layers without clipping body scroll */
+  .ambient-scene,.hero-bg-scene,.hero-right-bg,.reviews-section,.plans-section,.courses-section{overflow-x:clip}
+  .reviews-marquee,.reviews-marquee-row2{max-width:100%}
+  .reviews-section .reviews-track-wrap,
+  .reviews-section{overflow:hidden}
+
+  /* Hide expensive ambient orbs that extend past viewport */
+  .orb,.spotlight,#cursorGlow,#cursor-glow,.cursor-glow{display:none!important}
+  .ambient-blob,.ambient-rays,.ambient-particles{display:none!important}
+  .hero-holo-dash,.hero-right-bg,.hero-bg-map,.hero-bg-spotlight,.hero-bg-shimmer,[class*="hero-bg-glow"]{display:none!important}
+
+  /* Announcement bar — readable stacked layout */
+  .announce-bar{
+    height:auto!important;
+    min-height:0!important;
+    flex-wrap:wrap!important;
+    justify-content:center!important;
+    align-items:center!important;
+    gap:8px 10px!important;
+    padding:8px 12px!important;
+  }
+  .announce-bar .ab-main{
+    display:flex!important;
+    flex-wrap:wrap!important;
+    justify-content:center!important;
+    align-items:center!important;
+    gap:6px 8px!important;
+    text-align:center!important;
+    flex:1 1 100%!important;
+  }
+  .announce-bar .ab-eyebrow{font-size:10px!important}
+  .announce-bar .ab-headline{font-size:13px!important;line-height:1.25!important}
+  .announce-bar .ab-badge{font-size:11px!important;padding:4px 10px!important}
+  .announce-bar .ab-cta{
+    flex:0 0 auto!important;
+    height:32px!important;
+    padding:0 14px!important;
+    font-size:12px!important;
+    position:relative!important;
+    z-index:2!important;
+  }
+
+  /* Header / nav above content; menu clickable */
+  .site-header{z-index:80!important;position:sticky!important;top:0!important}
+  .menu-btn{z-index:81!important;position:relative!important}
+  #navMenu,header nav{
+    z-index:90!important;
+    max-height:min(70dvh,520px);
+    overflow-y:auto;
+    -webkit-overflow-scrolling:touch;
+  }
+  #navMenu.open,header nav.open{display:flex!important}
+  .float-wa{z-index:70!important;pointer-events:auto!important}
+
+  /* Hero — no absolute card overlap; character + cards fully visible */
+  .hero{
+    overflow:visible!important;
+    min-height:0!important;
+    height:auto!important;
+    padding:24px 16px 40px!important;
+    align-items:stretch!important;
+  }
+  .hero-inner{
+    display:flex!important;
+    flex-direction:column!important;
+    gap:20px!important;
+    width:100%!important;
+    max-width:100%!important;
+  }
+  .hero-visual{
+    order:-1!important;
+    width:100%!important;
+    min-height:0!important;
+    height:auto!important;
+    padding:0!important;
+    overflow:visible!important;
+  }
+  .hero-text-col{order:2!important;width:100%!important;max-width:100%!important}
+  .hero-visual-stage.hero-3d-stage,
+  .hero-3d-stage{
+    display:grid!important;
+    grid-template-columns:1fr 1fr!important;
+    gap:8px!important;
+    width:100%!important;
+    max-width:100%!important;
+    height:auto!important;
+    min-height:0!important;
+    aspect-ratio:auto!important;
+    overflow:visible!important;
+    transform:none!important;
+    margin:0 auto!important;
+    background:none!important;
+  }
+  .hero-3d-char-wrap{
+    position:relative!important;
+    grid-column:1/-1!important;
+    order:-1!important;
+    left:auto!important;
+    right:auto!important;
+    bottom:auto!important;
+    top:auto!important;
+    transform:none!important;
+    width:100%!important;
+    height:min(46dvh,320px)!important;
+    min-height:220px!important;
+    max-height:340px!important;
+    animation:none!important;
+    pointer-events:none!important;
+    display:flex!important;
+    align-items:flex-end!important;
+    justify-content:center!important;
+  }
+  .hero-3d-char,
+  .hero .hero-3d-char{
+    position:relative!important;
+    left:auto!important;
+    bottom:auto!important;
+    transform:none!important;
+    width:auto!important;
+    height:100%!important;
+    max-width:min(92%,340px)!important;
+    max-height:100%!important;
+    margin:0 auto!important;
+    object-fit:contain!important;
+    object-position:center bottom!important;
+  }
+  .hero-3d-stage .hf-card,
+  .hf-card.card-pos-1,
+  .hf-card.card-pos-2,
+  .hf-card.card-pos-3,
+  .hf-card.card-pos-4{
+    position:relative!important;
+    left:auto!important;
+    right:auto!important;
+    top:auto!important;
+    bottom:auto!important;
+    inset:auto!important;
+    transform:none!important;
+    width:100%!important;
+    max-width:none!important;
+    min-width:0!important;
+    margin:0!important;
+    white-space:normal!important;
+    z-index:2!important;
+    pointer-events:auto!important;
+  }
+  .hf-card.card-pos-5,
+  .hf-card.card-pos-6,
+  .hf-card.card-pos-7,
+  .hf-card.card-pos-8{display:none!important}
+  .hero-actions{flex-direction:column!important;width:100%!important}
+  .hero-actions .btn{width:100%!important;max-width:100%!important;pointer-events:auto!important;position:relative!important;z-index:5!important}
+  .hero-metrics{grid-template-columns:1fr 1fr!important;width:100%!important}
+  .hero-trust-row{flex-wrap:wrap!important;gap:8px!important}
+
+  /* Cards / pricing / courses — stack fully visible, no off-screen carousels */
+  .plans-grid,.audience-grid,.audience-grid-5,.steps,.stats-band{grid-template-columns:1fr!important}
+  .plans-row,.plans-row-inner,.courses-row,.courses-row-inner{
+    display:flex!important;
+    flex-direction:column!important;
+    width:100%!important;
+    max-width:100%!important;
+    gap:14px!important;
+    padding-left:0!important;
+    padding-right:0!important;
+    overflow:visible!important;
+  }
+  .plans-row-inner .plan-card,
+  .plan-card,.course-card,.category-card,.week-card,.review-card,.faq-item{
+    width:100%!important;
+    max-width:100%!important;
+    flex-shrink:1!important;
+    margin-left:0!important;
+    margin-right:0!important;
+  }
+  .announce-bar .ab-gift{display:none!important}
+  .announce-bar{gap:6px 8px!important;padding:6px 10px!important}
+  .section,.plans-section,.reviews-section,.faq-section,.process-section,.final-cta{
+    padding-left:16px!important;
+    padding-right:16px!important;
+    width:100%!important;
+    max-width:100%!important;
+    box-sizing:border-box!important;
+  }
+  .section > *,.plans-section > *,.final-cta > *{max-width:100%!important}
+
+  /* Footer */
+  footer,.footer,#siteFooter{width:100%!important;max-width:100%!important;overflow-x:clip}
+  #siteFooter .footer-inner{grid-template-columns:1fr!important;gap:24px!important;padding:24px 16px!important;text-align:center!important}
+
+  /* Ensure clickable CTAs above decorative layers */
+  .btn,.nav-cta,.plan-cta,.course-cta,.submit-btn,.ab-cta,.cat-explore-btn{position:relative!important;z-index:5!important;pointer-events:auto!important}
+
+  /* Soften remaining bg animations */
+  .hero-bg-scene *,.cat-ambient-particles{animation:none!important}
+}
+
+@media (max-width:390px){
+  .announce-bar .ab-headline{font-size:12px!important}
+  .hero-3d-char-wrap{height:min(42dvh,280px)!important;min-height:200px!important}
+  .hf-copy strong{font-size:11px!important}
+  .hf-copy>span{font-size:9px!important}
+}
+
+@media (max-width:320px){
+  .hero,.section,.plans-section{padding-left:12px!important;padding-right:12px!important}
+  .announce-bar{padding:6px 8px!important}
+  .hero-3d-stage{gap:6px!important}
+}
+/* Consultation page extras */
+@media (max-width:768px){
+  .lead-shell{grid-template-columns:1fr!important;gap:28px!important;width:100%!important;max-width:100%!important;padding:0!important}
+  .lead-form,form#consultForm,form.consult-form,.form-card{
+    width:100%!important;max-width:100%!important;box-sizing:border-box!important;
+  }
+  .field-row{grid-template-columns:1fr!important}
+  .consult-plan-card,.prog-card,.plat-opt,.pc-price-wrap,.pricing-summary,#pricing-summary{
+    width:100%!important;max-width:100%!important;
+  }
+  .submit-btn,#submitBtn,.back-link,.cta-primary,.cta-secondary{
+    width:100%!important;max-width:100%!important;min-height:48px!important;
+    position:relative!important;z-index:5!important;pointer-events:auto!important;
+  }
+  .lead-top{flex-direction:column!important;align-items:stretch!important;gap:12px!important}
+  .hiw-steps,.hiw-grid-ultra,.earnings-grid,.metrics-wall,.testi-slide,.results-strip{
+    grid-template-columns:1fr!important;
+  }
+  .orb,.spotlight,.ambient-blob,.ambient-rays{display:none!important}
+  .consult-exit-popup,.pg-gallery,.jc-catalogue{z-index:200!important}
+  body{min-height:100dvh}
+  .lead-hero, .consult-hero{min-height:0!important;height:auto!important}
+}
+/* ===== Extra breakpoints: 320�430 / tablet polish ===== */
+@media (max-width:430px){
+  .hero-actions .btn,.plan-cta,.course-cta,.submit-btn,#submitBtn{min-height:48px}
+  .plans-row-inner .plan-card,.course-card{padding-left:14px;padding-right:14px}
+  .float-wa small{display:none}
+  .float-wa{padding:12px;border-radius:50%}
+}
+@media (max-width:375px){
+  .hero-metrics{gap:10px}
+  .hero-metric strong{font-size:18px}
+  .ab-badge{padding:4px 8px}
+}
+@media (max-width:360px){
+  .brand b{font-size:15px}
+  .hero-trust-item{width:100%;justify-content:flex-start}
+}
+@media (min-width:768px) and (max-width:1024px){
+  .plans-grid,.audience-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .hero-inner{gap:28px}
+}

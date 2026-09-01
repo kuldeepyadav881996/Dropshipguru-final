@@ -1,0 +1,96 @@
+/* #plans pricing cards — original layout + light conversion polish */
+#plans .plans-row-inner .plan-card {
+  transition: transform 250ms ease, box-shadow 250ms ease, border-color 250ms ease !important;
+}
+#plans .plans-row-inner .plan-card:hover {
+  transform: translateY(-4px) !important;
+  border-color: rgba(212, 175, 55, 0.42) !important;
+  box-shadow:
+    0 14px 36px rgba(0, 0, 0, 0.36),
+    0 0 28px rgba(212, 175, 55, 0.14) !important;
+  background: #222831 !important;
+}
+#plans .plans-row-inner .plan-card.popular:hover {
+  transform: translateY(-4px) scale(1.02) !important;
+  border-color: rgba(212, 175, 55, 0.55) !important;
+  box-shadow:
+    0 16px 40px rgba(0, 0, 0, 0.4),
+    0 0 32px rgba(212, 175, 55, 0.2),
+    0 0 0 1px rgba(212, 175, 55, 0.22) !important;
+}
+
+#plans .plan-card-top {
+  padding: 24px 22px 16px !important;
+}
+#plans .plan-card.popular .plan-card-top,
+#plans .plan-card.diamond .plan-card-top {
+  padding-top: 36px !important;
+}
+
+#plans .plan-platform-icon.brand-icon-wrap,
+#plans .plan-platform-icon.platform-logo {
+  --pi-box: 52px;
+  --pi-icon: 28px;
+  margin: 0 auto 12px !important;
+}
+
+#plans .plan-card h3 {
+  margin: 0 0 12px !important;
+  font-size: 22px !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.01em !important;
+  color: #ffffff !important;
+}
+
+#plans .plan-price {
+  font-size: clamp(40px, 4.2vw, 48px) !important;
+  font-weight: 700 !important;
+  margin: 0 0 4px !important;
+  letter-spacing: -0.02em !important;
+}
+#plans .plan-price .currency {
+  font-size: 22px !important;
+}
+#plans .plan-old-price {
+  font-size: 11.5px !important;
+  letter-spacing: 0.04em !important;
+  text-transform: uppercase !important;
+}
+
+#plans .plan-meta {
+  padding: 12px 18px !important;
+  gap: 8px !important;
+  background: #171c24 !important;
+}
+#plans .plan-features {
+  padding: 14px 18px 10px !important;
+  flex: 0 0 auto !important;
+}
+#plans .plan-features-label {
+  margin-bottom: 8px !important;
+}
+#plans .plan-card ul {
+  flex: 0 0 auto !important;
+  max-height: none !important;
+  overflow: visible !important;
+  gap: 8px !important;
+  margin-bottom: 4px !important;
+}
+
+#plans .plan-cta,
+#plans .plan-card a.plan-cta,
+#plans .plan-card > a.plan-cta {
+  margin-top: auto !important;
+  border-radius: 0 0 17px 17px !important;
+  border-top: 1px solid rgba(212, 175, 55, 0.16) !important;
+  background: rgba(212, 175, 55, 0.1) !important;
+  min-height: 48px !important;
+  transition: background 250ms ease, color 250ms ease, box-shadow 250ms ease !important;
+}
+#plans .plan-cta:hover,
+#plans .plan-card a.plan-cta:hover {
+  background: linear-gradient(135deg, #e8c872 0%, #d4af37 48%, #b8942d 100%) !important;
+  color: #0e1013 !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22) !important;
+  transform: none !important;
+}

@@ -1,0 +1,146 @@
+[
+  {
+    "rel": "payment-client.js",
+    "before": 7458,
+    "after": 3301,
+    "kind": "js"
+  },
+  {
+    "rel": "google-sheet-submit.js",
+    "before": 5743,
+    "after": 3206,
+    "kind": "js"
+  },
+  {
+    "rel": "brand-icons.js",
+    "before": 22847,
+    "after": 22792,
+    "kind": "js"
+  },
+  {
+    "rel": "product-gallery.js",
+    "before": 10407,
+    "after": 10407,
+    "kind": "js"
+  },
+  {
+    "rel": "jewellery-catalogue.js",
+    "before": 6085,
+    "after": 6085,
+    "kind": "js"
+  },
+  {
+    "rel": "catalogues-data.js",
+    "before": 1403,
+    "after": 1403,
+    "kind": "js"
+  },
+  {
+    "rel": "assets/premium-ui.js",
+    "before": 7640,
+    "after": 4489,
+    "kind": "js"
+  },
+  {
+    "rel": "assets/base.css",
+    "before": 1793,
+    "after": 1361,
+    "kind": "css"
+  },
+  {
+    "rel": "assets/components.css",
+    "before": 2380,
+    "after": 1933,
+    "kind": "css"
+  },
+  {
+    "rel": "assets/layout.css",
+    "before": 769,
+    "after": 472,
+    "kind": "css"
+  },
+  {
+    "rel": "assets/mobile.css",
+    "before": 9408,
+    "after": 7709,
+    "kind": "css"
+  },
+  {
+    "rel": "mobile-layout.css",
+    "before": 9408,
+    "after": 7709,
+    "kind": "css"
+  },
+  {
+    "rel": "assets/premium-ui.css",
+    "before": 15666,
+    "after": 12574,
+    "kind": "css"
+  },
+  {
+    "rel": "assets/consultation.css",
+    "before": 94771,
+    "after": 94770,
+    "kind": "css"
+  },
+  {
+    "rel": "assets/consultation-footer.css",
+    "before": 4177,
+    "after": 4176,
+    "kind": "css"
+  },
+  {
+    "rel": "assets/consultation-motion.css",
+    "before": 5475,
+    "after": 5474,
+    "kind": "css"
+  },
+  {
+    "rel": "assets/app-core.css",
+    "before": 20616,
+    "after": 20616,
+    "kind": "css"
+  },
+  {
+    "rel": "assets/app-hero.css",
+    "before": 60746,
+    "after": 60733,
+    "kind": "css"
+  },
+  {
+    "rel": "assets/app-components.css",
+    "before": 27960,
+    "after": 27891,
+    "kind": "css"
+  },
+  {
+    "rel": "assets/app-sections.css",
+    "before": 98893,
+    "after": 98155,
+    "kind": "css"
+  },
+  {
+    "rel": "assets/app.css",
+    "before": 208215,
+    "after": 206617,
+    "kind": "css"
+  },
+  {
+    "rel": "brand-icons.css",
+    "before": 12878,
+    "after": 12878,
+    "kind": "css"
+  },
+  {
+    "rel": "product-gallery.css",
+    "before": 12286,
+    "after": 12286,
+    "kind": "css"
+  },
+  {
+    "rel": "jewellery-catalogue.css",
+    "before": 9123,
+    "after": 9123,
+    "kind": "css"
+  }
+]

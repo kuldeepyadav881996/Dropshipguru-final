@@ -204,9 +204,8 @@
         </div>
 
         <div class="consult-no-plan" id="consultNoPlan">
-          <p>Please select a plan or course first.</p>
+          <p>Please select a plan first.</p>
           <a href="index.html#plans" class="back-link">← Back to Plans</a>
-          <a href="index.html#courses" class="back-link" style="margin-left:12px;">← Back to Courses</a>
         </div>
 
         <div id="consultPlanMode">
@@ -732,7 +731,7 @@
   </div>
 
   <div class="guarantee-line reveal" data-d="5">
-    <span>💯 No Spam &nbsp;�&nbsp; No Pressure &nbsp;�&nbsp; Just Real Guidance</span>
+    <span>💯 No Spam &nbsp;·&nbsp; No Pressure &nbsp;·&nbsp; Just Real Guidance</span>
   </div>
 
 </div><!-- /lead-page -->
@@ -852,7 +851,7 @@
 </script>
 <script src="google-sheet-submit.js" defer></script>
 <script src="payment-client.js?v=2" defer></script>
-<script src="phonepe-client.js?v=1" defer></script>
+<script src="phonepe-client.js?v=3"></script>
 <script>
 /* ═══ 1. CONSTELLATION ═══ */
 (function(){
@@ -1356,7 +1355,7 @@ form.addEventListener('submit',function(e){
   }
   if(!validateStep1())return;
   const btn=document.getElementById('submitBtn'),label=document.getElementById('btn-label'),orig=label.textContent;
-  label.textContent='Submitting…';btn.disabled=true;btn.classList.add('is-loading');
+  if(btn.dataset.payLock==='1')return;
   const selectedType=selectedPlatformName&&!selectedPlanFromUrl?'PLATFORM':consultFormMode;
   const formData=GoogleSheetSubmit.buildFormPayload({
     fullName:document.getElementById('name').value.trim(),
@@ -1398,13 +1397,13 @@ form.addEventListener('submit',function(e){
       document.getElementById('pricing-summary')?.classList.remove('visible');
     }
     updateSubmitButtonLabel();
-    btn.disabled=false;btn.classList.remove('is-loading');
+    btn.disabled=false;btn.classList.remove('is-loading');btn.dataset.payLock='';
   }
   function finishError(msg){
     if(window.DropshipGuruUI) DropshipGuruUI.hideProcessing();
     status.className='form-status show error';
     status.innerHTML='❌ '+(msg||ERROR_MSG);
-    label.textContent=orig;btn.disabled=false;btn.classList.remove('is-loading');
+    label.textContent=orig;btn.disabled=false;btn.classList.remove('is-loading');btn.dataset.payLock='';
   }
 
   const payable=window.DropshipGuruPhonePe
@@ -1416,7 +1415,10 @@ form.addEventListener('submit',function(e){
   // Do NOT also submit from the browser (avoids duplicate leads).
   // PhonePe startCheckout navigates away; success UI lives on payment-status.html.
   if(payable>0&&window.DropshipGuruPhonePe){
-    label.textContent='Redirecting to PhonePe…';
+    btn.dataset.payLock='1';
+    label.textContent='Opening secure checkout…';
+    btn.disabled=true;
+    btn.classList.add('is-loading');
     DropshipGuruPhonePe.startCheckout({
       amount:payable,
       formData:{
@@ -1441,6 +1443,10 @@ form.addEventListener('submit',function(e){
     return;
   }
 
+  btn.dataset.payLock='1';
+  label.textContent='Submitting…';
+  btn.disabled=true;
+  btn.classList.add('is-loading');
   GoogleSheetSubmit.submitToGoogleSheet(formData).then(finishSuccess).catch(function(err){
     finishError(err&&err.message?err.message:ERROR_MSG);
   });

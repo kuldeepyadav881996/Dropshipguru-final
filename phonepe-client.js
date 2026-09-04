@@ -22,6 +22,8 @@
 
   var RETURN_PAGE = '/payment-status.html';
   var STORAGE_KEY = 'dg_phonepe_pending_order';
+  var checkoutInFlight = false;
+  var warmInFlight = null;
 
   var CUSTOMER_FIELDS = [
     'fullName',
@@ -68,7 +70,11 @@
     var init = {
       method: method,
       headers: { 'Content-Type': 'application/json' },
+      credentials: 'omit',
+      cache: 'no-store',
     };
+
+    if (method === 'POST') init.priority = 'high';
 
     if (body) init.body = JSON.stringify(body);
 
@@ -102,14 +108,23 @@
   }
 
   function warmApi() {
-    return fetch(API_BASE + '/health', {
+    if (warmInFlight) return warmInFlight;
+
+    warmInFlight = fetch(API_BASE + '/health', {
       method: 'GET',
       mode: 'cors',
       cache: 'no-store',
       credentials: 'omit',
-    }).catch(function () {
-      return null;
-    });
+    })
+      .catch(function () {
+        return null;
+      })
+      .then(function (res) {
+        warmInFlight = null;
+        return res;
+      });
+
+    return warmInFlight;
   }
 
   function newIdempotencyKey() {
@@ -152,6 +167,10 @@
   function startCheckout(opts) {
     opts = opts || {};
 
+    if (checkoutInFlight) {
+      return Promise.reject(new Error('Payment is already being processed'));
+    }
+
     var amount = Number(opts.amount);
 
     if (!Number.isFinite(amount) || amount < 1) {
@@ -170,6 +189,8 @@
       idempotencyKey: opts.idempotencyKey || newIdempotencyKey(),
     });
 
+    checkoutInFlight = true;
+
     return apiRequest('POST', '/api/payment/phonepe/create-payment', body).then(
       function (order) {
         rememberPendingOrder({
@@ -184,6 +205,10 @@
         global.location.assign(order.redirectUrl);
 
         return order;
+      },
+      function (err) {
+        checkoutInFlight = false;
+        throw err;
       }
     );
   }
@@ -235,4 +260,8 @@
     clearPendingOrder: clearPendingOrder,
     warmup: warmApi,
   };
+
+  // Wake the payment API as soon as this script parses so the later Pay
+  // click does not wait on a cold connection.
+  warmApi();
 })(typeof window !== 'undefined' ? window : globalThis);

@@ -269,7 +269,6 @@ footer {
       <a href="../index.html#why-us">Why Us</a>
       <a href="../index.html#roadmap">Roadmap</a>
       <a href="../index.html#plans">Plans</a>
-      <a href="../index.html#courses">Courses</a>
       <a href="../index.html#reviews">Reviews</a>
       <a href="../index.html#faq">FAQ</a>
       <a href="../consultation.html" class="nav-cta">Get Started</a>
@@ -336,7 +335,6 @@ ${contentHtml}
       </li>
           <li><a href="../index.html#roadmap">Roadmap</a></li>
           <li><a href="../index.html#plans">Pricing Plans</a></li>
-          <li><a href="../index.html#courses">Mastery Courses</a></li>
           <li><a href="../index.html#reviews">Reviews</a></li>
           <li><a href="../index.html#faq">FAQ</a></li>
           <li><a href="../about/index.html">About Us</a></li>

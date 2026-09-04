@@ -1419,9 +1419,7 @@ nav a:not(.nav-cta) {
   /* Class/ID-level !important shorthands outrank the universal reset above,
      so kill those specific looping shines with matching specificity (appended later). */
   .hero .btn.primary,
-  .hero h1 .gold-line,
-  #courses .course-cta,
-  #courses .course-card > a.course-cta{ animation:none !important; }
+  .hero h1 .gold-line{ animation:none !important; }
 
   /* (13) Avoid needless layer promotion → lower GPU memory */
   *{ will-change:auto !important; }

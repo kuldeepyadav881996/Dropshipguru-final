@@ -852,6 +852,7 @@
 </script>
 <script src="google-sheet-submit.js" defer></script>
 <script src="payment-client.js?v=2" defer></script>
+<script src="phonepe-client.js?v=1" defer></script>
 <script>
 /* ═══ 1. CONSTELLATION ═══ */
 (function(){
@@ -976,8 +977,8 @@ function updateSubmitButtonLabel(){
   label.textContent=payable
     ?'Proceed to Secure Payment'
     :'Book Free Consultation';
-  if(payable&&window.DropshipGuruPayments&&typeof DropshipGuruPayments.warmup==='function'){
-    DropshipGuruPayments.warmup();
+  if(payable&&window.DropshipGuruPhonePe&&typeof DropshipGuruPhonePe.warmup==='function'){
+    DropshipGuruPhonePe.warmup();
   }
 }
 
@@ -1182,8 +1183,8 @@ function updateConsultStepUI(){
     if(s1)s1.classList.add('active');
     if(s2)s2.classList.remove('active');
     if(planMode)planMode.classList.add('step-2'); // show pay CTA + trust
-    if(window.DropshipGuruPayments&&typeof DropshipGuruPayments.warmup==='function'){
-      DropshipGuruPayments.warmup();
+    if(window.DropshipGuruPhonePe&&typeof DropshipGuruPhonePe.warmup==='function'){
+      DropshipGuruPhonePe.warmup();
     }
     return;
   }
@@ -1195,9 +1196,9 @@ function updateConsultStepUI(){
   if(s1)s1.classList.toggle('active',consultStep===1);
   if(s2)s2.classList.toggle('active',consultStep===2);
   if(planMode)planMode.classList.toggle('step-2',consultStep===2);
-  // Prefetch Razorpay + wake Render before the user hits pay (no UI change).
-  if(consultStep===2&&window.DropshipGuruPayments&&typeof DropshipGuruPayments.warmup==='function'){
-    DropshipGuruPayments.warmup();
+  // Prefetch PhonePe API before the user hits pay (no UI change).
+  if(consultStep===2&&window.DropshipGuruPhonePe&&typeof DropshipGuruPhonePe.warmup==='function'){
+    DropshipGuruPhonePe.warmup();
   }
 }
 
@@ -1406,52 +1407,41 @@ form.addEventListener('submit',function(e){
     label.textContent=orig;btn.disabled=false;btn.classList.remove('is-loading');
   }
 
-  const payable=window.DropshipGuruPayments?DropshipGuruPayments.resolvePayableAmount(formData):0;
+  const payable=window.DropshipGuruPhonePe
+    ?DropshipGuruPhonePe.resolvePayableAmount(formData)
+    :(window.DropshipGuruPayments?DropshipGuruPayments.resolvePayableAmount(formData):0);
 
-  // Paid flow: Razorpay → backend /verify → Google Sheets (server-side). Do NOT also submit from the browser (avoids duplicate leads).
-  // Free flow: keep existing Google Sheets client submit.
-  const flow=payable>0&&window.DropshipGuruPayments
-    ?(label.textContent='Opening payment…',
-      DropshipGuruPayments.startCheckout({
-        amount:payable,
-        description:planLabel||'DropshipGuru',
-        customer:{
-          name:formData.fullName,
-          email:formData.email,
-          contact:formData.mobile
-        },
-        notes:{
-          selectedType:formData.selectedType||'',
-          source:'consultation.html'
-        },
-        formData:{
-          fullName:formData.fullName||'',
-          mobile:formData.mobile||'',
-          email:formData.email||'',
-          state:formData.state||'',
-          profession:formData.profession||'',
-          selectedType:formData.selectedType||'',
-          selectedPlan:formData.selectedPlan||'',
-          selectedCourse:formData.selectedCourse||'',
-          selectedService:formData.selectedService||'',
-          selectedPlatform:formData.selectedPlatform||'',
-          budget:formData.budget||'',
-          message:formData.message||'',
-          price:formData.price||'',
-          source:'Website'
-        }
-      }).then(function(paymentResult){
-        // Lead already saved by backend after signature verification
-        return paymentResult||true;
-      }))
-    :GoogleSheetSubmit.submitToGoogleSheet(formData);
+  // Paid flow: PhonePe checkout → backend confirm → Google Sheets (server-side).
+  // Razorpay (payment-client.js) stays loaded as unused fallback.
+  // Do NOT also submit from the browser (avoids duplicate leads).
+  // PhonePe startCheckout navigates away; success UI lives on payment-status.html.
+  if(payable>0&&window.DropshipGuruPhonePe){
+    label.textContent='Redirecting to PhonePe…';
+    DropshipGuruPhonePe.startCheckout({
+      amount:payable,
+      formData:{
+        fullName:formData.fullName||'',
+        mobile:formData.mobile||'',
+        email:formData.email||'',
+        state:formData.state||'',
+        profession:formData.profession||'',
+        selectedType:formData.selectedType||'',
+        selectedPlan:formData.selectedPlan||'',
+        selectedCourse:formData.selectedCourse||'',
+        selectedService:formData.selectedService||'',
+        selectedPlatform:formData.selectedPlatform||'',
+        budget:formData.budget||'',
+        message:formData.message||'',
+        price:formData.price||'',
+        source:'Website'
+      }
+    }).catch(function(err){
+      finishError(err&&err.message?err.message:ERROR_MSG);
+    });
+    return;
+  }
 
-  flow.then(finishSuccess).catch(function(err){
-    if(window.DropshipGuruUI) DropshipGuruUI.hideProcessing();
-    if(err&&err.message==='Payment cancelled'){
-      label.textContent=orig;btn.disabled=false;btn.classList.remove('is-loading');
-      return;
-    }
+  GoogleSheetSubmit.submitToGoogleSheet(formData).then(finishSuccess).catch(function(err){
     finishError(err&&err.message?err.message:ERROR_MSG);
   });
 });

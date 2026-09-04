@@ -42,12 +42,14 @@ app.use(
   })
 );
 
-// Capture raw body for Razorpay webhook HMAC verification
+// Capture raw body for Razorpay HMAC and PhonePe callback verification
+const WEBHOOK_PATHS = /\/api\/payment\/(webhook|phonepe\/webhook)\b/;
+
 app.use(
   express.json({
     limit: '1mb',
     verify: (req, _res, buf) => {
-      if (req.originalUrl && req.originalUrl.includes('/api/payment/webhook')) {
+      if (req.originalUrl && WEBHOOK_PATHS.test(req.originalUrl)) {
         req.rawBody = Buffer.from(buf);
       }
     },
@@ -72,6 +74,9 @@ app.use(errorHandler);
 const server = app.listen(env.port, () => {
   console.info(
     `[dropshipguru-backend] listening on :${env.port} (${env.nodeEnv})`
+  );
+  console.info(
+    `[dropshipguru-backend] PhonePe environment: ${env.phonepe.environment}`
   );
 });
 

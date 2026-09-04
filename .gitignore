@@ -3,6 +3,18 @@ dist/
 build/
 .cache/
 backend/node_modules/
-backend/.env
+
+# Secrets — never commit
 .env
-.env.local
+.env.*
+!.env.example
+backend/.env
+backend/.env.*
+!backend/.env.example
+*.pem
+*.key
+
+# Local-only tooling and checkpoints
+_dev/
+_phonepe-backup/
+*.log

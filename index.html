@@ -828,7 +828,7 @@
       <span class="tools-platform-name">Instagram</span>
       <p class="tools-platform-desc">Turn your Instagram into a sales channel with shop setup and integrations.</p>
     </a>
-    <a href="consultation.html?plan=instagram" class="tools-platform-card reveal" style="--i:7">
+    <a href="consultation.html?plan=facebook" class="tools-platform-card reveal" style="--i:7">
       <span class="tools-platform-badge tools-platform-badge--tr">Social</span>
       <div class="tools-platform-icon-wrap">
         <span class="tools-platform-icon platform-icon platform-logo brand-icon-wrap" data-icon="facebook" aria-hidden="true"></span>
@@ -1295,7 +1295,7 @@
     <div class="footer-brand">
       <a href="index.html" class="footer-logo">
         <img src="logo.png" alt="DropshipGuru Logo" loading="lazy" decoding="async" width="52" height="52" style="width:52px;height:52px;border-radius:10px;object-fit:cover;background:#05070c;display:block;" onerror="this.outerHTML='<span style=&quot;width:52px;height:52px;border-radius:10px;background:linear-gradient(135deg,#f7b824,#14a8ff);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:20px;color:#06110b;&quot;>DG</span>'">
-        <span>Dropship <b>Guru</b></span>
+        <span>DropshipGuru</span>
       </a>
       <p class="footer-brand-tagline">India's #1 Dropshipping Platform</p>
       <p class="footer-desc">Complete ecommerce setup for Indian sellers — owned and operated by <b>DropshipGuru</b>.</p>
@@ -1470,16 +1470,49 @@ document.querySelectorAll('.faq-item button').forEach(btn => {
     }, 350);
   }, 4000);
 })();
-// Reveal on scroll (no staggered delay — keep desktop CSS transitions only)
-const io = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if(e.isIntersecting) {
-      e.target.parentElement.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
-      e.target.classList.add('visible');
-    }
-  });
-}, { threshold: 0.1 });
-document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+// Reveal on scroll — reuse existing .reveal / .visible CSS (no new animation system)
+(function () {
+  var nodes = document.querySelectorAll('.reveal');
+  function show(el) { if (el) el.classList.add('visible'); }
+  function showInView() {
+    nodes.forEach(function (el) {
+      if (el.classList.contains('visible')) return;
+      var r = el.getBoundingClientRect();
+      if (r.top < innerHeight * 0.94 && r.bottom > 32) show(el);
+    });
+  }
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    nodes.forEach(show);
+    return;
+  }
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        if (e.target.parentElement) {
+          e.target.parentElement.querySelectorAll('.reveal').forEach(show);
+        }
+        show(e.target);
+        io.unobserve(e.target);
+      });
+    }, { threshold: 0.01, rootMargin: '0px 0px -8% 0px' });
+    nodes.forEach(function (el) { io.observe(el); });
+  }
+  showInView();
+  var ticking = false;
+  function onRevealScroll() {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(function () {
+      ticking = false;
+      showInView();
+      if (!document.querySelector('.reveal:not(.visible)')) {
+        window.removeEventListener('scroll', onRevealScroll);
+      }
+    });
+  }
+  window.addEventListener('scroll', onRevealScroll, { passive: true });
+})();
 (function () {
   if (window.matchMedia('(pointer: coarse)').matches) return;
   document.querySelectorAll('#tools .tools-platform-card').forEach(function (card) {

@@ -203,7 +203,7 @@
             key: order.keyId,
             amount: order.amount,
             currency: order.currency,
-            name: opts.name || 'Dropship Guru',
+            name: opts.name || 'DropshipGuru',
             description: opts.description || 'DropshipGuru payment',
             order_id: order.orderId,
             prefill: {

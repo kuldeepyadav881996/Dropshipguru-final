@@ -1428,3 +1428,19 @@ nav a:not(.nav-cta) {
   html, body{ overflow-x:hidden !important; }
   img, svg, video, canvas, iframe, .cat-bg{ max-width:100% !important; }
 }
+
+/* Accessibility: keep scroll-reveal content visible without motion */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto !important; }
+  .reveal,
+  .reveal.visible {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+    animation: none !important;
+  }
+  .hero-3d-char-wrap,
+  .hero-3d-char {
+    animation: none !important;
+  }
+}

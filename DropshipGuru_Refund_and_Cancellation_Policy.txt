@@ -1,5 +1,5 @@
-DropShipGuru ( Chandrahas ) — Refund & Cancellation Policy (Draft)
-DropShipGuru ( Chandrahas )
+DropshipGuru — Refund & Cancellation Policy (Draft)
+DropshipGuru
 Refund & Cancellation Policy
 Cancellation, refund eligibility, and related terms
 Page 1
@@ -8,7 +8,7 @@ Page 1
 
 DropshipGuru — Refund & Cancellation Policy (Draft)
 REFUND & CANCELLATION POLICY
-This Refund & Cancellation Policy applies to all digital services purchased from DropShipGuru ( Chandrahas ),
+This Refund & Cancellation Policy applies to all digital services purchased from DropshipGuru,
 including but not limited to seller account setup (Amazon, Flipkart, Meesho), Shopify/website
 development, training, webinars, consultations, and our annual seller-support
 packages. This policy is designed to be fair and transparent while reflecting the nature of digital
@@ -90,7 +90,7 @@ Page 3
 
 DropshipGuru — Refund & Cancellation Policy (Draft)
 3.7 Outcomes Outside Our Control
-As stated in our Terms & Conditions (Section 1.9), DropShipGuru ( Chandrahas ) does not guarantee account
+As stated in our Terms & Conditions (Section 1.9), DropshipGuru does not guarantee account
 approval by any marketplace, sales performance, or business outcomes. Accordingly, a refund
 will not be granted solely on the ground that:
 • A marketplace rejected, delayed, or suspended the seller account for reasons
@@ -112,9 +112,9 @@ payment gateway, bank, or card network, but we will assist you in good faith to 
 such issues with the relevant provider.
 3.9 Fraud, Misuse, Abuse, and Chargebacks
 Immediate Cancellation for Abuse: If the Client engages in any form of abuse, including but
-not limited to abusive, threatening, or harassing behaviour towards DropShipGuru ( Chandrahas )'s staff or
+not limited to abusive, threatening, or harassing behaviour towards DropshipGuru's staff or
 representatives, misuse of our services, or any conduct that is fraudulent or unlawful,
-DropShipGuru ( Chandrahas ) reserves the right to cancel and terminate the service immediately, with
+DropshipGuru reserves the right to cancel and terminate the service immediately, with
 immediate effect and without prior notice, and no refund of any amount paid — whether for work
 already performed or for any unused/remaining portion of the service — shall be due to the
 Client in such cases.
@@ -139,7 +139,7 @@ business days of approval, to the original payment method used, unless otherwise
 Refund timelines for amounts to reach your account thereafter depend on your bank or payment
 provider and are outside our control.
 3.11 Goodwill Refunds
-Notwithstanding the general policy above, DropShipGuru ( Chandrahas ) may, at its sole discretion and on a
+Notwithstanding the general policy above, DropshipGuru may, at its sole discretion and on a
 case-by-case basis, choose to offer a full or partial refund as a goodwill gesture in exceptional
 circumstances, even where not strictly required under this policy. The grant of a goodwill refund
 in one instance does not create an obligation or precedent for future cases, and does not

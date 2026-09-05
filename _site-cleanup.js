@@ -7,7 +7,7 @@ const path = require("path");
 const ROOT = __dirname;
 const SKIP = new Set(["node_modules", "_perf-backup", ".git"]);
 const EXT = new Set([".html", ".js", ".css", ".xml", ".txt", ".json", ".md"]);
-const NEW_NAME = "DropShipGuru ( Chandrahas )";
+const NEW_NAME = "DropshipGuru";
 
 function walk(dir, out = []) {
   for (const name of fs.readdirSync(dir)) {
@@ -90,8 +90,8 @@ function applyChrome(s) {
 
 function patchIndex(s) {
   s = s.replace(
-    'content="Dropship Guru helps beginners launch profitable dropshipping businesses in India with Shopify setup, winning products, automation, store setup and ecommerce guidance."',
-    'content="DropShipGuru ( Chandrahas ) helps beginners launch dropshipping and ecommerce businesses in India with store setup, marketplace onboarding, supplier coordination, and business guidance."'
+    'content="DropshipGuru helps beginners launch profitable dropshipping businesses in India with Shopify setup, winning products, automation, store setup and ecommerce guidance."',
+    'content="DropshipGuru helps beginners launch dropshipping and ecommerce businesses in India with store setup, marketplace onboarding, supplier coordination, and business guidance."'
   );
   s = s.replace(
     'content="Start your dropshipping business with expert setup, winning products and ecommerce growth strategies."',
@@ -314,7 +314,7 @@ const contentAboutOld = `          <p>From marketplace seller-account setup and 
 
         <section class="legal-section" id="what-we-do">
           <h2>What We Do</h2>
-          <p>DropShipGuru ( Chandrahas ) provides end-to-end digital ecommerce and business-support services, including:</p>
+          <p>DropshipGuru provides end-to-end digital ecommerce and business-support services, including:</p>
           <ul>
             <li>Seller account setup on Amazon, Flipkart, and Meesho;</li>
             <li>Shopify store setup and custom ecommerce website development;</li>
@@ -330,7 +330,7 @@ const contentAboutNew = `          <p>From marketplace seller-account setup and 
 
         <section class="legal-section" id="what-we-do">
           <h2>What We Do</h2>
-          <p>DropShipGuru ( Chandrahas ) provides end-to-end digital ecommerce and business-support services, including:</p>
+          <p>DropshipGuru provides end-to-end digital ecommerce and business-support services, including:</p>
           <ul>
             <li>Seller account setup on Amazon, Flipkart, and Meesho;</li>
             <li>Shopify store setup and custom ecommerce website development;</li>
@@ -359,12 +359,12 @@ function main() {
         "Reach our team by email or phone for support and business enquiries."
       );
       s = s.replace(
-        /Get in touch with DropShipGuru \( Chandrahas \) by email, phone, or WhatsApp\./g,
-        "Get in touch with DropShipGuru ( Chandrahas ) by email or phone."
+        /Get in touch with DropshipGuru by email, phone, or WhatsApp\./g,
+        "Get in touch with DropshipGuru by email or phone."
       );
       s = s.replace(
-        /Reach the DropShipGuru \( Chandrahas \) team by email, phone, or WhatsApp for support, billing, or business enquiries\./g,
-        "Reach the DropShipGuru ( Chandrahas ) team by email or phone for support, billing, or business enquiries."
+        /Reach the DropshipGuru team by email, phone, or WhatsApp for support, billing, or business enquiries\./g,
+        "Reach the DropshipGuru team by email or phone for support, billing, or business enquiries."
       );
       s = s.replace(
         /\s*<div class="legal-card"><p><strong>💬 WhatsApp<\/strong><br><a href="[^"]+"[^>]*>Talk to Expert<\/a><\/p><\/div>/,

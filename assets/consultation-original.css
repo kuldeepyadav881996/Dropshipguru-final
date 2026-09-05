@@ -2190,6 +2190,13 @@ footer { background: #0E1013 !important; border-top: none !important; }
 }
 
 @media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto !important; }
+  .reveal, .reveal.visible {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+    animation: none !important;
+  }
   .ambient-blob, .ambient-rays, .ambient-particles i, .hero-grid, .hero-glow-blob, .hero-visual-stage::before, .btn.primary, .nav-cta, .submit-btn, .cta-btn, .hero .btn.primary, .cta-section::before, #plans.plans-section::before, .form-hero::before,
   .consult-benefit, .consult-benefit-icon, .consult-plan-icon, .step-next-btn, .form-step-progress-fill::after, .consult-urgency-strip, .consult-receive-card, .consult-review, .consult-sticky-help, .form-step-dot { animation: none !important; }
   .consult-benefit:hover, .step-next-btn:hover, .consult-plan-card:hover, .consult-receive-card:hover, .consult-review:hover { transform: none !important; }
